@@ -1,0 +1,22 @@
+{% extends 'historialMediciones/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="row">
+    <h1 class="text-center">Áreas de Protección para la Biodiversidad</h1>
+    {% for clave,valor in areas.items %}
+    <div class="col-4 mt-5 d-flex justify-content-center ">
+    <div class="card" style="width: 24rem; min-height: 520px;">
+            <img src="{% static 'images/' %}{{ valor.imagen }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ valor.nombre }}</h5>
+                <p class="card-text">{{ valor.ubicacion }}</p>
+                <p class="card-text">{{ valor.nivel_brillo_cielo_nocturno }}</p>
+                <p class="card-text">Ultima medición registrada: {{ valor.fecha_ultima_medicion }}</p>
+                <a href="#" class="btn btn-primary">Ver historial</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock contenido %}
