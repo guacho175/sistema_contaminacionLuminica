@@ -1,6 +1,16 @@
-from django.db import models
+import random
+import datetime
 
-# Create your models here.
+
+def generar_mediciones():
+    return [round(random.uniform(0.1, 1.0), 2) for _ in range(10)]
+
+
+def generar_fecha_aleatoria(mes, año):
+    dia = random.randint(1, 28)  # máximo de 28 días para todos los meses
+    return datetime.date(año, mes, dia)
+
+
 areas_protegidas = {
     101: {
         "nombre": "Parque Nacional Bosque Fray Jorge",
@@ -12,10 +22,71 @@ areas_protegidas = {
         "altitud_promedio_m": 600,
         "fuentes_cercanas_de_contaminacion": "Pueblos cercanos, carreteras",
         "nivel_brillo_cielo_nocturno": "Escala Bortle 2-3",
-        "valor_ultima_medicion": 0.15,
-        "fecha_ultima_medicion": "25-09-2024",
-        "imagen": "Bosque-Fray-Jorge.jpg"
+        "imagen": "Bosque-Fray-Jorge.jpg",
+        "mediciones_mensuales_2024": {
+            "enero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "febrero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "marzo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "abril": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "mayo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "junio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "julio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "agosto": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "septiembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "octubre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "noviembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "diciembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            }
+        }
     },
+
     102: {
         "nombre": "Parque Nacional La Campana",
         "ubicacion": "Región de Valparaíso",
@@ -26,9 +97,69 @@ areas_protegidas = {
         "altitud_promedio_m": 1200,
         "fuentes_cercanas_de_contaminacion": "Pueblos y rutas cercanas",
         "nivel_brillo_cielo_nocturno": "Escala Bortle 3-4",
-        "valor_ultima_medicion": 0.35,
-        "fecha_ultima_medicion": "28-09-2024",
-        "imagen": "Bosque-Fray-Jorge.jpg"
+        "imagen": "La-Campana.jpg",
+        "mediciones_mensuales_2024": {
+            "enero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "febrero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "marzo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "abril": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "mayo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "junio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "julio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "agosto": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "septiembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "octubre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "noviembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "diciembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            }
+        }
     },
     103: {
         "nombre": "Parque Nacional Río Clarillo",
@@ -40,9 +171,69 @@ areas_protegidas = {
         "altitud_promedio_m": 750,
         "fuentes_cercanas_de_contaminacion": "Carreteras y áreas urbanas cercanas",
         "nivel_brillo_cielo_nocturno": "Escala Bortle 4-5",
-        "valor_ultima_medicion": 0.22,
-        "fecha_ultima_medicion": "30-09-2024",
-        "imagen": "Bosque-Fray-Jorge.jpg"
+        "imagen": "Rio-Clarillo.jpg",
+        "mediciones_mensuales_2024": {
+            "enero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "febrero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "marzo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "abril": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "mayo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "junio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "julio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "agosto": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "septiembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "octubre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "noviembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "diciembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            }
+        }
     },
     104: {
         "nombre": "Parque Nacional Pingüino de Humboldt",
@@ -54,9 +245,69 @@ areas_protegidas = {
         "altitud_promedio_m": 50,
         "fuentes_cercanas_de_contaminacion": "Faros y pequeñas poblaciones costeras",
         "nivel_brillo_cielo_nocturno": "Escala Bortle 2",
-        "valor_ultima_medicion": 0.12,
-        "fecha_ultima_medicion": "29-09-2024",
-        "imagen": "Bosque-Fray-Jorge.jpg"
+        "imagen": "Pinguino-Humboldt.jpg",
+        "mediciones_mensuales_2024": {
+            "enero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "febrero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "marzo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "abril": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "mayo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "junio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "julio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "agosto": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "septiembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "octubre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "noviembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "diciembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            }
+        }
     },
     105: {
         "nombre": "Reserva Nacional Las Chinchillas",
@@ -68,9 +319,69 @@ areas_protegidas = {
         "altitud_promedio_m": 500,
         "fuentes_cercanas_de_contaminacion": "Pueblos cercanos",
         "nivel_brillo_cielo_nocturno": "Escala Bortle 2-3",
-        "valor_ultima_medicion": 0.19,
-        "fecha_ultima_medicion": "27-09-2024",
-        "imagen": "Bosque-Fray-Jorge.jpg"
+        "imagen": "Las-Chinchillas.jpg",
+        "mediciones_mensuales_2024": {
+            "enero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "febrero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "marzo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "abril": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "mayo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "junio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "julio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "agosto": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "septiembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "octubre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "noviembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "diciembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            }
+        }
     },
     106: {
         "nombre": "Monumento Natural Pichasca",
@@ -82,11 +393,68 @@ areas_protegidas = {
         "altitud_promedio_m": 400,
         "fuentes_cercanas_de_contaminacion": "Pueblos y pequeñas rutas",
         "nivel_brillo_cielo_nocturno": "Escala Bortle 3",
-        "valor_ultima_medicion": 0.28,
-        "fecha_ultima_medicion": "26-09-2024",
-        "imagen": "Bosque-Fray-Jorge.jpg"
+        "imagen": "Pichasca.jpg",
+        "mediciones_mensuales_2024": {
+            "enero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "febrero": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "marzo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "abril": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "mayo": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "junio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "julio": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+              "agosto": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "septiembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "octubre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "noviembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            },
+            "diciembre": {
+                "mediciones": generar_mediciones(),
+                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
+                "ultimo_valor_medicion": generar_mediciones()[-1]
+            }
+        }
     }
 }
-
-
-
