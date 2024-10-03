@@ -1,14 +1,41 @@
 import random
 import datetime
 
+def generar_fechas_aleatorias(mes, año, num_fechas):
+    # Generar todas las fechas posibles en el mes
+    fechas_posibles = [datetime.date(año, mes, dia) for dia in range(1, 29)]
+    # Seleccionar un subconjunto de fechas de forma aleatoria
+    fechas_seleccionadas = random.sample(fechas_posibles, num_fechas)
+    # Ordenar las fechas seleccionadas
+    fechas_seleccionadas.sort()
+    return fechas_seleccionadas
 
-def generar_mediciones():
-    return [round(random.uniform(0.1, 1.0), 2) for _ in range(10)]
+def generar_coordenadas_aleatorias(num_coordenadas=10):
+    lat_min, lat_max = -31.0, -29.5
+    lon_min, lon_max = -72.5, -70.5
+    
+    coordenadas = []
+    for _ in range(num_coordenadas):
+        latitud = round(random.uniform(lat_min, lat_max), 6)
+        longitud = round(random.uniform(lon_min, lon_max), 6)
+        coordenadas.append((latitud, longitud))
+    
+    return coordenadas
+
+def generar_mediciones_con_fechas(mes, año):
+    mediciones = []
+    fechas = generar_fechas_aleatorias(mes, año, 10)
+    coordenadas = generar_coordenadas_aleatorias(10)
+    limite_permitido = 0.5
+    for fecha, (latitud, longitud) in zip(fechas, coordenadas):
+        valor = round(random.uniform(0.1, 1.0), 2)
+        ubicacion_fuente = f"Latitud: {latitud}, Longitud: {longitud}"
+        cumple_limite = valor <= limite_permitido
+        mediciones.append({'valor': valor, 'fecha': fecha, 'ubicacion_fuente': ubicacion_fuente, 'cumple_limite': cumple_limite})
+    return mediciones
 
 
-def generar_fecha_aleatoria(mes, año):
-    dia = random.randint(1, 28)  # máximo de 28 días para todos los meses
-    return datetime.date(año, mes, dia)
+
 
 
 areas_protegidas = {
@@ -25,64 +52,40 @@ areas_protegidas = {
         "imagen": "Bosque-Fray-Jorge.jpg",
         "mediciones_mensuales_2024": {
             "enero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(1, 2024),
             },
             "febrero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(2, 2024),
             },
-              "marzo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "marzo": {
+                "mediciones": generar_mediciones_con_fechas(3, 2024),
             },
-              "abril": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "abril": {
+                "mediciones": generar_mediciones_con_fechas(4, 2024),
             },
-              "mayo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "mayo": {
+                "mediciones": generar_mediciones_con_fechas(5, 2024),
             },
-              "junio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "junio": {
+                "mediciones": generar_mediciones_con_fechas(6, 2024),
             },
-              "julio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "julio": {
+                "mediciones": generar_mediciones_con_fechas(7, 2024),
             },
-              "agosto": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "agosto": {
+                "mediciones": generar_mediciones_con_fechas(8, 2024),
             },
             "septiembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(9, 2024),
             },
             "octubre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(10, 2024),
             },
             "noviembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(11, 2024),
             },
             "diciembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(12, 2024),
             }
         }
     },
@@ -100,64 +103,40 @@ areas_protegidas = {
         "imagen": "La-Campana.jpg",
         "mediciones_mensuales_2024": {
             "enero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(1, 2024),
             },
             "febrero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(2, 2024),
             },
-              "marzo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "marzo": {
+                "mediciones": generar_mediciones_con_fechas(3, 2024),
             },
-              "abril": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "abril": {
+                "mediciones": generar_mediciones_con_fechas(4, 2024),
             },
-              "mayo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "mayo": {
+                "mediciones": generar_mediciones_con_fechas(5, 2024),
             },
-              "junio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "junio": {
+                "mediciones": generar_mediciones_con_fechas(6, 2024),
             },
-              "julio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "julio": {
+                "mediciones": generar_mediciones_con_fechas(7, 2024),
             },
-              "agosto": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "agosto": {
+                "mediciones": generar_mediciones_con_fechas(8, 2024),
             },
             "septiembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(9, 2024),
             },
             "octubre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(10, 2024),
             },
             "noviembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(11, 2024),
             },
             "diciembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(12, 2024),
             }
         }
     },
@@ -174,64 +153,40 @@ areas_protegidas = {
         "imagen": "Rio-Clarillo.jpg",
         "mediciones_mensuales_2024": {
             "enero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(1, 2024),
             },
             "febrero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(2, 2024),
             },
-              "marzo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "marzo": {
+                "mediciones": generar_mediciones_con_fechas(3, 2024),
             },
-              "abril": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "abril": {
+                "mediciones": generar_mediciones_con_fechas(4, 2024),
             },
-              "mayo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "mayo": {
+                "mediciones": generar_mediciones_con_fechas(5, 2024),
             },
-              "junio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "junio": {
+                "mediciones": generar_mediciones_con_fechas(6, 2024),
             },
-              "julio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "julio": {
+                "mediciones": generar_mediciones_con_fechas(7, 2024),
             },
-              "agosto": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "agosto": {
+                "mediciones": generar_mediciones_con_fechas(8, 2024),
             },
             "septiembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(9, 2024),
             },
             "octubre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(10, 2024),
             },
             "noviembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(11, 2024),
             },
             "diciembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(12, 2024),
             }
         }
     },
@@ -248,64 +203,40 @@ areas_protegidas = {
         "imagen": "Pinguino-Humboldt.jpg",
         "mediciones_mensuales_2024": {
             "enero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(1, 2024),
             },
             "febrero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(2, 2024),
             },
-              "marzo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "marzo": {
+                "mediciones": generar_mediciones_con_fechas(3, 2024),
             },
-              "abril": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "abril": {
+                "mediciones": generar_mediciones_con_fechas(4, 2024),
             },
-              "mayo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "mayo": {
+                "mediciones": generar_mediciones_con_fechas(5, 2024),
             },
-              "junio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "junio": {
+                "mediciones": generar_mediciones_con_fechas(6, 2024),
             },
-              "julio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "julio": {
+                "mediciones": generar_mediciones_con_fechas(7, 2024),
             },
-              "agosto": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "agosto": {
+                "mediciones": generar_mediciones_con_fechas(8, 2024),
             },
             "septiembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(9, 2024),
             },
             "octubre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(10, 2024),
             },
             "noviembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(11, 2024),
             },
             "diciembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(12, 2024),
             }
         }
     },
@@ -322,64 +253,40 @@ areas_protegidas = {
         "imagen": "Las-Chinchillas.jpg",
         "mediciones_mensuales_2024": {
             "enero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(1, 2024),
             },
             "febrero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(2, 2024),
             },
-              "marzo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "marzo": {
+                "mediciones": generar_mediciones_con_fechas(3, 2024),
             },
-              "abril": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "abril": {
+                "mediciones": generar_mediciones_con_fechas(4, 2024),
             },
-              "mayo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "mayo": {
+                "mediciones": generar_mediciones_con_fechas(5, 2024),
             },
-              "junio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "junio": {
+                "mediciones": generar_mediciones_con_fechas(6, 2024),
             },
-              "julio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "julio": {
+                "mediciones": generar_mediciones_con_fechas(7, 2024),
             },
-              "agosto": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "agosto": {
+                "mediciones": generar_mediciones_con_fechas(8, 2024),
             },
             "septiembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(9, 2024),
             },
             "octubre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(10, 2024),
             },
             "noviembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(11, 2024),
             },
             "diciembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(12, 2024),
             }
         }
     },
@@ -396,65 +303,49 @@ areas_protegidas = {
         "imagen": "Pichasca.jpg",
         "mediciones_mensuales_2024": {
             "enero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(1, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(1, 2024),
             },
             "febrero": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(2, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(2, 2024),
             },
-              "marzo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(3, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "marzo": {
+                "mediciones": generar_mediciones_con_fechas(3, 2024),
             },
-              "abril": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(4, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "abril": {
+                "mediciones": generar_mediciones_con_fechas(4, 2024),
             },
-              "mayo": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(5, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "mayo": {
+                "mediciones": generar_mediciones_con_fechas(5, 2024),
             },
-              "junio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(6, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "junio": {
+                "mediciones": generar_mediciones_con_fechas(6, 2024),
             },
-              "julio": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(7, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "julio": {
+                "mediciones": generar_mediciones_con_fechas(7, 2024),
             },
-              "agosto": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(8, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+            "agosto": {
+                "mediciones": generar_mediciones_con_fechas(8, 2024),
             },
             "septiembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(9, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(9, 2024),
             },
             "octubre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(10, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(10, 2024),
             },
             "noviembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(11, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(11, 2024),
             },
             "diciembre": {
-                "mediciones": generar_mediciones(),
-                "ultima_fecha_medicion": generar_fecha_aleatoria(12, 2024),
-                "ultimo_valor_medicion": generar_mediciones()[-1]
+                "mediciones": generar_mediciones_con_fechas(12, 2024),
             }
         }
     }
 }
+
+# Actualizar las mediciones para incluir la última fecha y valor de medición
+for area in areas_protegidas.values():
+    for mes, datos in area["mediciones_mensuales_2024"].items():
+        if datos["mediciones"]:
+            ultima_medicion = datos["mediciones"][-1]
+            datos["ultima_fecha_medicion"] = ultima_medicion["fecha"]
+            datos["ultimo_valor_medicion"] = ultima_medicion["valor"]

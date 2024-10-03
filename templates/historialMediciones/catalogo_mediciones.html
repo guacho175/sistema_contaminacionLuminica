@@ -1,17 +1,39 @@
-{% extends 'historialMediciones/base.html' %} 
-{% load static %} 
+{% extends 'historialMediciones/base.html' %}
+{% load static %}
 
 {% block contenido %}
 <div class="row">
-  <h1 class="text-center">Catálogo de Mediciones - {{ area.nombre }}</h1>
-  {% for mes, datos in mediciones_mensuales.items %}
+  <h1 class="text-center mt-5">Catálogo de Mediciones</h1>
+  <h5 class="text-center">{{ area.nombre }}</h5>
+  <h5 class="mt-5">Mediciones del mes de {{ mes|capfirst }}:</h5>
+  <div class="">
+  {% if datos_mes.mediciones %}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Valor de Medición</th>
+            <th>Ubicación de la Fuente</th>
+            <th>Fecha de Medición</th>
+            <th>Cumplimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for medicion in datos_mes.mediciones %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ medicion.valor }}</td>
+            <td>{{ medicion.ubicacion_fuente }}</td>
+            <td>{{ medicion.fecha }}</td>
+            <td>{{ medicion.cumple_limite|yesno:"Sí,No" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 
-
-  <div class="col-4 mt-5 d-flex justify-content-center">
-    {{ datos.mediciones}}
-    {{ datos.ultima_fecha_medicion}}
+    {% else %}
+      <p>No hay mediciones disponibles para este mes.</p>
+    {% endif %}
   </div>
-  {% endfor %}
 </div>
-
 {% endblock contenido %}
