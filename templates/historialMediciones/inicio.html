@@ -1,0 +1,162 @@
+{% extends 'historialMediciones/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="row d-flex justify-content-center">
+
+    <div id="carouselExampleCaptions" class="carousel slide mb-3">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/AncientTree.jpg' %}" class="d-block w-100 " style="height: 520px; object-fit: cover;" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <div class="card" style="color: #ffffff; text-shadow: 2px 2px 4px #000000; background-color: rgba(0, 0, 0, 0.518); padding: 10px; backdrop-filter: blur(1px); border-radius: 15px; max-height: 175px;">
+                    <div class="card-header">
+                        <h2 class="text-center">¿Qué es la contaminación lumínica?</h2>
+                    </div>
+                    <div class="card-body">
+                      <blockquote class=" mb-0">
+                        <p>Es la introducción innecesaria de luz artificial en el medio ambiente, y se debe a la emisión de luz en intensidades, direcciones y colores inadecuados; afectando particularmente el brillo natural de cielo, los espacios naturales y paisajes sensibles, la flora, la fauna y a la salud de las personas.</p>
+                      </blockquote>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3 mt-5 contenido">
+    <div class="row g-0">
+        <div class="col-md-7">
+            <img src="{% static 'images/nocheluces.jpg' %}" class="img-fluid rounded-start" alt="...">
+            <p class="card-text"><small class="text-light">Contaminación lumínica sobre Coquimbo-La Serena en
+                    2016.</small></p>
+        </div>
+        <div class="col-md-5">
+            <div class="card-body">
+                <p class="card-text">Durante los últimos 100 años, el cielo nocturno se ha degradado vertiginosamente
+                    debido al aumento indiscriminado e irracional de la iluminación en ciudades y poblados. Revertir
+                    esta degradación no requiere tener ciudades poco iluminadas, sino ciudades bien iluminadas.</p>
+                <p class="fst-italic">El mal diseño de las luminarias y el exceso de iluminación de exteriores envía la
+                    luz directamente al cielo en lugar de ser utilizada para iluminar el suelo.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contenido mb-3">
+    <h4> ¿Cómo se monitorea la contaminación lumínica?</h4>
+    <p>Desde 1998 Chile cuenta con una Norma de Emisión para la Regulación de la Contaminación Lumínica, que aplica a
+        las regiones de Antofagasta, Atacama y Coquimbo, para proteger la calidad astronómica de los cielos nocturnos
+        del norte de nuestro país.
+
+        La fuente emisora regulada es el Alumbrado de Exteriores, tales como las luminarias de calles, parques, recintos
+        deportivos e industrias. También se incluyen los avisos, letreros luminosos e iluminados.
+
+        La norma se controla a través de una certificación de las luminarias (en el caso de alumbrado), previa a la
+        instalación, la cual debe ser emitida por un laboratorio autorizado por la SEC. La fiscalización de la norma es
+        realizada por la Superintendencia del Medio Ambiente.
+    </p>
+    
+    <h4 class="mt-5">Nueva norma lumínica (D.S. N°1/2022 MMA)</h4>
+    <p>Promulgación: 05-ENE-2022</p>
+    <p>
+        La nueva Norma Lumínica, formalmente denominada Decreto Supremo N° 1 de 2022, es una revisión del Decreto Supremo
+        N° 43 de 2012 que amplía el ámbito de las cláusulas sobre fuentes emisoras de luz a todo el territorio de Chile.
+        Asimismo, no sólo protege los cielos nocturnos para las observaciones astronómicas, sino que incorpora la protección
+        de la biodiversidad y la salud humana como objetivos medioambientales.
+    </p>
+    <p> Publicación: 18-OCT-2023</p>
+    <p> Versión: Con Vigencia Diferida por Fecha 19-OCT-2024</p>
+    <p> 
+        La contaminación lumínica representa un problema real y acuciante para la astronomía. Un análisis de datos del
+        programa de ciencia ciudadana Globe at Night de NOIRLab demostró que en los países en desarrollo la luminosidad
+        del cielo nocturno ha aumentado a una tasa del 9,6% anual durante la última década. El aumento de la contaminación
+        lumínica no sólo amenaza a la salud humana, sino que existen pruebas convincentes de que también afecta
+        negativamente a diversos sistemas ecológicos y biológicos.
+    </p>
+</div>
+
+
+<div class="contenido">
+    <h4 class="mb-3">Escala Bortle</h4>
+    <img src="{% static 'images/nueva_escala_web.jpg' %}" style="max-width: 1000px;" alt="">
+    <p class="mt-4">
+        La Escala Bortle, nombrada en honor al astrónomo aficionado John E. Bortle, es una herramienta
+        utilizada para medir la calidad del cielo nocturno en términos de observación astronómica. Esta escala, que va
+        del nivel 1 al nivel 9, clasifica los lugares en función de su contaminación lumínica y la visibilidad de
+        objetos celestes:
+    </p>
+    <h6 class="mt-4">1.- Cielo excepcionalmente oscuro, se caracteriza por:</h6 >
+    <p class="ps-5"> Luz zodiacal claramente visible.
+        Júpiter y Venus afectan la adaptación a la oscuridad.
+        Las regiones de la vía láctea en escorpión y sagitario proyectan sombras en el suelo.
+        Muchas constelaciones son irreconocibles por la gran cantidad de estrellas observables.
+        El entorno cercano es prácticamente invisible.
+    </p>
+    
+    <h6 class="mt-4">2.- Luz zodiacal brillante cerca del amanecer y anochecer:</h6>
+    <p class="ps-5"> La vía láctea presenta estructuras a simple vista.
+        Se observa vagamente el entorno.
+        Las nubes solo se observan como vacíos en el cielo estrellado.
+        Muchos objetos Messier y cúmulos globulares visibles a ojo desnudo.</p>
+    
+    <h6 class="mt-3">3.- Cielo rural, se caracteriza por:</h6>
+    <p class="ps-5">Luz zodiacal claramente visible en primavera y otoño.
+        Algunas evidencias de contaminación lumínica sobre el horizonte.
+        Las nubes pueden observarse brillante cerca del horizonte pero oscuras cerca del cenit.
+        Entorno cercano difícil de distinguir.</p>
+    
+    <h6 class="mt-3">4.- Transición de cielo rural a suburbano, se caracteriza por:</h6>
+    <p class="ps-5"> Luz zodiacal aun es observable pero no atraviesa todo el cielo.
+        La vía láctea aún es claramente visible pero se observan menos detalles.
+        Varios focos de contaminación lumínica observables en distintas direcciones sobre el horizonte.</p>
+    
+    <h6  class="mt-3">5.- Cielo suburbano, se caracteriza por:</h6>
+    <p class="ps-5"> Luz zodiacal apenas distinguible algunas noches de primavera u otoño.
+        La vía láctea es apenas visible en el horizonte y borrosa cerca del cenit.
+        Hay fuentes de contaminación lumínica prácticamente en todas direcciones.
+        Las nubes se observan más brillantes que el cielo.</p>
+    
+    <h6 class="mt-3">6.- Cielo suburbano brillante, se caracteriza por:</h6>
+    <p class="ps-5"> No hay rastros de luz zodiacal.
+        Solo cerca del cenit se observan indicios de la vía láctea.
+        Hasta una actitud de 35° sobre el horizonte el cielo se observa blanco grisáceo.
+        Se pueden distinguir detalles del entorno.</p>
+    
+    <h6 class="mt-3">7.- Transición de cielo suburbano a urbano, se caracteriza por:</h6>
+    <p class="ps-5"> Todo el cielo se observa de un tono gris blanquecino.
+        La vía láctea no se observa.
+        Hay fuentes luminosas intensas en todas direcciones.
+        Nubes muy brillantes.</p>
+    
+    <h6 class="mt-3">8.- Cielo de ciudad, se caracteriza por:</h6>
+    <p class="ps-5"> El cielo brilla de un color blanco grisáceo o anaranjado.
+        Es posible leer el titular de un periódico.
+        Algunas estrellas de las constelaciones más conocidas no se observan.</p>
+    
+    <h6 class="mt-3">9.- Cielo de centro de ciudad, se caracteriza por:</h6>
+    <p class="ps-5">Cielo brillantemente iluminado incluso hacia el cenit.
+        Solo se distinguen las estrellas más brillantes de algunas constelaciones.
+        Otras constelaciones con estrellas más tenues como cáncer y piscis son completamente invisibles.
+        Exceptuando las Pléyades ningún objeto Messier es observable.</p>
+
+
+
+      
+
+        
+
+
+      
+        
+
+
+
+
+
+
+</div>
+
+
+</div>
+{% endblock contenido %}

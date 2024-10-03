@@ -36,3 +36,6 @@ def areas_protegidas(request):
         'areas': areas,
     }
     return render(request, 'historialMediciones/areas_protegidas.html', data)
+
+def inicio(request):
+    return render(request, 'historialMediciones/inicio.html')

@@ -5,11 +5,11 @@
 <div class="row d-flex justify-content-center">
     <h1 class="text-center">{{ area.nombre }} - Historial de Mediciones</h1>
     {% for mes, datos in mediciones_mensuales.items %}
-    <div class="card col-4 m-2 mt-3">
+    <div class="card col-5 m-2 mt-3">
       <h5 class="card-header"><strong>{{ mes|capfirst }}</strong></h5>
       <div class="card-body">
         <h5 class="card-title">Valor última medición registrada: {{ datos.ultimo_valor_medicion }}</h5>
-        <a href="{% url 'catalogo_mediciones' codigo=codigo mes=mes %}" class="btn btn-primary">Ver historial</a>
+        <a href="{% url 'catalogo_mediciones' codigo=codigo mes=mes %}" class="btn btn-dark mt-5">Ver historial</a>
       </div>
       <div class="card-footer">
         <small class="text-body-secondary">Última actualización realizada el {{ datos.ultima_fecha_medicion }}</small>
