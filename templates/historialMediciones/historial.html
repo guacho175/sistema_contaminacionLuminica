@@ -2,20 +2,21 @@
 {% load static %}
 
 {% block contenido %}
-<div class="row">
+<div class="row d-flex justify-content-center">
     <h1 class="text-center">{{ area.nombre }} - Historial de Mediciones</h1>
     {% for mes, datos in mediciones_mensuales.items %}
-    <div class="col-4 mt-5 d-flex justify-content-center">
-      <div class="card" style="width: 24rem; min-height: 520px;">
-        <img src="{% static area.imagen %}" class="card-img-top" alt="Imagen de {{ area.nombre }}">
-        <div class="card-body">
-          <h5 class="card-title"><strong>{{ mes|capfirst }}</strong></h5>
-          <p class="card-text">Valor última medición registrada: {{ datos.ultimo_valor_medicion}}</p>
-          <p class="card-text">Fecha última medición registrada: {{ datos.ultima_fecha_medicion }}</p>
-          <a href="{% url 'catalogo_mediciones' mes %}" class="btn btn-primary">Ver historial</a>
-        </div>
+    <div class="card col-4 m-2 mt-3">
+      <h5 class="card-header"><strong>{{ mes|capfirst }}</strong></h5>
+      <div class="card-body">
+        <h5 class="card-title">Valor última medición registrada: {{ datos.ultimo_valor_medicion}}</h5>
+        <p class="card-text">{{datos.mediciones}}</p>
+        <a href="{% url 'catalogo_mediciones' mes %}" class="btn btn-primary">Ver historial</a>
+      </div>
+      <div class="card-footer">
+        <small class="text-body-secondary">Ultima actualización realizada el {{ datos.ultima_fecha_medicion }}</small>
       </div>
     </div>
+
     {% endfor %}
   </div>
 
