@@ -3,17 +3,56 @@
 
 {% block contenido %}
 <div class="row">
-    <h1 class="text-center">Áreas de Protección para la Biodiversidad</h1>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            {% for clave, valor in areas.items %}
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for clave, valor in areas.items %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{% static 'images/' %}{{ valor.imagen }}" class="d-block w-100" alt="{{ valor.nombre }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="text-center titulo">Áreas de Protección para la Biodiversidad</h1>
+                        <h5 class="titulo">{{ valor.nombre }}</h5>
+                        <p>{{ valor.descripcion }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
     {% for clave,valor in areas.items %}
     <div class="col-4 mt-5 d-flex justify-content-center">
-    <div class="card" style="width: 24rem; min-height: 520px;">
+    <div class="card" style="width: 24rem; min-height: 550px;">
             <img src="{% static 'images/' %}{{ valor.imagen }}" class="card-img-top" style="height: 256px;" alt="...">
-            <div class="card-body">
+            <div class="card-body flex-grow-1">
                 <h5 class="card-title">{{ valor.nombre }}</h5>
-                <p class="card-text">{{ valor.ubicacion }}</p>
-                <p class="card-text">{{ valor.nivel_brillo_cielo_nocturno }}</p>
-                <p class="card-text">Fuentes cercanas de contaminación: {{ valor.fuentes_cercanas_de_contaminacion }}</p>
-                <a href="{% url 'historial' clave %}" class="btn btn-primary">Ver historial</a>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ valor.ubicacion }}</li>
+                    <li class="list-group-item">Área: {{ valor.tamaño_area_km2 }} km2</li>
+                    <li class="list-group-item">{{ valor.nivel_brillo_cielo_nocturno }}</li>
+                    <li class="list-group-item">Fuentes cercanas de contaminación: {{ valor.fuentes_cercanas_de_contaminacion }}</li>
+                    <li class="list-group-item">
+                        <strong>Especies Sensibles:</strong>
+                        <ul>
+                            {% for especie in valor.especies_sensibles %}
+                                <li>{{ especie }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                  </ul>
+           
+                <a href="{% url 'historial' clave %}" class="btn btn-dark">Ver historial</a>
             </div>
         </div>
     </div>

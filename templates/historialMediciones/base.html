@@ -5,30 +5,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de monitores de contaminacón lumínica</title>
+    <title>Sistema de monitores de contaminación lumínica</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-
+    <style>
+        body {
+            background-color: #18173e;
+            color: #eee;
+        }
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 50px;
+            background-color: #18173e;
+            padding-top: 65px; /* Ajustar para que no se superponga con la navbar */
+            border-right: 2px solid #3c2a58;
+        }
+        .sidebar a {
+            color: #eee;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .sidebar a:hover {
+            color: #845297;
+        }
+        .content {
+            margin-left: 50px;
+            padding: 20px;
+        }
+        .carousel-inner img {
+            max-height: 520px;
+            width: auto;
+            margin: 0 auto;
+        }
+        .titulo{
+            text-shadow: 2px 2px 4px #000000; /* Contorno negro */
+        }
+    </style>
 </head>
 
-<body style="background-color: #333; color: #eee;">
-    
+<body>
     <div class="container-fluid">
-
         {% block menu %}
-        <nav class="navbar fixed-top navbar-dark bg-dark p-2" style="height: 65px;">
+        <nav class="navbar fixed-top navbar-dark p-2" style="height: 65px; background-color: #18173e;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'areas' %}">Monitoreo de Contaminación Lumínica</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                     aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                <div  class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header bg-dark">
-                        <h5 class="offcanvas-title text-bg-dark" id="offcanvasNavbarLabel">Menu</h5>
+                    <div style="background-color: #18173e;" class="offcanvas-header">
+                        <h5 style="color: #eee;" class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body bg-dark ">
+                    <div style="background-color: #18173e;" class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{% url 'areas' %}">Áreas de Protección para la Biodiversidad</a>
@@ -61,41 +95,31 @@
         </nav>
         {% endblock menu %}
 
-        <div class="row" style="margin-top: 65px;">
-            <div class="col-12 bg-dark">
-                {% block contenido %}
-                <div class="row">
-                    <div class="col">
-                        <div class="alert alert-danger h2">
-                            contenido
-                        </div>
-                    </div>
-                </div>
-                {% endblock contenido %}
-            </div>
+        <div class="sidebar">
+            <a href="{% url 'areas' %}">Áreas de Protección</a>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
         </div>
-        
-        {% block pie %}
+
+        <div class="content mt-5">
+            {% block contenido %}
             <div class="row">
                 <div class="col">
-                    <div class="alert alert-warning h2">
-                        pie
+                    <div class="alert alert-danger h2">
+                        contenido
                     </div>
                 </div>
-            </div>       
+            </div>
+            {% endblock contenido %}
+        </div>
+
+        {% block pie %}
+>
         {% endblock pie %}
-
-        {% block js %}
-         
-        {% endblock js %}
-    </div>  
- 
-
-    
-  
+    </div>
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    
 </body>
 
 </html>
