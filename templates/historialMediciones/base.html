@@ -29,14 +29,18 @@
             text-align: center;
         }
         .sidebar a {
-            color: #402c60;
+            color: #eee;
             padding: 10px;
             text-decoration: none;
             display: block;
-            font-size: 32px;
+            font-size: 24px;
         }
         .sidebar a:hover {
             color: #845297;
+        }
+        .sidebar span {
+            margin-top: 5px;
+            font-size: 14px;
         }
         .content {
             margin-left: 50px;
@@ -56,8 +60,7 @@
             text-shadow: 2px 2px 4px #000000; 
             background-color: rgba(0, 0, 0, 0.518); 
             padding: 10px; backdrop-filter: blur(1px);
-        }
-        
+        }   
     </style>
 </head>
 
@@ -66,7 +69,7 @@
         {% block menu %}
         <nav class="navbar fixed-top navbar-dark p-2" style="height: 65px; background-color: #18173e;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'areas' %}">Monitoreo de Contaminación Lumínica</a>
+                <a class="navbar-brand ms-4 ps-2" href="{% url 'areas' %}">Monitoreo de Contaminación Lumínica</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                     aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -112,10 +115,18 @@
 
         {% block aside %}          
         <div class="sidebar">
-            <a href="{% url '' %}"><i class='bx bx-home-alt'></i></a>
-            <a href="{% url 'areas' %}"><i class='bx bxs-tree'></i></a>
-            <a href="#"><i class='bx bxs-file'></i></a>
-            <a href="#"><i class='bx bx-wrench'></i></a>
+            <a href="{% url '' %}" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Inicio">
+                <i class='bx bx-home-alt'></i>
+            </a>
+            <a href="{% url 'areas' %}" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Áreas de Biodiversidad">
+                <i class='bx bxs-tree'></i>
+            </a>
+            <a href="#" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Archivos">
+                <i class='bx bxs-file'></i>
+            </a>
+            <a href="#" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Herramientas">
+                <i class='bx bx-wrench'></i>
+            </a>
         </div>
         {% endblock aside %}
 
@@ -132,11 +143,19 @@
         </div>
 
         {% block pie %}
->
+
         {% endblock pie %}
     </div>
 
+
+
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </body>
 
 </html>
