@@ -1,0 +1,12 @@
+{% extends 'historialMediciones/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="row d-flex justify-content-center">
+    <h1 class="text-center">Mapa de Mediciones</h1>
+    <div class="col-md-8 mt-5">
+        {{ map|safe }}
+    </div>
+    
+</div>
+{% endblock contenido %}
