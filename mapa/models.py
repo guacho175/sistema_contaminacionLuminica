@@ -6,6 +6,7 @@ class Location(models.Model):
     address = models.CharField(max_length=250, verbose_name='Dirección')
     lat = models.FloatField(verbose_name='Latitud')
     lng = models.FloatField(verbose_name='Longitud')
+    cumpl = models.IntegerField(default=0, verbose_name='Nivel Cumplimiento')
 
     class Meta:
         verbose_name = "Sensor"
