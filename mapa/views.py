@@ -21,7 +21,7 @@ def mapa(request):
         return redirect('mapa')
 
     # Genero el mapa
-    initialMap = folium.Map(location=[-29.9055324, -71.2313308], zoom_start=10)
+    initialMap = folium.Map(location=[-29.9055324, -71.2313308], zoom_start=11)
     marker_cluster = MarkerCluster().add_to(initialMap)
 
     # Itera sobre los sensores y añade un marcador para cada uno
