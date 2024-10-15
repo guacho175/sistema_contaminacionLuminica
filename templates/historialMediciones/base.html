@@ -61,6 +61,11 @@
             background-color: rgba(0, 0, 0, 0.518); 
             padding: 10px; backdrop-filter: blur(1px);
         }   
+        .sidebar a.active {
+        color: #845297;
+        border-left: 4px solid #845297;
+          }
+
     </style>
 </head>
 
@@ -113,15 +118,15 @@
         </nav>
         {% endblock menu %}
 
-        {% block aside %}          
+        {% block aside %}
         <div class="sidebar">
-            <a href="{% url '' %}" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Inicio">
+            <a href="{% url '' %}" class="{% if request.path == '/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Inicio">
                 <i class='bx bx-home-alt'></i>
             </a>
-            <a href="{% url 'areas' %}" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Áreas de Biodiversidad">
+            <a href="{% url 'areas' %}" class="{% if request.path == '/areas/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Áreas de Biodiversidad">
                 <i class='bx bxs-tree'></i>
             </a>
-            <a href="{% url 'mapa' %}" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Mapa de mediciones">
+            <a href="{% url 'mapa' %}" class="{% if request.path == '/mapa/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mapa de mediciones">
                 <i class='bx bx-map'></i>
             </a>
             <a href="#" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Herramientas">
@@ -129,6 +134,7 @@
             </a>
         </div>
         {% endblock aside %}
+
 
         <div class="content mt-5">
             {% block contenido %}
