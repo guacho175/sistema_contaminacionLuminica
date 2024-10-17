@@ -6,5 +6,6 @@ urlpatterns = [
     # path('mediciones/', include('historialMediciones.urls')),
     path('', include('historialMediciones.urls')),
     path('mapa/', include('mapa.urls')),
+    path('catalogo/', include('catalogo_mediciones.urls')),
 
 ]
