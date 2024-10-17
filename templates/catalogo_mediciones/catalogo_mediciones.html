@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="row">
+  <h1 class="text-center mt-5">Catálogo de Mediciones</h1>
+  <div class="">
+  {% if datos_mes.mediciones %}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Valor de Medición</th>
+            <th>Ubicación de la Fuente</th>
+            <th>Fecha de Medición</th>
+            <th>Cumplimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for medicion in datos_mes.mediciones %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ medicion.valor }}</td>
+            <td>{{ medicion.ubicacion_fuente }}</td>
+            <td>{{ medicion.fecha }}</td>
+            <td>{{ medicion.cumple_limite|yesno:"Sí,No" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    {% else %}
+      <p>No hay mediciones disponibles.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock contenido %}
