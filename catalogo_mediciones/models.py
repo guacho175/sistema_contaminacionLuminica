@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from .choices import tipos_alumbrado, nivel_cumplimiento
+from .choices import tipos_alumbrado, nivel_cumplimiento, tipo_flujo_luminoso
 
 # Create your models here.
 
@@ -60,3 +60,25 @@ class Tipo_alumbrado_art5(models.Model):
 
     def __str__(self):
         return self.direccion
+
+
+class Tipo_alumbrado_art6(models.Model):
+    nivel_cumplimiento = models.CharField(max_length=1, choices=nivel_cumplimiento, default='0')
+    tipo_alumbrado = models.CharField(max_length=4,choices=tipos_alumbrado, default='art6')
+    direccion = models.CharField(max_length=250, verbose_name='Ubicación')
+    latitud = models.FloatField(verbose_name='Latitud')
+    longitud = models.FloatField(verbose_name='Longitud')
+    tipo_flujo_luminoso = models.CharField(max_length=1, choices=tipo_flujo_luminoso, default='', verbose_name='Tipo de flujo luminoso')
+    valor_flujo_luminoso = models.FloatField(verbose_name='Flujo luminoso de luminaria')
+    Hemisferio_superior = models.FloatField(verbose_name='Emision al hemisferio superior')
+    proteccion_especial = models.CharField(max_length=2, verbose_name='Área de protección especial')
+    reflexion_luminancia = models.FloatField(verbose_name='Emisiòn por Reflexiòn: Luminancia')
+    temperatura_luz_blanca = models.FloatField(verbose_name='Temperatura de color: Luz Blanca')
+    temperatura_luz_color = models.FloatField(verbose_name='Temperatura de color: Luces multicolor')
+    limite_horario = models.CharField(max_length=2, verbose_name='Limite horario')
+    horario_extendido = models.CharField(max_length=2, verbose_name='Permiso de extención horaria')
+    observaciones = models.CharField(max_length=500, blank=True, null=True, verbose_name='Observaciones')
+    usuario = models.ForeignKey(Usuario, null=True, on_delete=models.RESTRICT)
+    creado = models.DateTimeField(default=timezone.now)
+
+

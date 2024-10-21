@@ -13,3 +13,9 @@ nivel_cumplimiento = (
     ('3', 'Medio'),
     ('4', 'Alto'),
 )
+
+tipo_flujo_luminoso = (
+    ('i', 'indivudial'),
+    ('l', 'lineal'),
+    ('m', 'malla')
+)
