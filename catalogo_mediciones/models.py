@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from .choices import tipos_alumbrado, nivel_cumplimiento
 
 # Create your models here.
 
@@ -37,6 +38,8 @@ class Usuario(models.Model):
 
 
 class Tipo_alumbrado_art5(models.Model):
+    nivel_cumplimiento = models.CharField(max_length=1, choices=nivel_cumplimiento, default='0')
+    tipo = models.CharField(max_length=4,choices=tipos_alumbrado, default='art5')
     direccion = models.CharField(max_length=250, verbose_name='Ubicación')
     latitud = models.FloatField(verbose_name='Latitud')
     longitud = models.FloatField(verbose_name='Longitud')

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="row d-flex justify-content-center">
+    <h2 class="text-center mb-5">Detalle de la Medición</h2>
+    <div class="row col-md-7 ">
+        <table class="table table-bordered">
+            <tr>
+                <th>Ubicación</th>
+                <td>{{ medicion.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Latitud</th>
+                <td>{{ medicion.latitud }}</td>
+            </tr>
+            <tr>
+                <th>Longitud</th>
+                <td>{{ medicion.longitud }}</td>
+            </tr>
+            <tr>
+                <th>Tipo de alumbrado</th>
+                <td>{{ medicion.get_tipo_display }}</td>
+            </tr>
+            <tr>
+                <th>Intensidad Luminosa <= 90º</th>
+                <td>{{ medicion.menor_igual_90grados }}</td>
+            </tr>
+            <tr>
+                <th>Intensidad Luminosa > 90º</th>
+                <td>{{ medicion.mayor_90grados }}</td>
+            </tr>
+            <tr>
+                <th>Clase de Luminaria</th>
+                <td>{{ medicion.clase_luminaria }}</td>
+            </tr>
+            <tr>
+                <th>Emisión por Reflexión</th>
+                <td>{{ medicion.emision_reflexion }}</td>
+            </tr>
+            <tr>
+                <th>Área de Protección Especial</th>
+                <td>{{ medicion.proteccion_especial }}</td>
+            </tr>
+            <tr>
+                <th>Radiancia Espectral</th>
+                <td>{{ medicion.radiancia_espectral }}</td>
+            </tr>
+            <tr>
+                <th>Emisión Conjunta Considerada</th>
+                <td>{{ medicion.emision_conjunta }}</td>
+            </tr>
+            <tr>
+                <th>Inspector</th>
+                <td>{{ medicion.usuario }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Inspección</th>
+                <td>{{ medicion.creado }}</td>
+            </tr>
+            <tr>
+                <th>Nivel de cumplimiento</th>
+                <td>{{ medicion.get_nivel_cumplimiento_display }}</td>
+            </tr>
+            <tr>
+                <th>Observaciones</th>
+                <td>{{ medicion.observaciones }}</td>
+            </tr>
+        </table>
+    </div>
+
+<div class="col-md-3">
+    <a href="{% url 'editar_medicion' medicion.id %}" class="btn btn-warning">Editar Medición</a>
+
+    <a href="{% url 'catalogo' %}" class="btn btn-primary">Volver al Catálogo</a>
+
+</div>
+   
+</div>
+
+
+
+
+
+
+
+
+{% endblock contenido %}

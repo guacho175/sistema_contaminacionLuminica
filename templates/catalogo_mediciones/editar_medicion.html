@@ -1,0 +1,20 @@
+<!-- edit_medicion.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="row d-flex justify-content-center">
+    <h2 class="text-center mb-5">Editar Medición</h2>
+    <div class="row col-md-7">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <div class="col-md-3">
+        <a href="{% url 'catalogo' %}" class="btn btn-secondary">Volver al Catálogo</a>
+    </div>
+</div>
+{% endblock contenido %}
