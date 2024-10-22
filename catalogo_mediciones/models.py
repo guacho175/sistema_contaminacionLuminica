@@ -38,8 +38,8 @@ class Usuario(models.Model):
 
 
 class Tipo_alumbrado_art5(models.Model):
-    nivel_cumplimiento = models.CharField(max_length=1, choices=nivel_cumplimiento, default='0')
-    tipo = models.CharField(max_length=4,choices=tipos_alumbrado, default='art5')
+    estado = models.IntegerField(default='0')
+    tipo_alumbrado = models.CharField(max_length=4,choices=tipos_alumbrado, default='art5')
     direccion = models.CharField(max_length=250, verbose_name='Ubicación')
     latitud = models.FloatField(verbose_name='Latitud')
     longitud = models.FloatField(verbose_name='Longitud')
@@ -63,7 +63,7 @@ class Tipo_alumbrado_art5(models.Model):
 
 
 class Tipo_alumbrado_art6(models.Model):
-    nivel_cumplimiento = models.CharField(max_length=1, choices=nivel_cumplimiento, default='0')
+    estado = models.IntegerField(default='0')
     tipo_alumbrado = models.CharField(max_length=4,choices=tipos_alumbrado, default='art6')
     direccion = models.CharField(max_length=250, verbose_name='Ubicación')
     latitud = models.FloatField(verbose_name='Latitud')
@@ -81,4 +81,25 @@ class Tipo_alumbrado_art6(models.Model):
     usuario = models.ForeignKey(Usuario, null=True, on_delete=models.RESTRICT)
     creado = models.DateTimeField(default=timezone.now)
 
+    class Meta:
+        verbose_name = 'Medicion_art6'
+        verbose_name_plural = 'Mediciones art6'
 
+    def __str__(self):
+        return self.direccion
+
+class CatalogoMedicion(models.Model):
+    nivel_cumplimiento = models.CharField(max_length=1, null=True, blank=True, choices=nivel_cumplimiento, default='0')
+    medicion_art5 = models.ForeignKey(Tipo_alumbrado_art5, null=True, blank=True, on_delete=models.SET_NULL)
+    medicion_art6 = models.ForeignKey(Tipo_alumbrado_art6, null=True, blank=True, on_delete=models.SET_NULL)
+    
+    class Meta:
+        verbose_name = 'Catálogo de Mediciones'
+        verbose_name_plural = 'Catálogo de Mediciones'
+
+    def __str__(self):
+        if self.medicion_art5:
+            return f"Medición Art. 5 - {self.medicion_art5.direccion}"
+        elif self.medicion_art6:
+            return f"Medición Art. 6 - {self.medicion_art6.direccion}"
+        return "Medición sin detalles"
