@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <h1 class="text-center">Detalle de Medición</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Ubicación: {{ medicion.direccion }}</h5>
+            <p class="card-text">Latitud: {{ medicion.latitud }}</p>
+            <p class="card-text">Longitud: {{ medicion.longitud }}</p>
+
+            <!-- Mostrar campos específicos si es tipo art5 -->
+            {% if tipo_medicion == 'art5' %}
+                <p class="card-text">Clase de luminaria: {{ medicion.clase_luminaria }}</p>
+                <p class="card-text">Intensidad Luminosa <= 90º: {{ medicion.menor_igual_90grados }}</p>
+                <p class="card-text">Intensidad Luminosa > 90º: {{ medicion.mayor_90grados }}</p>
+                <p class="card-text">Emisión por Reflexión: {{ medicion.emision_reflexion }}</p>
+                <p class="card-text">Radiancia Espectral: {{ medicion.radiancia_espectral }}</p>
+                <p class="card-text">Protección Especial: {{ medicion.proteccion_especial }}</p>
+                <p class="card-text">Emisión Conjunta Considerada: {{ medicion.emision_conjunta }}</p>
+                <p class="card-text">Observaciones: {{ medicion.observaciones }}</p>
+
+            <!-- Mostrar campos específicos si es tipo art6 -->
+            {% elif tipo_medicion == 'art6' %}
+                <p class="card-text">Tipo de Alumbrado: {{ medicion.tipo_alumbrado }}</p>
+                <p class="card-text">Tipo de flujo luminoso: {{ medicion.tipo_flujo_luminoso }}</p>
+                <p class="card-text">Flujo luminoso de luminaria: {{ medicion.valor_flujo_luminoso }}</p>
+                <p class="card-text">Emisión al hemisferio superior: {{ medicion.Hemisferio_superior }}</p>
+                <p class="card-text">Área de protección especial: {{ medicion.proteccion_especial }}</p>
+                <p class="card-text">Emisión por Reflexión (Luminancia): {{ medicion.reflexion_luminancia }}</p>
+                <p class="card-text">Temperatura de color (Luz Blanca): {{ medicion.temperatura_luz_blanca }}</p>
+                <p class="card-text">Temperatura de color (Luces multicolor): {{ medicion.temperatura_luz_color }}</p>
+                <p class="card-text">Límite horario: {{ medicion.limite_horario }}</p>
+                <p class="card-text">Permiso de extensión horaria: {{ medicion.horario_extendido }}</p>
+                <p class="card-text">Observaciones: {{ medicion.observaciones }}</p>
+            {% endif %}
+
+            <p class="card-text">Inspector: {{ medicion.usuario }}</p>
+            <p class="card-text">Fecha de inspección: {{ medicion.creado }}</p>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
