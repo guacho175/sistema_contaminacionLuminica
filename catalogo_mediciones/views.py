@@ -1,16 +1,50 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import EditarMedicion, MedicionForm
-from .models import Tipo_alumbrado_art5, Tipo_alumbrado_art6, CatalogoMedicion
+from .forms import MedicionForm
+from .models import TipoAlumbradoArt5, TipoAlumbradoArt6, CatalogoMedicion
 
 
 def catalogo_mediciones(request):
-    mediciones_catalogo = CatalogoMedicion.objects.all()
+    catalogo_mediciones = CatalogoMedicion.objects.all()
+    mediciones_art5 = TipoAlumbradoArt5.objects.all()
+    mediciones_art6 = TipoAlumbradoArt6.objects.all()
 
     context = {
-        'mediciones_catalogo': mediciones_catalogo,
+        'catalogo_mediciones': catalogo_mediciones,
+        'mediciones_art5': mediciones_art5,
+        'mediciones_art6': mediciones_art6,
     }
 
     return render(request, 'catalogo_mediciones/catalogo_mediciones.html', context)
+
+
+def registrar_medicion(request):
+    if request.method == 'POST':
+        form = MedicionForm(request.POST)
+        if form.is_valid():
+            # Verifica cuál de los dos campos fue seleccionado
+            medicion_art5 = form.cleaned_data.get('medicion_art5')
+            medicion_art6 = form.cleaned_data.get('medicion_art6')
+
+            # Crear una nueva entrada en CatalogoMedicion
+            nueva_medicion_catalogo = CatalogoMedicion()
+
+            if medicion_art5:
+                nueva_medicion_catalogo.medicion_art5 = medicion_art5
+                medicion_art5.estado = 1  # Cambia el estado
+                medicion_art5.save()  # Guarda el cambio
+            elif medicion_art6:
+                nueva_medicion_catalogo.medicion_art6 = medicion_art6
+                medicion_art6.estado = 1  # Cambia el estado
+                medicion_art6.save()  # Guarda el cambio
+
+            nueva_medicion_catalogo.save()  # Guardar en el catálogo
+
+            # Redirigir al catálogo después de guardar
+            return redirect('catalogo')
+    else:
+        form = MedicionForm()
+
+    return render(request, 'catalogo_mediciones/registrar_medicion.html', {'form': form})
 
 
 def detalle_medicion(request, id):
@@ -34,50 +68,6 @@ def detalle_medicion(request, id):
     }
     return render(request, 'catalogo_mediciones/detalle_medicion.html', context)
 
-
-def editar_medicion(request, id):
-    medicion = get_object_or_404(Tipo_alumbrado_art5, id=id)
-    
-    if request.method == 'POST':
-        form = EditarMedicion(request.POST, instance=medicion)
-        if form.is_valid():
-            form.save()
-            return redirect('detalle_medicion', id=id)
-    else:
-        form = EditarMedicion(instance=medicion)
-    
-    return render(request, 'catalogo_mediciones/editar_medicion.html', {'form': form})
-
-
-
-def registrar_medicion(request):
-    if request.method == 'POST':
-        form = MedicionForm(request.POST)
-        if form.is_valid():
-            # Verifica cuál de los dos campos fue seleccionado
-            medicion_art5 = form.cleaned_data.get('medicion_art5')
-            medicion_art6 = form.cleaned_data.get('medicion_art6')
-
-            # Crear una nueva entrada en CatalogoMedicion
-            nueva_medicion_catalogo = CatalogoMedicion()
-
-            if medicion_art5:
-                nueva_medicion_catalogo.medicion_art5 = medicion_art5
-                medicion_art5.estado = 1  # Cambia el estado de evaluación
-                medicion_art5.save()  # Guarda el cambio
-            elif medicion_art6:
-                nueva_medicion_catalogo.medicion_art6 = medicion_art6
-                medicion_art6.estado = 1  # Cambia el estado de evaluación
-                medicion_art6.save()  # Guarda el cambio
-
-            nueva_medicion_catalogo.save()  # Guardar en el catálogo
-
-            # Redirigir al catálogo después de guardar
-            return redirect('catalogo')
-    else:
-        form = MedicionForm()
-
-    return render(request, 'catalogo_mediciones/registrar_medicion.html', {'form': form})
 
 
 def eliminar_medicion(request, id):
