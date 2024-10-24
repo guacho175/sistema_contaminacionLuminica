@@ -12,6 +12,8 @@
         <div class="card-body">
             <p><strong>Nivel de Cumplimiento:</strong> {{ medicion.get_nivel_cumplimiento_display }}</p>
             <p><strong>Dirección:</strong> {{ medicion.direccion }}</p>
+            <p><strong>Latitud:</strong> {{ medicion.latitud }}</p>
+            <p><strong>Longitud:</strong> {{ medicion.longitud }}</p>
             <p><strong>Tipo de alumbrado:</strong> {{ medicion.get_tipo_display }}</p>
             <p><strong>Inspector:</strong> {{ medicion.usuario }}</p>
             <p><strong>Fecha de inspección:</strong> {{ medicion.creado }}</p>
@@ -41,6 +43,7 @@
                 <li><strong>Límite Horario:</strong> {{ medicion.limite_horario }}</li>
                 <li><strong>Permiso de Extensión Horaria:</strong> {{ medicion.horario_extendido }}</li>
                 <li><strong>Observaciones:</strong> {{ medicion.observaciones }}</li>
+
             </ul>
             {% endif %}
         </div>

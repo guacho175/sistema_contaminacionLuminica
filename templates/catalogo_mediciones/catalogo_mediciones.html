@@ -4,72 +4,77 @@
 {% block contenido %}
 
 <div class="row d-flex justify-content-center">
-  <h1 class="text-center mt-5">Catálogo de Mediciones</h1>
-
-  <div class="">
-  <a href="{% url 'registrar_medicion' %}" class="btn btn-success">+</a>
-      <table class="table table-dark table-hover table-striped mt-5">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Ubicación</th>
-            <th>Tipo de alumbrado</th>
-            <th>Inspector</th>
-            <th>Fecha de inspección</th>
-            <th>Cumplimiento</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for medicion in catalogo_mediciones %}
-          <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>
-              {% if medicion.medicion_art5 %}
-                {{ medicion.medicion_art5.direccion }}
-              {% elif medicion.medicion_art6 %}
-                {{ medicion.medicion_art6.direccion }}
-              {% endif %}
-            </td>
-            <td>
-              {% if medicion.medicion_art5 %}
-                {{ medicion.medicion_art5.get_tipo_display }}
-              {% elif medicion.medicion_art6 %}
-                {{ medicion.medicion_art6.get_tipo_display }}
-              {% endif %}
-            </td>
-            <td>
-              {% if medicion.medicion_art5 %}
-                {{ medicion.medicion_art5.usuario }}
-              {% elif medicion.medicion_art6 %}
-                {{ medicion.medicion_art6.usuario }}
-              {% endif %}
-            </td>
-            <td>
-              {% if medicion.medicion_art5 %}
-                {{ medicion.medicion_art5.creado }}
-              {% elif medicion.medicion_art6 %}
-                {{ medicion.medicion_art6.creado }}
-              {% endif %}
-            </td>
-            <td>
-              {% if medicion.medicion_art5 %}
-                {{ medicion.medicion_art5.get_nivel_cumplimiento_display }}
-              {% elif medicion.medicion_art6 %}
-                {{ medicion.medicion_art6.get_nivel_cumplimiento_display }}
-              {% endif %}
-            </td>
-            <td>
-              <a href="{% url 'detalle_medicion' medicion.id %}" class="btn btn-primary">Ver detalle</a>
-              <a href="{% url 'eliminar_medicion' medicion.id %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta medición?');">Eliminar</a>
-
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+  <h1 class="text-center mb-5">Catálogo de Mediciones</h1>
+    <div id="map-container" class="col-9">
+      {{ map|safe }}
+    </div>
+    <div class="col-2">
+      <a href="{% url 'registrar_medicion' %}" class="btn btn-success">+ Ingesar medición</a>
+    </div>
   </div>
+  <div class="row d-flex justify-content-end mt-3">
+
+    <table class="table table-dark table-hover table-striped mt-3">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ubicación</th>
+          <th>Tipo de alumbrado</th>
+          <th>Inspector</th>
+          <th>Fecha de inspección</th>
+          <th>Cumplimiento</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for medicion in catalogo_mediciones %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>
+            {% if medicion.medicion_art5 %}
+            {{ medicion.medicion_art5.direccion }}
+            {% elif medicion.medicion_art6 %}
+            {{ medicion.medicion_art6.direccion }}
+            {% endif %}
+          </td>
+          <td>
+            {% if medicion.medicion_art5 %}
+            {{ medicion.medicion_art5.get_tipo_display }}
+            {% elif medicion.medicion_art6 %}
+            {{ medicion.medicion_art6.get_tipo_display }}
+            {% endif %}
+          </td>
+          <td>
+            {% if medicion.medicion_art5 %}
+            {{ medicion.medicion_art5.usuario }}
+            {% elif medicion.medicion_art6 %}
+            {{ medicion.medicion_art6.usuario }}
+            {% endif %}
+          </td>
+          <td>
+            {% if medicion.medicion_art5 %}
+            {{ medicion.medicion_art5.creado }}
+            {% elif medicion.medicion_art6 %}
+            {{ medicion.medicion_art6.creado }}
+            {% endif %}
+          </td>
+          <td>
+            {% if medicion.medicion_art5 %}
+            {{ medicion.medicion_art5.get_nivel_cumplimiento_display }}
+            {% elif medicion.medicion_art6 %}
+            {{ medicion.medicion_art6.get_nivel_cumplimiento_display }}
+            {% endif %}
+          </td>
+          <td>
+            <a href="{% url 'detalle_medicion' medicion.id %}" class="btn btn-primary">Detalle</a>
+            <a href="{% url 'eliminar_medicion' medicion.id %}" class="btn btn-danger"
+              onclick="return confirm('¿Estás seguro de eliminar esta medición?');">Eliminar</a>
+
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 </div>
 
 {% endblock contenido %}
-
