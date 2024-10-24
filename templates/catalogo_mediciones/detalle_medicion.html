@@ -2,44 +2,55 @@
 {% load static %}
 
 {% block contenido %}
-<div class="container mt-5">
-    <h1 class="text-center">Detalle de Medición</h1>
+<div class="row d-flex justify-content-center">
+    <h1 class="text-center">Detalles de la Medición</h1>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Ubicación: {{ medicion.direccion }}</h5>
-            <p class="card-text">Latitud: {{ medicion.latitud }}</p>
-            <p class="card-text">Longitud: {{ medicion.longitud }}</p>
-
-            <!-- Mostrar campos específicos si es tipo art5 -->
-            {% if tipo_medicion == 'art5' %}
-                <p class="card-text">Clase de luminaria: {{ medicion.clase_luminaria }}</p>
-                <p class="card-text">Intensidad Luminosa <= 90º: {{ medicion.menor_igual_90grados }}</p>
-                <p class="card-text">Intensidad Luminosa > 90º: {{ medicion.mayor_90grados }}</p>
-                <p class="card-text">Emisión por Reflexión: {{ medicion.emision_reflexion }}</p>
-                <p class="card-text">Radiancia Espectral: {{ medicion.radiancia_espectral }}</p>
-                <p class="card-text">Protección Especial: {{ medicion.proteccion_especial }}</p>
-                <p class="card-text">Emisión Conjunta Considerada: {{ medicion.emision_conjunta }}</p>
-                <p class="card-text">Observaciones: {{ medicion.observaciones }}</p>
-
-            <!-- Mostrar campos específicos si es tipo art6 -->
-            {% elif tipo_medicion == 'art6' %}
-                <p class="card-text">Tipo de Alumbrado: {{ medicion.tipo_alumbrado }}</p>
-                <p class="card-text">Tipo de flujo luminoso: {{ medicion.tipo_flujo_luminoso }}</p>
-                <p class="card-text">Flujo luminoso de luminaria: {{ medicion.valor_flujo_luminoso }}</p>
-                <p class="card-text">Emisión al hemisferio superior: {{ medicion.Hemisferio_superior }}</p>
-                <p class="card-text">Área de protección especial: {{ medicion.proteccion_especial }}</p>
-                <p class="card-text">Emisión por Reflexión (Luminancia): {{ medicion.reflexion_luminancia }}</p>
-                <p class="card-text">Temperatura de color (Luz Blanca): {{ medicion.temperatura_luz_blanca }}</p>
-                <p class="card-text">Temperatura de color (Luces multicolor): {{ medicion.temperatura_luz_color }}</p>
-                <p class="card-text">Límite horario: {{ medicion.limite_horario }}</p>
-                <p class="card-text">Permiso de extensión horaria: {{ medicion.horario_extendido }}</p>
-                <p class="card-text">Observaciones: {{ medicion.observaciones }}</p>
-            {% endif %}
-
-            <p class="card-text">Inspector: {{ medicion.usuario }}</p>
-            <p class="card-text">Fecha de inspección: {{ medicion.creado }}</p>
+    <div class="card mt-4 bg-dark text-light col-md-8">
+        <div class="card-header">
+            <h4 class="card-title">Información General</h4>
         </div>
+        <div class="card-body">
+            <p><strong>Nivel de Cumplimiento:</strong> {{ medicion.get_nivel_cumplimiento_display }}</p>
+            <p><strong>Dirección:</strong> {{ medicion.direccion }}</p>
+            <p><strong>Latitud:</strong> {{ medicion.latitud }}</p>
+            <p><strong>Longitud:</strong> {{ medicion.longitud }}</p>
+            <p><strong>Tipo de alumbrado:</strong> {{ medicion.get_tipo_display }}</p>
+            <p><strong>Inspector:</strong> {{ medicion.usuario }}</p>
+            <p><strong>Fecha de inspección:</strong> {{ medicion.creado }}</p>
+
+            <h4 class="mt-4">Detalles específicos:</h4>
+            {% if tipo_medicion == "art5" %}
+            <ul class="list-group bg-dark text-light">
+                <li class="list-group-item bg-dark text-light"><strong>Intensidad Luminosa <= 90º:</strong> {{ medicion.menor_igual_90grados }}</li>
+                <li class="list-group-item bg-dark text-light"><strong>Intensidad Luminosa > 90º:</strong> {{ medicion.mayor_90grados }}</li>
+                <li class="list-group-item bg-dark text-light"><strong>Clase de luminaria:</strong> {{ medicion.clase_luminaria }}</li>
+                <li class="list-group-item bg-dark text-light"><strong>Emisión por Reflexión:</strong> {{ medicion.emision_reflexion }}</li>    
+                <li class="list-group-item bg-dark text-light"><strong>Emisión por Reflexión:</strong> {{ medicion.emision_reflexion }}</li>    
+                <li class="list-group-item bg-dark text-light"><strong>Área de protección especial:</strong> {{ medicion.proteccion_especial }}</li>    
+                <li class="list-group-item bg-dark text-light"><strong>Radiancia Espectral:</strong> {{ medicion.radiancia_espectral }}And a fifth one</li>    
+                <li class="list-group-item bg-dark text-light"><strong>Emisión conjunta considerada:</strong> {{ medicion.emision_conjunta }}</li>    
+                <li class="list-group-item bg-dark text-light"><strong>Observaciones:</strong> {{ medicion.observaciones }}</li>    
+            </ul>
+
+            {% elif tipo_medicion == "art6" %}
+            <ul>
+                <li><strong>Tipo de Flujo Luminoso:</strong> {{ medicion.get_tipo_flujo_luminoso_display }}</li>
+                <li><strong>Flujo Luminoso de Luminaria:</strong> {{ medicion.valor_flujo_luminoso }}</li>
+                <li><strong>Emisión al Hemisferio Superior:</strong> {{ medicion.Hemisferio_superior }}</li>
+                <li><strong>Emisión por Reflexión (Luminancia):</strong> {{ medicion.reflexion_luminancia }}</li>
+                <li><strong>Temperatura de Color (Luz Blanca):</strong> {{ medicion.temperatura_luz_blanca }}</li>
+                <li><strong>Temperatura de Color (Luces Multicolor):</strong> {{ medicion.temperatura_luz_color }}</li>
+                <li><strong>Límite Horario:</strong> {{ medicion.limite_horario }}</li>
+                <li><strong>Permiso de Extensión Horaria:</strong> {{ medicion.horario_extendido }}</li>
+                <li><strong>Observaciones:</strong> {{ medicion.observaciones }}</li>
+
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="text-center mt-4  col-md-2">
+        <a href="{% url 'catalogo' %}" class="btn btn-dark">Volver al catálogo</a>
     </div>
 </div>
 {% endblock contenido %}
