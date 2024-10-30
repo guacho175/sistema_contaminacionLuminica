@@ -1,10 +1,5 @@
 from django.contrib import admin
-from .models import Usuario, Rol, TipoAlumbradoArt5, TipoAlumbradoArt6, CatalogoMedicion
+from .models import Titular
 
 # Register your models here.
-admin.site.register(TipoAlumbradoArt5)
-admin.site.register(TipoAlumbradoArt6)
-admin.site.register(CatalogoMedicion)
-
-admin.site.register(Usuario)
-admin.site.register(Rol)
+admin.site.register(Titular)
