@@ -69,9 +69,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'monitoreods1',
+        'USER': 'user_monitoreods1',
+        'PASSWORD': 'Admin#0123',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS':{
+            'init_command': 'SET sql_mode="STRICT_ALL_TABLES"'
+        },
+    },
 }
 
 
