@@ -10,13 +10,22 @@ def catalogo_mediciones(request):
     mediciones_art5 = TipoAlumbradoArt5.objects.all()
     mediciones_art6 = TipoAlumbradoArt6.objects.all()
 
-    # Crear el mapa
-    initialMap = folium.Map(location=[-29.9055324, -71.2313308], zoom_start=11) #, tiles='CartoDB dark_matter'
+    # Crear el mapa inicial
+    initialMap = folium.Map(location=[-29.9055324, -71.2313308], zoom_start=11)
     marker_cluster = MarkerCluster().add_to(initialMap)
+
+    # Estilos comunes para el vector layer
+    kw = {
+        "color": "green",
+        "line_cap": "round",
+        "fill": True,
+        "fill_color": "red",
+        "weight": 3,
+    }
 
     # Iterar sobre las mediciones del catálogo
     for medicion in catalogo_mediciones:
-        # Condicional para las mediciones de art5
+        # Variables para las coordenadas y detalles de medición
         if medicion.medicion_art5:
             lat = medicion.medicion_art5.latitud
             lng = medicion.medicion_art5.longitud
@@ -24,7 +33,6 @@ def catalogo_mediciones(request):
             nivel_cumpl = medicion.medicion_art5.nivel_cumplimiento
             tipo = "Art 5"
             usuario = medicion.medicion_art5.usuario
-        # Condicional para las mediciones de art6
         elif medicion.medicion_art6:
             lat = medicion.medicion_art6.latitud
             lng = medicion.medicion_art6.longitud
@@ -33,7 +41,7 @@ def catalogo_mediciones(request):
             tipo = "Art 6"
             usuario = medicion.medicion_art6.usuario
 
-        # Determinar el icono según el nivel de cumplimiento
+        # Determinar el ícono de marcador según el nivel de cumplimiento
         if nivel_cumpl == '0':
             icon = folium.Icon(icon="minus-sign", prefix="glyphicon", color="gray")
         elif nivel_cumpl == '1':
@@ -43,7 +51,7 @@ def catalogo_mediciones(request):
         else:
             icon = folium.Icon(icon="ok-sign", prefix="glyphicon", color="green")
 
-        # Agregar el marcador al cluster
+        # Añadir marcador al cluster
         folium.Marker(
             location=[lat, lng],
             popup=f'{direccion} ({tipo}) - Inspector: {usuario}',
@@ -51,11 +59,21 @@ def catalogo_mediciones(request):
             icon=icon
         ).add_to(marker_cluster)
 
+        # Añadir rectángulo para el vector layer alrededor de la ubicación
+        dx = 0.0001  # Ajusta este valor para definir el tamaño del rectángulo
+        folium.Rectangle(
+            bounds=[[lat - dx, lng - dx], [lat + dx, lng + dx]],
+            dash_array="10, 5",
+            **kw,
+            popup=f'{direccion} ({tipo}) - Nivel: {nivel_cumpl}',
+            tooltip=f'Área de {direccion} - Cumplimiento: {nivel_cumpl}',
+        ).add_to(initialMap)
+
     context = {
         'catalogo_mediciones': catalogo_mediciones,
         'mediciones_art5': mediciones_art5,
         'mediciones_art6': mediciones_art6,
-        'map': initialMap._repr_html_()  # El mapa se pasa como HTML
+        'map': initialMap._repr_html_()  # Renderizar el mapa en HTML para Django
     }
 
     return render(request, 'catalogo_mediciones/catalogo_mediciones.html', context)
