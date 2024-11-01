@@ -1,9 +1,8 @@
-tipos_alumbrado = (
-    ('art5', 'Peatonal, Vehicular e Industrial'),
-    ('art6', 'Ornamental y Decorativo'),
-    ('art7', 'Deportivo y Recreacional'),
-    ('art8', 'Publicitario'),
-    ('art9', 'Cañones de Luz o Proyectores Láser'),
+tipo_alumbrado = (
+    ('v', 'Vehicular'),
+    ('p', 'Peatonal'),
+    ('i', 'Industrial'),
+    ('o', 'Ornamental'),
 )
 
 nivel_cumplimiento = (
