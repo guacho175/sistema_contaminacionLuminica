@@ -7,4 +7,6 @@ urlpatterns = [
     path('catalogo/detalle/<int:id>/', v.detalle_medicion, name='detalle_medicion'),
     path('registrar_medicion/', v.registrar_medicion, name='registrar_medicion'),
     path('medicion/<int:id>/eliminar/', v.eliminar_medicion, name='eliminar_medicion'),
+    path('proyectoAdd/', v.crear_proyecto, name='crearProyecto'),
+    path('proyectos/', v.mantenedor_proyecto, name='proyectos')
 ]

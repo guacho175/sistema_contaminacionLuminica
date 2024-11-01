@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col">
+        <h2>Mantenedor de Proyectos</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                {{ form.non_field_errors }}
+                <div class="col-3 mb-3">
+                    {{ form.nombre.label_tag }}
+                    {{ form.nombre }}
+                    {{ form.nombre.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.longitud.label_tag }}
+                    {{ form.longitud }}
+                    {{ form.longitud.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.latitud.label_tag }}
+                    {{ form.latitud }}
+                    {{ form.latitud.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.tipo_alumbrado.label_tag }}
+                    {{ form.tipo_alumbrado }}
+                    {{ form.tipo_alumbrado.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.descripcion.label_tag }}
+                    {{ form.descripcion }}
+                    {{ form.descripcion.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="id_nv_cumplimiento">Nivel de cumplimiento</label>
+                    {{ form.nv_cumplimiento }}
+                    {{ form.nv_cumplimiento.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.titular.label_tag }}
+                    {{ form.titular }}
+                    {{ form.titular.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.representante_legal.label_tag }}
+                    {{ form.representante_legal }}
+                    {{ form.representante_legal.errors }}
+                </div>
+                <div class="col-3 mb-3">
+                    {{ form.detalle_luminarias.label_tag }}
+                    {{ form.detalle_luminarias }}
+                    {{ form.detalle_luminarias.errors }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-dark" href="{% url 'catalogo' %}">Volver</a>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" >Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock contenido %}
