@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block contenido %}
-<h1 class="text-center mb-5">Proyectos de alumbrado</h1>
+<h1 class="text-center mb-5">Proyectos de iluminación</h1>
 
 <div class="d-flex justify-content-end">
     <a href="{% url 'crearProyecto' %}" class="btn btn-success rounded-circle"
@@ -11,7 +11,7 @@
     </a>
 </div>
 <!-- Tabla -->
-<table class="table table-dark table-hover table-striped mt-3">
+<table class="table table-dark table-hover table-striped table-bordered mt-3">
     <thead>
         <tr>
             <th>#</th>
@@ -43,7 +43,6 @@
                         <a class="btn btn-danger" href="{% url 'eliminarProyecto' proyecto.id %}"><i class="bx bx-trash"></i></a>
                     </div>
                 </div>
-
             </td>
         </tr>
         {% endfor %}
