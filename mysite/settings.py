@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'historialMediciones',
     'mapa',
     'catalogo_mediciones',
+    'proyectos',
+    'inspectores',
 
 ]
 

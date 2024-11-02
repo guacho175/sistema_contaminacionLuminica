@@ -3,6 +3,6 @@ from . import views as v
 
 urlpatterns = [
 
-    path('', v.mapa, name='mapa'),
+    path('mapa', v.mapa, name='mapa'),
 
 ]
