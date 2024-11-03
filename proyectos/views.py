@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from django.db.models import ProtectedError, RestrictedError
 from .models import Proyecto
 from .forms import ProyectoForm
 
@@ -29,10 +31,14 @@ def eliminar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
 
     if request.method == 'POST':
-        proyecto.delete()
-        return redirect('/proyectos/')
+        try:
+            proyecto.delete()
+            messages.success(request, 'El proyecto se eliminó correctamente.')
+            return redirect('/proyectos/')
+        except RestrictedError as e:
+            messages.error(request, f'No se puede eliminar el proyecto porque está siendo referenciado en otro objeto: {e.args[0]}')
 
-    return render(request, 'proyectos/proyectoDel.html', {'proyecto': proyecto} )
+    return render(request, 'proyectos/proyectoDel.html', {'proyecto': proyecto})
 
 
 def cargar_editar_proyecto(request, proyecto_id):

@@ -3,24 +3,79 @@
 
 {% block contenido %}
 <h1 class="text-center mb-5">Catálogo de Mediciones</h1>
+<div class="row">
 
-<div class="d-flex justify-content-end">
-    <a href="{% url 'crearProyecto' %}" class="btn btn-success rounded-circle"
-    data-bs-toggle="tooltip" data-bs-placement="left" title="Nuevo Proyecto" style="box-shadow: 0px 0px 10px #845297;">
-        <i class="bi bi-plus-circle" style="font-size: 1.5em;"></i>
-    </a>
+
+    <div class="col">
+        <!-- Boton para crear medición -->
+        <div class="d-flex justify-content-end mb-3">
+            <div  data-bs-toggle="tooltip" data-bs-placement="left" title="Nueva medición">
+                <button class="btn btn-success rounded-circle btn-background" data-bs-toggle="modal" data-bs-target="#crearMedicionModal">
+                    <i class="bi bi-plus-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal para crear medición -->
+        <div class="modal fade" id="crearMedicionModal" tabindex="-1" aria-labelledby="crearMedicionModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="crearMedicionModalLabel">Nueva Medición</h5>
+                        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{% url 'crearMedicion' %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                {{ form.non_field_errors }}
+                                <div class="mb-4">
+                                    {{ form.proyecto.label_tag }}
+                                    {{ form.proyecto }}
+                                    {{ form.proyecto.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.inspector.label_tag }}
+                                    {{ form.inspector }}
+                                    {{ form.inspector.errors }}
+                                </div>
+                                <div class="mb-4">
+                               
+                                    {{ form.estado }}
+                                    {{ form.estado.errors }}
+                                </div>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="col-12" style="max-height:450px ; overflow: hidden;">
+        {{ map|safe }}
+    </div>
 </div>
+
+
 <!-- Tabla -->
-<body>
-    <div class="container">
-        <table class="table table-dark table-hover table-striped table-bordered  text-center mt-3">
+<div class="row">
+    <div class="col-12 text-center ">
+        <table class="table table-dark table-hover table-striped table-bordered text-center align-middle mt-3">
             <thead class="thead-dark">
-                <tr class="text-center" >
+                <tr class="align-middle">
                     <th colspan="3">Proyecto</th>
                     <th colspan="3">Medición</th>
-                    <th class="text-center align-middle" colspan="1" rowspan="2">Detalle</th>
+                    <th class="text-center" colspan="1" rowspan="2">Acciones</th>
                 </tr>
-                <tr>
+                <tr class="align-middle" >
                     <th>Nombre</th>
                     <th>Representante Legal</th>
                     <th>Tipo de alumbrado</th>
@@ -37,12 +92,18 @@
                     <td>{{ medicion.proyecto.representante_legal.nombre }} {{ medicion.proyecto.representante_legal.a_paterno }}</td>
                     <td>{{ medicion.proyecto.get_tipo_alumbrado_display }}</td>
                     <td>{{ medicion.inspector.nombre }} {{ medicion.inspector.a_paterno }}</td>
-                    <td>{{ medicion.detalleMedicion.instrumento_medicion.tipo }}</td>
+                    <td>{{ medicion.detalleMedicion.instrumento_medicion.get_tipo_display }}</td>
                     <td>{{ medicion.detalleMedicion.valor_medido }}</td>
                     <td>
                         <div class="d-flex justify-content-center">
                             <div class="" data-bs-toggle="tooltip" title="Ver detalle" data-bs-placement="top">
-                                <a class="btn btn-primary" href=""><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-primary me-1" href=""><i class="bi bi-eye"></i></a>
+                            </div>
+                            <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
+                                <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>
+                            </div>
+                            <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
+                                <a class="btn btn-danger" href="{% url 'eliminarMedicion' medicion.id %}"><i class="bx bx-trash"></i></a>
                             </div>
                         </div>
                     </td>
@@ -51,10 +112,6 @@
             </tbody>
         </table>
     </div>
-</body>
-</html>
-
-    </tbody>
-</table>
+</div>
 
 {% endblock contenido %}

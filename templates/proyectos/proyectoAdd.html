@@ -15,14 +15,14 @@
                     {{ form.nombre.errors }}
                 </div>
                 <div class="col-4 mb-4">
-                    {{ form.longitud.label_tag }}
-                    {{ form.longitud }}
-                    {{ form.longitud.errors }}
-                </div>
-                <div class="col-4 mb-4">
                     {{ form.latitud.label_tag }}
                     {{ form.latitud }}
                     {{ form.latitud.errors }}
+                </div>
+                <div class="col-4 mb-4">
+                    {{ form.longitud.label_tag }}
+                    {{ form.longitud }}
+                    {{ form.longitud.errors }}
                 </div>
                 <div class="col-4 mb-4">
                     {{ form.titular.label_tag }}
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-end">
-                <div class="col-1">
+                <div class="col-1 me-2">
                     <a class="btn btn-dark" href="{% url 'proyectos' %}">Volver</a>
                 </div>
                 <div class="col-1">

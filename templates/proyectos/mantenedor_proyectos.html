@@ -2,22 +2,29 @@
 {% load static %}
 
 {% block contenido %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} mt-3 text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 <h1 class="text-center mb-5">Proyectos de iluminación</h1>
 
 <div class="d-flex justify-content-end">
-    <a href="{% url 'crearProyecto' %}" class="btn btn-success rounded-circle"
-    data-bs-toggle="tooltip" data-bs-placement="left" title="Nuevo Proyecto" style="box-shadow: 0px 0px 10px #845297;">
-        <i class="bi bi-plus-circle" style="font-size: 1.5em;"></i>
+    <a href="{% url 'crearProyecto' %}" class="btn btn-success rounded-circle btn-background"
+    data-bs-toggle="tooltip" data-bs-placement="left" title="Nuevo Proyecto">
+        <i class="bi bi-plus-circle"></i>
     </a>
 </div>
 <!-- Tabla -->
-<table class="table table-dark table-hover table-striped table-bordered mt-3">
+<table class="table table-dark table-hover table-striped table-bordered text-center text-center align-middle mt-3">
     <thead>
-        <tr>
+        <tr class="text-center align-middle" >
             <th>#</th>
             <th>Nombre</th>
-            <th>Longitud</th>
             <th>Latitud</th>
+            <th>Longitud</th>
             <th>Tipo de alumbrado</th>
             <th>Descripción</th>
             <th>Nivel de cumplimiento</th>
@@ -29,13 +36,13 @@
         <tr>
             <td>{{ forloop.counter }}</td>
             <td>{{ proyecto.nombre }}</td>
-            <td>{{ proyecto.longitud }}</td>
             <td>{{ proyecto.latitud }}</td>
+            <td>{{ proyecto.longitud }}</td>
             <td>{{ proyecto.get_tipo_alumbrado_display }}</td>
             <td>{{ proyecto.descripcion }}</td>
             <td>{{ proyecto.get_nv_cumplimiento_display }}</td>
             <td>
-                <div class="d-flex">
+                <div class="d-flex justify-content-center">
                     <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
                         <a class="btn btn-warning" href="{% url 'editarProyecto' proyecto.id %}"><i class="bx bx-edit"></i></a>
                     </div>

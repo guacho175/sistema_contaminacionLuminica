@@ -34,3 +34,5 @@ class Medicion(models.Model):
     inspector = models.ForeignKey(Inspector, null=False, on_delete=models.RESTRICT)
     proyecto = models.ForeignKey(Proyecto, null=False, on_delete=models.RESTRICT)
     detalleMedicion = models.ForeignKey(DetalleMedicion, null=True, blank=True, on_delete=models.RESTRICT)
+    creado = models.DateTimeField(default=timezone.now, editable=False)  
+    estado = models.IntegerField(default=0) 
