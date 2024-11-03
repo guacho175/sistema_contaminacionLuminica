@@ -24,7 +24,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 75px;
+            width: 55px;
             background-color: #18173e;
             padding-top: 65px; /* Ajustar para que no se superponga con la navbar */
             border-right: 2px solid #3c2a58;
@@ -35,10 +35,10 @@
             padding: 10px;
             text-decoration: none;
             display: block;
-            font-size: 24px;
+            font-size: 18px;
         }
         .sidebar a:hover {
-            color: #845297;
+            color: #cc77cc;
         }
         .sidebar span {
             margin-top: 5px;
@@ -64,9 +64,16 @@
             padding: 10px; backdrop-filter: blur(1px);
         }   
         .sidebar a.active {
-        color: #845297;
-        border-left: 4px solid #845297;
+        color: #cc77cc;
+        background-color: #3c2a58;
+        border-left: 4px solid #cc77cc;
           }
+
+        /* Boton Add */
+        .btn-background{
+        box-shadow: 0px 0px 10px #cc77cc;
+        font-size: 15px
+        }
 
     </style>
 </head>
@@ -74,17 +81,14 @@
 <body>
     <div class="container-fluid d-flex justify-content-center">
         {% block menu %}
-        <nav class="navbar fixed-top navbar-dark" style="height: 75px; background-color: #18173e">
+        <nav class="navbar fixed-top navbar-dark" style="height: 65px; background-color: #18173e">
             <div class="container-fluid">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="width:50px">
-                    <span class="navbar-toggler-icon" style="width:25px"></span>
+                <button class="navbar-toggler d-flex justify-content-center align-items-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="width:30px; height: 30px; overflow: hidden;">
+                    <span class="navbar-toggler-icon" style="transform: scale(4.5);"></span>
                 </button>
-
                 <a class="navbar-brand ms-4 ps-2" href="{% url 'areas' %}">Monitoreo de Contaminación Lumínica</a>
-                
-
                 
                 <div  class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">

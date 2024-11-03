@@ -69,7 +69,9 @@ class Proyecto(models.Model):
     titular = models.ForeignKey(Titular, null=False, on_delete=models.RESTRICT)
     representante_legal = models.ForeignKey(RepresentanteLegal, null=False, on_delete=models.RESTRICT)
     detalle_luminarias = models.ForeignKey(DetalleLuminarias, null=False, on_delete=models.RESTRICT)
-    creado = models.DateTimeField(default=timezone.now, editable=False)    
+    creado = models.DateTimeField(default=timezone.now, editable=False)   
+    estado = models.IntegerField(default=0) 
+
 
     def __str__(self):
         return "{} {} {} {}".format(self.nombre, self.tipo_alumbrado, self.titular.nombre, self.representante_legal.nombre)
