@@ -1,20 +1,15 @@
 from django.contrib import admin
-from .models import InstrumentoMedicion, DetalleMedicion, Medicion
+from .models import InstrumentoMedicion, Medicion
 
 # Register your models here.
 class InstrumentoMedicionAdmin(admin.ModelAdmin):
     list_display = ['id', 'tipo', 'marca', 'modelo', 'num_serie']
 
 
-class DetalleMedicionAdmin(admin.ModelAdmin):
-    list_display = ['id', 'longitud', 'latitud', 'temperatura',
-                    'humedad', 'valor_medido', 'instrumento_medicion']
-
 class MedicionAdmin(admin.ModelAdmin):
-    list_display = ['id', 'cumplimiento', 'inspector', 'proyecto',
-                    'detalleMedicion']
+    list_display = ['id', 'cumplimiento', 'inspector', 'latitud', 'longitud', 'temperatura',
+                    'humedad', 'valor_medido', 'instrumento_medicion', 'creado']
 
 admin.site.register(InstrumentoMedicion, InstrumentoMedicionAdmin)
-admin.site.register(DetalleMedicion, DetalleMedicionAdmin)
 admin.site.register(Medicion, MedicionAdmin)
 

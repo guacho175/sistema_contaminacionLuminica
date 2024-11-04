@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from .choices import tipo_alumbrado, nivel_cumplimiento
+from catalogo_mediciones.models import Medicion
 
 # Create your models here.
 class Titular(models.Model):
@@ -69,8 +70,9 @@ class Proyecto(models.Model):
     titular = models.ForeignKey(Titular, null=False, on_delete=models.RESTRICT)
     representante_legal = models.ForeignKey(RepresentanteLegal, null=False, on_delete=models.RESTRICT)
     detalle_luminarias = models.ForeignKey(DetalleLuminarias, null=False, on_delete=models.RESTRICT)
-    creado = models.DateTimeField(default=timezone.now, editable=False)   
+    medicion = models.ForeignKey(Medicion, null=False, on_delete=models.RESTRICT)
     estado = models.IntegerField(default=0) 
+    creado = models.DateTimeField(default=timezone.now, editable=False)   
 
 
     def __str__(self):

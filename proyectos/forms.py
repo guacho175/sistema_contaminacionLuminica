@@ -1,6 +1,7 @@
 from django import forms
 from .choices import tipo_alumbrado, nivel_cumplimiento
 from .models import Titular, RepresentanteLegal, DetalleLuminarias,  Proyecto
+from catalogo_mediciones.models import Medicion
 
 class ProyectoForm(forms.ModelForm):
     nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Ingrese nombre'}))
@@ -23,6 +24,11 @@ class ProyectoForm(forms.ModelForm):
     detalle_luminarias = forms.ModelChoiceField(
         queryset=DetalleLuminarias.objects.all(),
         empty_label="Selecciona un detalle de luminaria",
+        widget=forms.Select(attrs={'class':'form-control'})
+    )
+    medicion = forms.ModelChoiceField(
+        queryset=Medicion.objects.all(),
+        empty_label="Selecciona medición",
         widget=forms.Select(attrs={'class':'form-control'})
     )
 
