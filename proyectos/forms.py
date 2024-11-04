@@ -26,10 +26,10 @@ class ProyectoForm(forms.ModelForm):
         empty_label="Selecciona un detalle de luminaria",
         widget=forms.Select(attrs={'class':'form-control'})
     )
-    medicion = forms.ModelChoiceField(
-        queryset=Medicion.objects.all(),
-        empty_label="Selecciona medición",
-        widget=forms.Select(attrs={'class':'form-control'})
+ 
+    estado = forms.IntegerField(
+        widget=forms.HiddenInput(),
+        initial=1
     )
 
     class Meta:
