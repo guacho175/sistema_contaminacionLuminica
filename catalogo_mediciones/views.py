@@ -18,8 +18,8 @@ def crear_mapa():
 # Función para agregar áreas rectangulares basadas en proyectos
 def agregar_areas_rectangulares(mapa):
  # Obtiene los proyectos asociados a mediciones con estado = 1
-    mediciones = Medicion.objects.filter(estado=1)
-    proyectos = Proyecto.objects.filter(id__in=mediciones.values('proyecto_id')).distinct()
+   
+    proyectos = Proyecto.objects.all()
     for proyecto in proyectos:
         lat = proyecto.latitud
         lng = proyecto.longitud

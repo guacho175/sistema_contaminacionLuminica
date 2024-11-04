@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from .choices import cumplimiento, tipo_instrumento
-from proyectos.models import Proyecto
 from inspectores.models import Inspector
 
 class InstrumentoMedicion(models.Model):
@@ -19,20 +18,22 @@ class InstrumentoMedicion(models.Model):
         verbose_name_plural = 'Instrumentos de medición'
 
 
-class DetalleMedicion(models.Model):
-    longitud = models.FloatField(verbose_name='Longitud')
+class Medicion(models.Model):
+    cumplimiento = models.CharField(max_length=1, choices=cumplimiento, blank=True, null=True, verbose_name='Cumplimiento')
     latitud = models.FloatField(verbose_name='Latitud')
+    longitud = models.FloatField(verbose_name='Longitud')
     temperatura = models.FloatField(verbose_name='Temperatura (°C)')
     humedad = models.FloatField(verbose_name='Humedad (%)')
     valor_medido = models.FloatField(verbose_name='Valor medido')
-    instrumento_medicion = models.ForeignKey(InstrumentoMedicion, null=False, on_delete=models.RESTRICT)
-    creado = models.DateTimeField(default=timezone.now, editable=False)    
-
-
-class Medicion(models.Model):
-    cumplimiento = models.CharField(max_length=1, choices=cumplimiento, blank=True, null=True, verbose_name='Cumplimiento')
+    observacion = models.CharField(max_length=500, verbose_name='Observación')
     inspector = models.ForeignKey(Inspector, null=False, on_delete=models.RESTRICT)
-    proyecto = models.ForeignKey(Proyecto, null=False, on_delete=models.RESTRICT)
-    detalleMedicion = models.ForeignKey(DetalleMedicion, null=True, blank=True, on_delete=models.RESTRICT)
+    instrumento_medicion = models.ForeignKey(InstrumentoMedicion, null=False, on_delete=models.RESTRICT)
     creado = models.DateTimeField(default=timezone.now, editable=False)  
-    estado = models.IntegerField(default=0) 
+    
+    def __str__(self):
+        return "{} {}".format(self.latitud, self.longitud)
+        
+    class Meta:
+        db_table = 'medicion'
+        verbose_name = 'Medición'
+        verbose_name_plural = 'Mediciones'
