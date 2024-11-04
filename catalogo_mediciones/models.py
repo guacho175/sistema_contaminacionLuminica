@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from .choices import cumplimiento, tipo_instrumento
 from inspectores.models import Inspector
+from proyectos.models import Proyecto
 
 class InstrumentoMedicion(models.Model):
     tipo = models.CharField(max_length=1, choices=tipo_instrumento, verbose_name='Iipo')
@@ -28,6 +29,7 @@ class Medicion(models.Model):
     observacion = models.CharField(max_length=500, verbose_name='Observación')
     inspector = models.ForeignKey(Inspector, null=False, on_delete=models.RESTRICT)
     instrumento_medicion = models.ForeignKey(InstrumentoMedicion, null=False, on_delete=models.RESTRICT)
+    proyecto = models.ForeignKey(Proyecto, null=False, on_delete=models.RESTRICT)
     creado = models.DateTimeField(default=timezone.now, editable=False)  
     
     def __str__(self):
@@ -37,3 +39,4 @@ class Medicion(models.Model):
         db_table = 'medicion'
         verbose_name = 'Medición'
         verbose_name_plural = 'Mediciones'
+
