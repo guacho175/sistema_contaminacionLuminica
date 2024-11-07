@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 07-11-2024 a las 19:46:11
+-- Tiempo de generación: 04-11-2024 a las 15:56:15
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -506,15 +506,14 @@ CREATE TABLE IF NOT EXISTS `medicion` (
   KEY `medicion_inspector_id_c61d9586` (`inspector_id`),
   KEY `medicion_instrumento_medicion_id_95125e82` (`instrumento_medicion_id`),
   KEY `medicion_proyecto_id_22862c37` (`proyecto_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `medicion`
 --
 
 INSERT INTO `medicion` (`id`, `cumplimiento`, `latitud`, `longitud`, `temperatura`, `humedad`, `valor_medido`, `observacion`, `creado`, `inspector_id`, `instrumento_medicion_id`, `proyecto_id`) VALUES
-(7, '0', -29.905018, -71.263601, 12, 12, 18.4, 'Medición 1', '2024-11-07 19:29:30.364644', 1, 1, 2),
-(6, '0', -29.905656, -71.274206, 25, 12, 0.6, 'asd', '2024-11-07 19:14:14.838245', 1, 1, 1);
+(2, NULL, 123, 123, 1, 1, 12, 'as', '2024-11-04 14:44:16.654048', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -540,15 +539,14 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   KEY `proyecto_detalle_luminarias_id_dedf9604` (`detalle_luminarias_id`),
   KEY `proyecto_representante_legal_id_a960c619` (`representante_legal_id`),
   KEY `proyecto_titular_id_0f63ba6e` (`titular_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `proyecto`
 --
 
 INSERT INTO `proyecto` (`id`, `nombre`, `longitud`, `latitud`, `tipo_alumbrado`, `descripcion`, `nv_cumplimiento`, `estado`, `creado`, `detalle_luminarias_id`, `representante_legal_id`, `titular_id`) VALUES
-(1, 'El faro', -71.2743113, -29.9055459, 'p', 'Faro cuadrado de concreto y punto de referencia de la ciudad terminado en 1951 ubicado en una playa popular.', '0', 0, '2024-11-04 14:21:37.283883', 1, 1, 1),
-(2, 'Bibliotecasss', -71.263502, -29.9048943, 'o', 'asdasd', '3', 1, '2024-11-07 19:26:28.521836', 1, 1, 1);
+(1, 'El faro', -71.2743113, -29.9055459, 'p', 'Faro cuadrado de concreto y punto de referencia de la ciudad terminado en 1951 ubicado en una playa popular.', '0', 0, '2024-11-04 14:21:37.283883', 1, 1, 1);
 
 -- --------------------------------------------------------
 
