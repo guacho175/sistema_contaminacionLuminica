@@ -142,20 +142,16 @@
                 <i class='bx bxs-tree'></i>
             </a>
 
-            <a href="{% url '' %}" class="{% if request.path == '/mapa/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mapa de mediciones">
-                <i class='bx bx-map'></i>
-            </a>
-
             <a href="{% url 'catalogoMedicion' %}" class="{% if request.path == '/catalogoMedicion/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Catálogo de mediciones">
-                <i class='bx bx-food-menu'></i>
+                <i class="bi bi-lightbulb"></i>
             </a>
 
             <a href="{% url 'proyectos' %}" class="{% if request.path == '/proyectos/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Proyectos">
                 <i class='bx bx-food-menu'></i>
             </a>
 
-            <a href="{% url 'inspectores' %}" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Inspectores">
-                <i class='bx bx-wrench'></i>
+            <a href="{% url 'inspectores' %}" class="{% if request.path == '/inspectores/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Inspectores">
+                <i class='bi bi-person'></i>
             </a>
 
             <a href="#" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Herramientas">
