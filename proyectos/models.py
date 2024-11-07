@@ -75,7 +75,7 @@ class Proyecto(models.Model):
 
 
     def __str__(self):
-        return "{} {} {} {}".format(self.nombre, self.tipo_alumbrado, self.titular.nombre, self.representante_legal.nombre)
+        return "{}, tipo de alumbrado: {} ".format(self.nombre, self.get_tipo_alumbrado_display())
     
     class Meta:
         db_table = 'proyecto'

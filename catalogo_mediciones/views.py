@@ -3,6 +3,8 @@ from .forms import MedicionForm
 from .models import Medicion
 from proyectos.models import Proyecto
 import folium
+from folium.plugins import MarkerCluster
+
 
 
 def crear_mapa():
@@ -15,10 +17,12 @@ def crear_mapa():
     
     return initialMap # Pasar el mapa como HTML
 
+
 # Función para agregar áreas rectangulares basadas en proyectos
 def agregar_areas_rectangulares(mapa):
- # Obtiene los proyectos asociados a mediciones con estado = 0
+    
     proyectos = Proyecto.objects.all()
+
     for proyecto in proyectos:
         lat = proyecto.latitud
         lng = proyecto.longitud
@@ -36,15 +40,34 @@ def agregar_areas_rectangulares(mapa):
         }
         folium.Rectangle(bounds=bounds, **kw).add_to(mapa)
 
+
+def agregar_marcadores_mediciones(mapa, mediciones):
+    marker_cluster = MarkerCluster().add_to(mapa)
+    for medicion in mediciones:
+        lat = medicion.latitud
+        lng = medicion.longitud
+        tooltip = f'Medición en {lat}, {lng}'
+        folium.Marker(
+            location=[lat, lng],
+            popup=f'Valor medido: {medicion.valor_medido}',
+            tooltip=tooltip
+        ).add_to(marker_cluster)
+
+
 # Vista para cargar mediciones y el mapa con áreas
 def cargar_medicion(request):
     mediciones = Medicion.objects.all()
     form = MedicionForm()
 
-    # Crear el mapa y agregar las áreas
+    # Crear el mapa
     mapa = crear_mapa()
+
+    # Agregar las areas
     agregar_areas_rectangulares(mapa)
 
+    # Agregar marcadores de mediciones
+    agregar_marcadores_mediciones(mapa, mediciones)
+    
     # Convertir el mapa a HTML para el contexto después de agregar todas las áreas
     map_html = mapa._repr_html_()
     data = {

@@ -11,7 +11,7 @@ class InstrumentoMedicion(models.Model):
     num_serie = models.CharField(max_length=50, verbose_name='N° de Serie')
     
     def __str__(self):
-        return "{} {}".format(self.tipo, self.num_serie)
+        return "{}".format(self.get_tipo_display())
         
     class Meta:
         db_table = 'instrumento_medicion'
