@@ -120,13 +120,12 @@
             </thead>
             <tbody>
                 <!-- Aquí puedes agregar las filas de datos -->
-                {% for medicion in mediciones %}
+                {% for fiscalizacion in fiscalizaciones %}
                 <tr>
-                    <td>{{ medicion.proyecto.nombre }}</td>
-                    <td>{{ medicion.proyecto.representante_legal.nombre }} {{ medicion.proyecto.representante_legal.a_paterno }}</td>
-                    <td>{{ medicion.proyecto.get_tipo_alumbrado_display }}</td>
-                    <td>{{ medicion.inspector.nombre }} {{ medicion.inspector.a_paterno }}</td>
-                    <td>{{ medicion.instrumento_medicion.get_tipo_display }}</td>
+                    <td>{{ fiscalizacion.proyecto.nombre }}</td>
+                    <td>{{ fiscalizacion.proyecto.get_tipo_alumbrado_display }}</td>
+                    <td>{{ fiscalizacion.usuario.nombre }} {{ medicion.inspector.a_paterno }}</td>
+                    <td>{{ instrumento_medicion.get_tipo_display }}</td>
                     <td>{{ medicion.valor_medido }}</td>
                     <td>
                         <div class="d-flex justify-content-center">
@@ -137,7 +136,7 @@
                                 <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>
                             </div>
                             <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
-                                <a class="btn btn-danger" href="{% url 'eliminarMedicion' medicion.id %}"><i class="bx bx-trash"></i></a>
+                                <a class="btn btn-danger" href="{% url '' %}"><i class="bx bx-trash"></i></a>
                             </div>
                         </div>
                     </td>
