@@ -7,7 +7,7 @@ class InstrumentoMedicionAdmin(admin.ModelAdmin):
 
 
 class MedicionAdmin(admin.ModelAdmin):
-    list_display = ['id', 'latitud', 'longitud', 'temperatura', 'humedad', 'valor_medido', 'cumplimiento', 'observacion', 'instrumento_medicion', 'creado']
+    list_display = ['id', 'fiscalizacion', 'latitud', 'longitud', 'valor_medido', 'cumplimiento', 'observacion', 'instrumento_medicion', 'creado']
 
 admin.site.register(InstrumentoMedicion, InstrumentoMedicionAdmin)
 admin.site.register(Medicion, MedicionAdmin)

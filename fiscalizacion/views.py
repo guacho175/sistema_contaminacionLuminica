@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import Proyecto
-from .forms import MedicionForm
+from .models import Fiscalizacion
+
 from mediciones.models import Medicion
-from proyectos.models import Proyecto
+from .forms import FiscalizacionForm
+
 import folium
 from folium.plugins import MarkerCluster
 
@@ -26,7 +27,7 @@ def crear_mapa():
     return initialMap # Pasar el mapa como HTML
 
 
-# Función para agregar áreas rectangulares basadas en proyectos
+""" # Función para agregar áreas rectangulares basadas en proyectos
 def agregar_areas_rectangulares(mapa):
     
     proyectos = Proyecto.objects.all()
@@ -59,27 +60,27 @@ def agregar_marcadores_mediciones(mapa, mediciones):
             location=[lat, lng],
             popup=f'Valor medido: {medicion.valor_medido}',
             tooltip=tooltip
-        ).add_to(marker_cluster)
+        ).add_to(marker_cluster) """
 
 
 # Vista para cargar mediciones y el mapa con áreas
-def cargar_medicion(request):
-    mediciones = Medicion.objects.all()
-    form = MedicionForm()
+def cargar_fiscalizacion(request):
+    fiscalizaciones = Fiscalizacion.objects.all()
+    form = FiscalizacionForm()
 
     # Crear el mapa
     mapa = crear_mapa()
 
     # Agregar las areas
-    agregar_areas_rectangulares(mapa)
+    #agregar_areas_rectangulares(mapa)
 
     # Agregar marcadores de mediciones
-    agregar_marcadores_mediciones(mapa, mediciones)
+    #agregar_marcadores_mediciones(mapa, fiscalizaciones)
     
     # Convertir el mapa a HTML para el contexto después de agregar todas las áreas
     map_html = mapa._repr_html_()
     data = {
-        'mediciones': mediciones,
+        'fiscalizaciones': fiscalizaciones,
         'form': form,
         'map': map_html
     }

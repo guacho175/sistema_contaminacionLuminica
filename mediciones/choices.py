@@ -8,3 +8,9 @@ tipo_instrumento=(
     ('1','Luminancímetro')
 )
 
+tipo_medicion=(
+    ('0','Iluminancia'),
+    ('1','Luminancia')
+)
+
+

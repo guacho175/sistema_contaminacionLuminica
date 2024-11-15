@@ -1,40 +1,51 @@
 from django import forms
-from .choices import cumplimiento
-from mediciones.models import Medicion, InstrumentoMedicion
+from .models import Fiscalizacion, Reporte
+from proyectos.models import Proyecto
+from usuarios.models import Usuario
 
 
-class MedicionForm(forms.ModelForm):
-    latitud = forms.FloatField(
-        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese latitud'}),
-        label='Latitud'
+class FiscalizacionForm(forms.ModelForm):
+    temperatura = forms.FloatField(
+        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese temperatura'}),
+        label='Temperatura'
     )
-    longitud = forms.FloatField(
-        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese longitud'}),
-        label='Longitud'
+    humedad = forms.FloatField(
+        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese humedad'}),
+        label='Humedad'
     )
-    valor_medido = forms.FloatField(
-        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese valor medido'}),
-        label='Valor medido'
+    nivel_cumplimiento = forms.FloatField(
+        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Cumplimiento (%)'}),
+        label='Cumplimiento (%)'
     )
-    observacion = forms.CharField(
-        widget=forms.Textarea(attrs={'rows': 3, 'class': 'form-control', 'placeholder': 'Ingrese observación'}),
-        label='Observación'
-    )
-    cumplimiento = forms.CharField(
-        widget=forms.Select(choices=cumplimiento),
-        label='Cumplimiento'
-    )
+
     # Objetos referenciados
-    instrumento_medicion = forms.ModelChoiceField(
-        queryset=InstrumentoMedicion.objects.all(),
+    proyecto = forms.ModelChoiceField(
+        queryset=Proyecto.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control'}),
-        label='Instrumento de Medición'
+        label='Proyecto'
+    )
+
+    usuario = forms.ModelChoiceField(
+        queryset=Usuario.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='Usuario'
     )
 
     class Meta:
-        model = Medicion
+        model = Fiscalizacion
         fields = '__all__'
 
+
+class ReporteForm(forms.ModelForm):
+    fiscalizacion = forms.ModelChoiceField(
+        queryset=Fiscalizacion.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='Fiscalizacion'
+    )
+
+    class Meta:
+        model = Reporte
+        fields = '__all__'
 
 
 
