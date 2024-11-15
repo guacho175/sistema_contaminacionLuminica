@@ -17,7 +17,7 @@ class DetalleLuminariasAdmin(admin.ModelAdmin):
 
 class ProyectoAdmin(admin.ModelAdmin):
     list_display = ['id', 'nombre', 'longitud', 'latitud',
-                    'tipo_alumbrado', 'descripcion', 'nv_cumplimiento', 'titular',
+                    'tipo_alumbrado', 'descripcion', 'titular',
                     'representante_legal', 'detalle_luminarias']
 
 admin.site.register(Titular, TitularAdmin)

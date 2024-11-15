@@ -88,7 +88,7 @@
                     aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="width:30px; height: 30px; overflow: hidden;">
                     <span class="navbar-toggler-icon" style="transform: scale(4.5);"></span>
                 </button>
-                <a class="navbar-brand ms-4 ps-2" href="{% url 'areas' %}">Monitoreo de Contaminación Lumínica</a>
+                <a class="navbar-brand ms-4 ps-2" href="{% url '' %}">Monitoreo de Contaminación Lumínica</a>
                 
                 <div  class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -101,7 +101,7 @@
                     <div style="background-color: #18173e;" class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'areas' %}">Áreas de Protección para la Biodiversidad</a>
+                                <a class="nav-link active" aria-current="page" href="{% url '' %}">Áreas de Protección para la Biodiversidad</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://anaguirv.github.io/react_imagesNasa/" target="_blank">Recursos Multimedia</a>
@@ -122,10 +122,6 @@
                             </li>
                         </ul>
                     
-                        <form class="d-flex mt-3" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -138,11 +134,11 @@
                 <i class='bx bx-home-alt'></i>
             </a>
             
-            <a href="{% url 'areas' %}" class="{% if request.path == '/areas/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Áreas de Biodiversidad">
+            <a href="{% url '' %}" class="{% if request.path == '//' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="">
                 <i class='bx bxs-tree'></i>
             </a>
 
-            <a href="{% url 'catalogoMedicion' %}" class="{% if request.path == '/catalogoMedicion/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Catálogo de mediciones">
+            <a href="{% url 'mediciones' %}" class="{% if request.path == '/mediciones/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Mediciones">
                 <i class="bi bi-lightbulb"></i>
             </a>
 
@@ -150,7 +146,7 @@
                 <i class='bx bx-food-menu'></i>
             </a>
 
-            <a href="{% url 'inspectores' %}" class="{% if request.path == '/inspectores/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Inspectores">
+            <a href="{% url 'usuarios' %}" class="{% if request.path == '/usuarios/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de usuarios">
                 <i class='bi bi-person'></i>
             </a>
 
@@ -185,8 +181,7 @@
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-        
+        })   
     </script>
 </body>
 

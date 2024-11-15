@@ -27,11 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'historialMediciones',
-    'mapa',
-    'catalogo_mediciones',
+    'mediciones',
     'proyectos',
-    'inspectores',
+    'usuarios',
+    'fiscalizacion',
 
 ]
 

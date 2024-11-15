@@ -62,16 +62,15 @@ class DetalleLuminarias(models.Model):
 
 class Proyecto(models.Model):
     nombre = models.CharField(max_length=100, verbose_name='Nombre')
-    longitud = models.FloatField(max_length=500, verbose_name='Longitud')
     latitud = models.FloatField(max_length=500, verbose_name='Latitud')
+    longitud = models.FloatField(max_length=500, verbose_name='Longitud')
     tipo_alumbrado = models.CharField(max_length=1, choices=tipo_alumbrado, default='v', verbose_name='Tipo de alumbrado')
     descripcion = models.CharField(max_length=500, verbose_name='Descripción')
-    nv_cumplimiento = models.CharField(max_length=1, choices=nivel_cumplimiento,default='0', verbose_name='Nivel de cumplimiento')
-    titular = models.ForeignKey(Titular, null=False, on_delete=models.RESTRICT)
-    representante_legal = models.ForeignKey(RepresentanteLegal, null=False, on_delete=models.RESTRICT)
-    detalle_luminarias = models.ForeignKey(DetalleLuminarias, null=False, on_delete=models.RESTRICT)
-    estado = models.IntegerField(default=0) 
     creado = models.DateTimeField(default=timezone.now, editable=False)   
+    # FK
+    detalle_luminarias = models.ForeignKey(DetalleLuminarias, null=False, on_delete=models.RESTRICT)
+    representante_legal = models.ForeignKey(RepresentanteLegal, null=False, on_delete=models.RESTRICT)
+    titular = models.ForeignKey(Titular, null=False, on_delete=models.RESTRICT)
 
 
     def __str__(self):
