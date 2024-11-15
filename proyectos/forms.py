@@ -1,7 +1,6 @@
 from django import forms
 from .choices import tipo_alumbrado, nivel_cumplimiento
 from .models import Titular, RepresentanteLegal, DetalleLuminarias,  Proyecto
-from catalogo_mediciones.models import Medicion
 
 class ProyectoForm(forms.ModelForm):
     nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Ingrese nombre'}))
