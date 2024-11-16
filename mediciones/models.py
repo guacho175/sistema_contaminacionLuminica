@@ -19,9 +19,11 @@ class InstrumentoMedicion(models.Model):
 
 
 class Medicion(models.Model):
-    tipo = models.CharField(max_length=1, choices=tipo_medicion, verbose_name='Iipo')
+    tipo = models.CharField(max_length=1, choices=tipo_medicion, verbose_name='Tipo')
     latitud = models.FloatField(verbose_name='Latitud')
     longitud = models.FloatField(verbose_name='Longitud')
+    temperatura = models.FloatField(blank=True, null=True, verbose_name='Temperatura (°C)')
+    humedad = models.FloatField(blank=True, null=True, verbose_name='Humedad (%)')
     valor_medido = models.FloatField(verbose_name='Valor medido')
     cumplimiento = models.CharField(max_length=1, choices=cumplimiento, blank=True, null=True, verbose_name='Cumplimiento')
     observacion = models.CharField(max_length=500, verbose_name='Observación')

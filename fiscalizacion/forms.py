@@ -5,18 +5,6 @@ from usuarios.models import Usuario
 
 
 class FiscalizacionForm(forms.ModelForm):
-    temperatura = forms.FloatField(
-        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese temperatura'}),
-        label='Temperatura'
-    )
-    humedad = forms.FloatField(
-        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese humedad'}),
-        label='Humedad'
-    )
-    nivel_cumplimiento = forms.FloatField(
-        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Cumplimiento (%)'}),
-        label='Cumplimiento (%)'
-    )
 
     # Objetos referenciados
     proyecto = forms.ModelChoiceField(

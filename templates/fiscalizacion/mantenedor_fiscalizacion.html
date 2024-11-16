@@ -9,8 +9,9 @@
     <div class="col">
         <!-- Boton para crear medición -->
         <div class="d-flex justify-content-end mb-3">
-            <div  data-bs-toggle="tooltip" data-bs-placement="left" title="Nueva medición">
-                <button class="btn btn-success rounded-circle btn-background" data-bs-toggle="modal" data-bs-target="#crearMedicionModal">
+            <div data-bs-toggle="tooltip" data-bs-placement="left" title="Nueva medición">
+                <button class="btn btn-success rounded-circle btn-background" data-bs-toggle="modal"
+                    data-bs-target="#crearMedicionModal">
                     <i class="bi bi-plus-circle"></i>
                 </button>
             </div>
@@ -110,27 +111,30 @@
                     <th class="text-center" colspan="1" rowspan="2">Proyecto</th>
                     <th class="text-center" colspan="1" rowspan="2">Tipo de alumbrado</th>
                     <th colspan="3">Medición</th>
+                    <th class="text-center" colspan="1" rowspan="2">Nivel de cumplimiento (%)</th>
                     <th class="text-center" colspan="1" rowspan="2">Acciones</th>
                 </tr>
-                <tr class="align-middle" >
-                    <th>Inspector</th>
-                    <th>Instrumento</th>
-                    <th>Valor Medido</th>
+                <tr class="align-middle">
+                    <th>Mínimo</th>
+                    <th>Máximo</th>
+                    <th>Media</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí puedes agregar las filas de datos -->
-                {% for fiscalizacion in fiscalizaciones %}
+                {% for item in fiscalizaciones_con_mediciones %}
                 <tr>
-                    <td>{{ fiscalizacion.proyecto.nombre }}</td>
-                    <td>{{ fiscalizacion.proyecto.get_tipo_alumbrado_display }}</td>
-                    <td>{{ fiscalizacion.usuario.nombre }} {{ medicion.inspector.a_paterno }}</td>
-                    <td>{{ instrumento_medicion.get_tipo_display }}</td>
-                    <td>{{ medicion.valor_medido }}</td>
+                    <td>{{ item.fiscalizacion.proyecto.nombre }}</td>
+                    <td>{{ item.fiscalizacion.proyecto.get_tipo_alumbrado_display }}</td>
+                    <td>{{ item.estadisticas.valor_minimo|default:"N/A" }}</td>
+                    <td>{{ item.estadisticas.valor_maximo|default:"N/A" }}</td>
+                    <td>{{ item.estadisticas.valor_promedio|floatformat:2|default:"N/A" }}</td>
+                    <td>{{ item.|default:"N/A"  }}</td>
                     <td>
                         <div class="d-flex justify-content-center">
                             <div class="" data-bs-toggle="tooltip" title="Ver detalle" data-bs-placement="top">
-                                <a class="btn btn-primary me-1" href=""><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-primary me-1"
+                                    href="{% url 'detalle_fiscalizacion' item.fiscalizacion.proyecto.id %}"><i
+                                        class="bi bi-eye"></i></a>
                             </div>
                             <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
                                 <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>

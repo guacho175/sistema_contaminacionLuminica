@@ -6,9 +6,7 @@ from proyectos.models import Proyecto
 # Create your models here.
 
 class Fiscalizacion(models.Model):
-    temperatura = models.FloatField(blank=True, null=True, verbose_name='Temperatura (°C)')
-    humedad = models.FloatField(blank=True, null=True, verbose_name='Humedad (%)')
-    nivel_cumplimiento = models.FloatField(blank=True, null=True, verbose_name='Cumplimiento (%)')
+
     #FK
     proyecto = models.ForeignKey(Proyecto, null=False, on_delete=models.RESTRICT)
     usuario = models.ForeignKey(Usuario, null=False, on_delete=models.RESTRICT)

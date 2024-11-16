@@ -16,6 +16,15 @@ class MedicionForm(forms.ModelForm):
         widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese longitud'}),
         label='Longitud'
     )
+    temperatura = forms.FloatField(
+        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese temperatura'}),
+        label='Temperatura'
+    
+    )
+    humedad = forms.FloatField(
+        widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese humedad'}),
+        label='Humedad'
+    )
 
     valor_medido = forms.FloatField(
         widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese valor medido'}),
