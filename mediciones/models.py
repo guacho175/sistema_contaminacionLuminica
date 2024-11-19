@@ -29,7 +29,7 @@ class Medicion(models.Model):
     observacion = models.CharField(max_length=500, verbose_name='Observación')
     #FK
     instrumento_medicion = models.ForeignKey(InstrumentoMedicion, null=False, on_delete=models.RESTRICT)
-    fiscalizacion = models.ForeignKey(Fiscalizacion, null=False, on_delete=models.RESTRICT)
+    fiscalizacion = models.ForeignKey(Fiscalizacion, null=False, on_delete=models.CASCADE, editable=False)
     creado = models.DateTimeField(default=timezone.now, editable=False)  
     
     def __str__(self):

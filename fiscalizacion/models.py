@@ -14,7 +14,7 @@ class Fiscalizacion(models.Model):
 
 
     def __str__(self):
-        return "{}, {} {}".format(self.proyecto.nombre, self.usuario.nombre, self.usuario.a_materno)
+        return "cod: {} - {} - {} {}".format(self.id, self.proyecto.nombre, self.usuario.nombre, self.usuario.a_materno)
         
     class Meta:
         db_table = 'fiscalizacion'

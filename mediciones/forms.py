@@ -30,11 +30,6 @@ class MedicionForm(forms.ModelForm):
         widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese valor medido'}),
         label='Valor medido'
     )
-
-    cumplimiento = forms.CharField(
-        widget=forms.Select(choices=cumplimiento),
-        label='Cumplimiento'
-    )
     
     observacion = forms.CharField(
         widget=forms.Textarea(attrs={'rows': 3, 'class': 'form-control', 'placeholder': 'Ingrese observación'}),
@@ -48,11 +43,6 @@ class MedicionForm(forms.ModelForm):
         label='Instrumento de Medición'
     )
 
-    fiscalizacion = forms.ModelChoiceField(
-        queryset=Fiscalizacion.objects.all(),
-        widget=forms.Select(attrs={'class': 'form-control'}),
-        label='Fiscalización'
-    )
 
     class Meta:
         model = Medicion
