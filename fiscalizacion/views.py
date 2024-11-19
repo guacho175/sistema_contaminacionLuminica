@@ -1,111 +1,93 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from django.db.models import RestrictedError
+from .forms import FiscalizacionForm
 from .models import Fiscalizacion
 from proyectos.models import Proyecto
 from mediciones.models import Medicion
-from django.db.models import Min, Max, Avg
-import folium
-from folium.plugins import MarkerCluster
+from services.fiscalizacion.fiscalizacion_service import FiscalizacionService
+from services.fiscalizacion.mapa_service import MapaService
+from mediciones.forms import MedicionForm
 
-def crear_mapa():
-    # Crear el mapa con configuración inicial 
-    initialMap = folium.Map(
-        location=[-30.031066, -71.280182],
-        zoom_start=11,
-        #scrollWheelZoom=False  # Desactiva el zoom con la rueda de desplazamiento
-        )
-    
-    return initialMap # Pasar el mapa como HTML
-
-
-# Función para agregar áreas rectangulares basadas en proyectos
-def agregar_areas_rectangulares(mapa):
-    proyectos = Proyecto.objects.all()
-
-    for proyecto in proyectos:
-        lat = proyecto.latitud
-        lng = proyecto.longitud
-        # Ajusta las coordenadas para definir los límites del rectángulo
-        bounds = [[lat - 0.0003, lng - 0.0003], [lat + 0.0003, lng + 0.0003]]
-        
-        kw = {
-        "color": "blue",
-        "line_cap": "round",
-        "fill": True,
-        "fill_color": "red",
-        "weight": 5,
-        #"popup": "Tokyo, Japan",
-        "tooltip": f'Área del Proyecto {proyecto.nombre}',
-        }
-        folium.Rectangle(bounds=bounds, **kw).add_to(mapa)
-
-
-def agregar_marcadores_mediciones(mapa, mediciones):
-    marker_cluster = MarkerCluster().add_to(mapa)
-    for medicion in mediciones:
-        lat = medicion.latitud
-        lng = medicion.longitud
-        tooltip = f'Medición en {lat}, {lng}'
-        folium.Marker(
-            location=[lat, lng],
-            popup=f'Valor medido: {medicion.valor_medido}',
-            tooltip=tooltip
-        ).add_to(marker_cluster)
-
-
-# Vista para cargar mediciones y el mapa con áreas
 def cargar_fiscalizacion(request):
-    fiscalizaciones = Fiscalizacion.objects.all().select_related('proyecto', 'usuario')
+    """Vista para cargar fiscalizaciones con mediciones y renderizar el mapa."""
+    fiscalizaciones_con_mediciones, todas_las_mediciones = FiscalizacionService.obtener_fiscalizaciones_con_mediciones()
 
-    # Crear un diccionario para mapear mediciones a sus fiscalizaciones junto con estadísticas
-    fiscalizaciones_con_mediciones = []
-    
-    todas_las_mediciones = []  # Lista para almacenar todas las mediciones
+    mapa = MapaService.crear_mapa()
+    MapaService.agregar_areas_rectangulares(mapa, Proyecto.objects.all())
+    MapaService.agregar_marcadores_mediciones(mapa, todas_las_mediciones)
 
-    for fiscalizacion in fiscalizaciones:
-        mediciones = Medicion.objects.filter(fiscalizacion=fiscalizacion)
-
-        # Calcular estadísticas de las mediciones
-        estadisticas = mediciones.aggregate(
-            valor_minimo=Min('valor_medido'),
-            valor_maximo=Max('valor_medido'),
-            valor_promedio=Avg('valor_medido'),
-        )
-
-        fiscalizaciones_con_mediciones.append({
-            'fiscalizacion': fiscalizacion,
-            'mediciones': mediciones,
-            'estadisticas': estadisticas
-        })
-
-        todas_las_mediciones.extend(mediciones)  # Agregar mediciones a la lista
-
-    # Crear el mapa
-    mapa = crear_mapa()
-
-    # Agregar las áreas
-    agregar_areas_rectangulares(mapa)
-
-    # Agregar marcadores de mediciones
-    agregar_marcadores_mediciones(mapa, todas_las_mediciones)
-    
-    # Convertir el mapa a HTML para el contexto después de agregar todas las áreas
     map_html = mapa._repr_html_()
-    data = {
+    form = FiscalizacionForm()
+
+    return render(request, 'fiscalizacion/mantenedor_fiscalizacion.html', {
         'fiscalizaciones_con_mediciones': fiscalizaciones_con_mediciones,
-        'map': map_html
-    }
-    return render(request, 'fiscalizacion/mantenedor_fiscalizacion.html', data)
+        'map': map_html,
+        'form': form,
+    })
+
+
+def crear_fiscalizacion(request):
+    """Vista para crear una nueva fiscalización."""
+    if request.method == 'POST':
+        form = FiscalizacionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Fiscalización ingresada exitosamente.')
+            return redirect('')  
+        else:
+            messages.error(request, 'Hubo un error al crear la fiscalización. Revisa los datos ingresados.')
+
+    form = FiscalizacionForm()
+    return render(request, 'fiscalizacion/crear_fiscalizacion.html', {'form': form})
 
 
 def detalle_fiscalizacion(request, proyecto_id):
-    # Obtener el proyecto con el ID proporcionado
+    """Vista para mostrar el detalle de una fiscalización asociada a un proyecto."""
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
-    
-    # Obtener las mediciones asociadas a las fiscalizaciones del proyecto
     mediciones = Medicion.objects.filter(fiscalizacion__proyecto=proyecto).select_related('fiscalizacion__usuario')
-    
-    data = {
+
+    return render(request, 'fiscalizacion/detalle_fiscalizacion.html', {
         'proyecto': proyecto,
-        'mediciones': mediciones
-    }
-    return render(request, 'fiscalizacion/detalle_fiscalizacion.html', data)
+        'mediciones': mediciones,
+    })
+
+
+def eliminar_fiscalizacion(request, fiscalizacion_id):
+    """Vista para eliminar una fiscalización."""
+    fiscalizacion = get_object_or_404(Fiscalizacion, id=fiscalizacion_id)
+
+    if request.method == 'POST':
+        try:
+            fiscalizacion.delete()
+            messages.success(request, 'El registro se eliminó correctamente.')
+            return redirect('') 
+        except RestrictedError as e:
+            messages.error(request, f'No se puede eliminar el registro: {e.args[0]}')
+
+    return render(request, 'fiscalizacion/fiscalizacionDel.html', {'fiscalizacion': fiscalizacion})
+
+
+def nueva_medicion(request, fiscalizacion_id):
+    """Vista para ingresar una nueva medición en un proyecto fiscalizado."""
+
+    fiscalizacion = get_object_or_404(Fiscalizacion, id=fiscalizacion_id)
+    current_url = request.META.get('HTTP_REFERER', '/')  # Captura la URL actual o usa '/' como predeterminado
+
+    if request.method == "POST":
+        form = MedicionForm(request.POST)
+        if form.is_valid():
+            medicion = form.save(commit=False)
+            medicion.fiscalizacion = fiscalizacion
+            medicion.save()
+            messages.success(request, 'Medición Ingresada.')
+            
+            return HttpResponseRedirect(current_url)  # Redirige a la misma página
+    else:
+        form = MedicionForm()
+
+    return render(request, 'mediciones/medicionAdd.html', {
+        'fiscalizacion': fiscalizacion,
+        'form': form
+    })

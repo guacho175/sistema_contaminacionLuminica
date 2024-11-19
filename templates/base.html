@@ -8,7 +8,6 @@
     <title>Sistema de monitores de contaminación lumínica</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
-
     
     <!--iconos-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -88,8 +87,9 @@
                     aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="width:30px; height: 30px; overflow: hidden;">
                     <span class="navbar-toggler-icon" style="transform: scale(4.5);"></span>
                 </button>
+
                 <a class="navbar-brand ms-4 ps-2" href="{% url '' %}">Monitoreo de Contaminación Lumínica</a>
-                
+                                
                 <div  class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     
@@ -128,6 +128,7 @@
         </nav>
         {% endblock menu %}
 
+
         {% block aside %}
         <div class="sidebar">
             <a href="{% url '' %}" class="{% if request.path == '/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Inicio">
@@ -156,8 +157,17 @@
         </div>
         {% endblock aside %}
 
-
+        
         <div class="content mt-5 col-md-9">
+            
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alertTime alert alert-{{ message.tags }} mt-3 text-center id="mensaje-{{ forloop.counter }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             {% block contenido %}
             <div class="row">
                 <div class="col">
@@ -183,6 +193,16 @@
         return new bootstrap.Tooltip(tooltipTriggerEl)
         })   
     </script>
+
+    <script>
+        setTimeout(function() {
+            var mensajes = document.querySelectorAll('.alertTime');
+            mensajes.forEach(function(mensaje) {
+                mensaje.remove();
+            });
+        }, 3000);
+    </script>
+
 </body>
 
 </html>
