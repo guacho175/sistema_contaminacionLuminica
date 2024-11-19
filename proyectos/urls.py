@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views as v
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -9,3 +11,6 @@ urlpatterns = [
     path('proyectoEdit/<int:proyecto_id>', v.cargar_editar_proyecto, name='editarProyecto'),
     path('proyectoEditado/<int:proyecto_id>', v.editar_proyecto, name='proyectoEditado'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

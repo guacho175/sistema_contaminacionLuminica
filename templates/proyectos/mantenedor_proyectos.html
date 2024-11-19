@@ -3,13 +3,6 @@
 
 {% block contenido %}
 <h1 class="text-center mb-5">Proyectos de iluminación</h1>
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} mt-3 text-center">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endif %}
 
 <div class="d-flex justify-content-end">
     <a href="{% url 'crearProyecto' %}" class="btn btn-success rounded-circle btn-background"
