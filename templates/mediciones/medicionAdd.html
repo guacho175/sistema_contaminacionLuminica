@@ -5,8 +5,9 @@
 <div class="row">
     <div class="col">
         <h1 class="text-center mb-5">Nueva Medición para {{ fiscalizacion.proyecto.nombre }}</h1>
-        <form method="post">
+        <form method="post" enctype=multipart/form-data>
             {% csrf_token %}
+            
             <div class="row">
                 {{ form.non_field_errors }}
                 <div class="col-4 mb-4">
@@ -49,8 +50,8 @@
                     {{ form.instrumento_medicion }}
                     {{ form.instrumento_medicion.errors }}
                 </div>
-
             </div>
+            
             <div class="row d-flex justify-content-end">
                 <div class="col-1 me-2">
                     <a class="btn btn-dark" href="{% url '' %}">Volver</a>

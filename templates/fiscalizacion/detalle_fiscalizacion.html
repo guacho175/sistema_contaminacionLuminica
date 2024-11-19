@@ -16,22 +16,36 @@
 <h2>Historial de Mediciones</h2>
 <table class="table table-dark table-hover table-striped table-bordered text-center align-middle">
     <thead>
-        <tr>
-            <th>Fecha</th>
+        <tr class="align-middle">
+            <th>Inspector</th>
             <th>Instrumento</th>
             <th>Valor Medido</th>
             <th>Cumplimiento</th>
             <th>Observaciones</th>
+            <th>Fecha</th>
+            <th class="text-center" colspan="1" rowspan="2">Acciones</th>
+
         </tr>
     </thead>
     <tbody>
         {% for medicion in mediciones %}
         <tr>
-            <td>{{ medicion.creado }}</td>
+            <td>{{ proyecto.fiscalizacion_set.first.usuario.nombre }} {{ proyecto.fiscalizacion_set.first.usuario.a_paterno }}</td>
             <td>{{ medicion.instrumento_medicion.get_tipo_display }}</td>
             <td>{{ medicion.valor_medido }}</td>
             <td>{{ medicion.get_cumplimiento_display }}</td>
             <td>{{ medicion.observacion }}</td>
+            <td>{{ medicion.creado }}</td>
+            <td>
+            <div class="d-flex justify-content-center">
+                <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
+                    <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>
+                </div>
+                <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
+                    <a class="btn btn-danger" href="{% url 'eliminarMedicion' medicion.id %}"><i class="bx bx-trash"></i></a>
+                </div>
+            </div>
+        </td>
         </tr>
         {% empty %}
         <tr>

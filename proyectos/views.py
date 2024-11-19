@@ -5,9 +5,10 @@ from .models import Proyecto
 from .forms import ProyectoForm
 
 
+
 def crear_proyecto(request):
     if request.method == 'POST':
-        form = ProyectoForm(request.POST)
+        form = ProyectoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/proyectos/')
@@ -52,8 +53,11 @@ def editar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
 
     if request.method == 'POST':
-        form = ProyectoForm(request.POST, instance=proyecto)
+        form = ProyectoForm(request.POST, request.FILES, instance=proyecto)
         if form.is_valid():
+            if 'foto' in request.FILES:
+                proyecto.foto = request.FILES['foto'] # Asignamos imagen
+
             form.save()
             return redirect('/proyectos/')
     else:

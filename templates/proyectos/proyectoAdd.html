@@ -5,67 +5,78 @@
 <div class="row">
     <div class="col">
         <h1 class="text-center mb-5">Nuevo Proyecto</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            {{ form.non_field_errors }}
             <div class="row">
-                {{ form.non_field_errors }}
-                <div class="col-4 mb-4">
-                    {{ form.nombre.label_tag }}
-                    {{ form.nombre }}
-                    {{ form.nombre.errors }}
+                <div class="col-9">
+                    <div class="row pe-3">
+                        <div class="col-4 mb-4">
+                            {{ form.nombre.label_tag }}
+                            {{ form.nombre }}
+                            {{ form.nombre.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.latitud.label_tag }}
+                            {{ form.latitud }}
+                            {{ form.latitud.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.longitud.label_tag }}
+                            {{ form.longitud }}
+                            {{ form.longitud.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.titular.label_tag }}
+                            {{ form.titular }}
+                            {{ form.titular.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.representante_legal.label_tag }}
+                            {{ form.representante_legal }}
+                            {{ form.representante_legal.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.detalle_luminarias.label_tag }}
+                            {{ form.detalle_luminarias }}
+                            {{ form.detalle_luminarias.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.tipo_alumbrado.label_tag }}
+                            {{ form.tipo_alumbrado }}
+                            {{ form.tipo_alumbrado.errors }}
+                        </div>
+                        <div class="col-6 mb-4">
+                            <label for="id_nv_cumplimiento">Nivel de cumplimiento</label>
+                            {{ form.nv_cumplimiento }}
+                            {{ form.nv_cumplimiento.errors }}
+                        </div>
+                        <div class="col-12 mb-4">
+                            {{ form.descripcion.label_tag }}
+                            {{ form.descripcion }}
+                            {{ form.descripcion.errors }}
+                        </div>
+                        <div class="col-6 mb-4">
+                            {{ form.estado }}
+                        </div>
+
+                        <div class="row mx-auto my-auto d-block mb-2">
+                            <a class="btn btn-dark mb-2" href="{% url 'proyectos' %}">Volver</a>
+                            <button type="submit" class="btn btn-success" >Guardar</button>
+                        </div>
+                    </div>
+     
+                </div>            
+
+                <div class="col-3">
+                    <img src="{% static 'images/default.png' %}" alt="Imagen del proyecto"
+                    width="150" height="auto" class="mx-auto my-auto d-block">
+                    <label for="foto">Fotografia del Proyecto:</label>
+                    <input type="file" name="foto" id="foto" class="form-control form-control-sm">
                 </div>
-                <div class="col-4 mb-4">
-                    {{ form.latitud.label_tag }}
-                    {{ form.latitud }}
-                    {{ form.latitud.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.longitud.label_tag }}
-                    {{ form.longitud }}
-                    {{ form.longitud.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.titular.label_tag }}
-                    {{ form.titular }}
-                    {{ form.titular.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.representante_legal.label_tag }}
-                    {{ form.representante_legal }}
-                    {{ form.representante_legal.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.detalle_luminarias.label_tag }}
-                    {{ form.detalle_luminarias }}
-                    {{ form.detalle_luminarias.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.tipo_alumbrado.label_tag }}
-                    {{ form.tipo_alumbrado }}
-                    {{ form.tipo_alumbrado.errors }}
-                </div>
-                <div class="col-6 mb-4">
-                    <label for="id_nv_cumplimiento">Nivel de cumplimiento</label>
-                    {{ form.nv_cumplimiento }}
-                    {{ form.nv_cumplimiento.errors }}
-                </div>
-                <div class="col-6 mb-4">
-                    {{ form.descripcion.label_tag }}
-                    {{ form.descripcion }}
-                    {{ form.descripcion.errors }}
-                </div>
-                <div class="col-6 mb-4">
-                    {{ form.estado }}
-                </div>
+
             </div>
-            <div class="row d-flex justify-content-end">
-                <div class="col-1 me-2">
-                    <a class="btn btn-dark" href="{% url 'proyectos' %}">Volver</a>
-                </div>
-                <div class="col-1">
-                    <button type="submit" class="btn btn-success" >Guardar</button>
-                </div>
-            </div>
+
         </form>
     </div>
 </div>

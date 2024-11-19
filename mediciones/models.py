@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from .choices import cumplimiento, tipo_instrumento, tipo_medicion
 from fiscalizacion.models import Fiscalizacion
+import os
+
 
 class InstrumentoMedicion(models.Model):
     tipo = models.CharField(max_length=1, choices=tipo_instrumento, verbose_name='Iipo')
@@ -31,6 +33,15 @@ class Medicion(models.Model):
     instrumento_medicion = models.ForeignKey(InstrumentoMedicion, null=False, on_delete=models.RESTRICT)
     fiscalizacion = models.ForeignKey(Fiscalizacion, null=False, on_delete=models.CASCADE, editable=False)
     creado = models.DateTimeField(default=timezone.now, editable=False)  
+
+    def generarNombre(instance, filename):
+        extension = os.path.splitex(filename)[1][1:]
+        ruta = 'medicion'
+        fecha = timezone.now().strftime("%d%m%Y_%H%M%S")
+        nombre = f"{fecha}.{extension}"
+        return os.path.join(ruta, nombre)
+    #
+    foto = models.ImageField(upload_to=generarNombre, null=True, default='medicion/medicion.png')
     
     def __str__(self):
         return "{} {}".format(self.tipo, self.valor_medido)

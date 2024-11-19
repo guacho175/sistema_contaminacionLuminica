@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block contenido %}
+{% load static %}
 <div class="row">
     <div class="col">
         <h1 class="text-center mb-5">Modificar Proyecto</h1>
@@ -9,7 +9,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <form method="post" action="{% url 'proyectoEditado' proyecto.id %}">
+        <form method="post" action="{% url 'proyectoEditado' proyecto.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
                 {{ form.non_field_errors }}
@@ -63,10 +63,19 @@
                 </div>
 
                 <div class="col-6 mb-4">
-                 
                     {{ form.estado }}
-                 
                 </div>
+
+
+
+                <div class="col-3">
+                    <img src="{{ proyecto.foto.url }}" alt="Imagen del proyecto"
+                    width="150" height="auto" class="mx-auto my-auto d-block">
+                    <label for="foto">Fotografia del Proyecto:</label>
+                    <input type="file" name="foto" id="foto" class="form-control form-control-sm">
+                </div>
+
+
             </div>
             <div class="row d-flex justify-content-end">
                 <div class="col-1">
