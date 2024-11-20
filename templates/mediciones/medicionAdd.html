@@ -7,48 +7,54 @@
         <h1 class="text-center mb-5">Nueva Medición para {{ fiscalizacion.proyecto.nombre }}</h1>
         <form method="post" enctype=multipart/form-data>
             {% csrf_token %}
+            {{ form.non_field_errors }}
             
             <div class="row">
-                {{ form.non_field_errors }}
-                <div class="col-4 mb-4">
-                    {{ form.tipo.label_tag }}
-                    {{ form.tipo }}
-                    {{ form.tipo.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.latitud.label_tag }}
-                    {{ form.latitud }}
-                    {{ form.latitud.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.longitud.label_tag }}
-                    {{ form.longitud }}
-                    {{ form.longitud.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.temperatura.label_tag }}
-                    {{ form.temperatura }}
-                    {{ form.temperatura.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.humedad.label_tag }}
-                    {{ form.humedad }}
-                    {{ form.humedad.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.valor_medido.label_tag }}
-                    {{ form.valor_medido }}
-                    {{ form.valor_medido.errors }}
-                </div>
-                <div class="col-4 mb-4">
-                    {{ form.observacion.label_tag }}
-                    {{ form.observacion }}
-                    {{ form.observacion.errors }}
-                </div>
-                <div class="col-6 mb-4">
-                    {{ form.instrumento_medicion.label_tag }}
-                    {{ form.instrumento_medicion }}
-                    {{ form.instrumento_medicion.errors }}
+                <div class="col-9">
+                    <div class="row pe-3">
+
+                        <div class="col-4 mb-4">
+                            {{ form.tipo.label_tag }}
+                            {{ form.tipo }}
+                            {{ form.tipo.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.latitud.label_tag }}
+                            {{ form.latitud }}
+                            {{ form.latitud.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.longitud.label_tag }}
+                            {{ form.longitud }}
+                            {{ form.longitud.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.temperatura.label_tag }}
+                            {{ form.temperatura }}
+                            {{ form.temperatura.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.humedad.label_tag }}
+                            {{ form.humedad }}
+                            {{ form.humedad.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.valor_medido.label_tag }}
+                            {{ form.valor_medido }}
+                            {{ form.valor_medido.errors }}
+                        </div>
+                        <div class="col-4 mb-4">
+                            {{ form.observacion.label_tag }}
+                            {{ form.observacion }}
+                            {{ form.observacion.errors }}
+                        </div>
+                        <div class="col-6 mb-4">
+                            {{ form.instrumento_medicion.label_tag }}
+                            {{ form.instrumento_medicion }}
+                            {{ form.instrumento_medicion.errors }}
+                        </div>
+    
+                    </div>
                 </div>
             </div>
             

@@ -1,8 +1,7 @@
 from django.db import models
 from django.utils import timezone
-from .choices import tipo_alumbrado, nivel_cumplimiento
-import os
-
+from .choices import tipo_alumbrado
+from services.utils.GenerarNombre import GenerarNombre
 
 # Create your models here.
 class Titular(models.Model):
@@ -72,16 +71,8 @@ class Proyecto(models.Model):
     detalle_luminarias = models.ForeignKey(DetalleLuminarias, null=False, on_delete=models.RESTRICT)
     representante_legal = models.ForeignKey(RepresentanteLegal, null=False, on_delete=models.RESTRICT)
     titular = models.ForeignKey(Titular, null=False, on_delete=models.RESTRICT)
-
-    
-    def generarNombre(instance, filename):
-        extension = os.path.splitext(filename)[1][1:]
-        ruta = 'proyectos'
-        fecha = timezone.now().strftime("%d%m%Y_%H%M%S")
-        nombre = f"{fecha}.{extension}"
-        return os.path.join(ruta, nombre)
     #
-    foto = models.ImageField(upload_to=generarNombre, null=True, default='proyectos/proyecto.png')
+    foto = models.ImageField(upload_to=GenerarNombre.generar_nombre, null=True, default='proyectos/proyecto.png')
 
 
     def __str__(self):

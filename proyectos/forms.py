@@ -8,7 +8,6 @@ class ProyectoForm(forms.ModelForm):
     latitud = forms.FloatField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Ingrese latitud'}))
     tipo_alumbrado = forms.CharField(widget=forms.Select(choices=tipo_alumbrado))
     descripcion = forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'class':'form-control', 'placeholder':'Descripción'}))
-    nv_cumplimiento = forms.CharField(widget=forms.Select(choices=nivel_cumplimiento))
 
     titular = forms.ModelChoiceField(
         queryset=Titular.objects.all(),

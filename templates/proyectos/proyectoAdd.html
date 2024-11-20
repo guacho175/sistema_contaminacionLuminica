@@ -9,8 +9,23 @@
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="row">
+
+                <div class="col-3">
+                    <img src="{% static 'images/default.png' %}" alt="Imagen del proyecto" width="150" height="auto"
+                        class="mx-auto my-auto d-block mb-2">
+                    <label for="foto">Fotografia del Proyecto:</label>
+                    <input type="file" name="foto" id="foto" class="form-control form-control-sm">
+
+                    <div class="mt-3">
+                        {{ form.tipo_alumbrado.label_tag }}
+                        {{ form.tipo_alumbrado }}
+                        {{ form.tipo_alumbrado.errors }}
+                    </div>
+                </div>
+
                 <div class="col-9">
-                    <div class="row pe-3">
+                    <div class="row ms-3">
+
                         <div class="col-4 mb-4">
                             {{ form.nombre.label_tag }}
                             {{ form.nombre }}
@@ -41,42 +56,24 @@
                             {{ form.detalle_luminarias }}
                             {{ form.detalle_luminarias.errors }}
                         </div>
-                        <div class="col-4 mb-4">
-                            {{ form.tipo_alumbrado.label_tag }}
-                            {{ form.tipo_alumbrado }}
-                            {{ form.tipo_alumbrado.errors }}
-                        </div>
-                        <div class="col-6 mb-4">
-                            <label for="id_nv_cumplimiento">Nivel de cumplimiento</label>
-                            {{ form.nv_cumplimiento }}
-                            {{ form.nv_cumplimiento.errors }}
-                        </div>
                         <div class="col-12 mb-4">
                             {{ form.descripcion.label_tag }}
                             {{ form.descripcion }}
                             {{ form.descripcion.errors }}
                         </div>
-                        <div class="col-6 mb-4">
+                        <div class="col-6">
                             {{ form.estado }}
                         </div>
 
                         <div class="row mx-auto my-auto d-block mb-2">
                             <a class="btn btn-dark mb-2" href="{% url 'proyectos' %}">Volver</a>
-                            <button type="submit" class="btn btn-success" >Guardar</button>
+                            <button type="submit" class="btn btn-success">Guardar</button>
                         </div>
+
                     </div>
-     
-                </div>            
 
-                <div class="col-3">
-                    <img src="{% static 'images/default.png' %}" alt="Imagen del proyecto"
-                    width="150" height="auto" class="mx-auto my-auto d-block">
-                    <label for="foto">Fotografia del Proyecto:</label>
-                    <input type="file" name="foto" id="foto" class="form-control form-control-sm">
                 </div>
-
             </div>
-
         </form>
     </div>
 </div>

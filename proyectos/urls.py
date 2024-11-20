@@ -11,6 +11,3 @@ urlpatterns = [
     path('proyectoEdit/<int:proyecto_id>', v.cargar_editar_proyecto, name='editarProyecto'),
     path('proyectoEditado/<int:proyecto_id>', v.editar_proyecto, name='proyectoEditado'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

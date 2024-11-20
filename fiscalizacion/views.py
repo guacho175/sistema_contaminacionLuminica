@@ -12,6 +12,7 @@ from mediciones.forms import MedicionForm
 
 def cargar_fiscalizacion(request):
     """Vista para cargar fiscalizaciones con mediciones y renderizar el mapa."""
+    
     fiscalizaciones_con_mediciones, todas_las_mediciones = FiscalizacionService.obtener_fiscalizaciones_con_mediciones()
 
     mapa = MapaService.crear_mapa()
@@ -30,6 +31,7 @@ def cargar_fiscalizacion(request):
 
 def crear_fiscalizacion(request):
     """Vista para crear una nueva fiscalización."""
+
     if request.method == 'POST':
         form = FiscalizacionForm(request.POST)
         if form.is_valid():
@@ -45,6 +47,7 @@ def crear_fiscalizacion(request):
 
 def detalle_fiscalizacion(request, proyecto_id):
     """Vista para mostrar el detalle de una fiscalización asociada a un proyecto."""
+
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
     mediciones = Medicion.objects.filter(fiscalizacion__proyecto=proyecto).select_related('fiscalizacion__usuario')
 
@@ -56,6 +59,7 @@ def detalle_fiscalizacion(request, proyecto_id):
 
 def eliminar_fiscalizacion(request, fiscalizacion_id):
     """Vista para eliminar una fiscalización."""
+
     fiscalizacion = get_object_or_404(Fiscalizacion, id=fiscalizacion_id)
 
     if request.method == 'POST':
@@ -81,7 +85,7 @@ def nueva_medicion(request, fiscalizacion_id):
             medicion = form.save(commit=False)
             medicion.fiscalizacion = fiscalizacion
             medicion.save()
-            messages.success(request, 'Medición Ingresada.')
+            messages.success(request, 'Medición Ingresada. Presiona "Volver" o sigue ingresando Mediciones')
             
             return HttpResponseRedirect(current_url)  # Redirige a la misma página
     else:

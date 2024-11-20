@@ -11,6 +11,7 @@ def crear_proyecto(request):
         form = ProyectoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El proyecto se ingreso correctamente.')
             return redirect('/proyectos/')
     else:
         form = ProyectoForm()
@@ -59,6 +60,8 @@ def editar_proyecto(request, proyecto_id):
                 proyecto.foto = request.FILES['foto'] # Asignamos imagen
 
             form.save()
+            messages.success(request, 'El proyecto se modifico correctamente.')
+
             return redirect('/proyectos/')
     else:
         form = ProyectoForm(instance=proyecto)
