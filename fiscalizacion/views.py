@@ -36,7 +36,7 @@ def crear_fiscalizacion(request):
         form = FiscalizacionForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Fiscalización ingresada exitosamente.')
+            messages.success(request, 'Proyecto ingresado exitosamente a fiscalizaciones.')
             return redirect('')  
         else:
             messages.error(request, 'Hubo un error al crear la fiscalización. Revisa los datos ingresados.')
@@ -65,7 +65,7 @@ def eliminar_fiscalizacion(request, fiscalizacion_id):
     if request.method == 'POST':
         try:
             fiscalizacion.delete()
-            messages.success(request, 'El registro se eliminó correctamente.')
+            messages.success(request, f'El registro {fiscalizacion.proyecto} se eliminó correctamente.')
             return redirect('') 
         except RestrictedError as e:
             messages.error(request, f'No se puede eliminar el registro: {e.args[0]}')
@@ -80,12 +80,12 @@ def nueva_medicion(request, fiscalizacion_id):
     current_url = request.META.get('HTTP_REFERER', '/')  # Captura la URL actual o usa '/' como predeterminado
 
     if request.method == "POST":
-        form = MedicionForm(request.POST)
+        form = MedicionForm(request.POST, request.FILES)
         if form.is_valid():
             medicion = form.save(commit=False)
             medicion.fiscalizacion = fiscalizacion
             medicion.save()
-            messages.success(request, 'Medición Ingresada. Presiona "Volver" o sigue ingresando Mediciones')
+            messages.success(request, 'Medición Ingresada. Presiona "Volver" para salir o sigue ingresando mediciones')
             
             return HttpResponseRedirect(current_url)  # Redirige a la misma página
     else:
@@ -95,3 +95,28 @@ def nueva_medicion(request, fiscalizacion_id):
         'fiscalizacion': fiscalizacion,
         'form': form
     })
+
+
+def eliminar_medicion(request, medicion_id):
+    """Vista para eliminar una medición."""
+    
+    medicion = get_object_or_404(Medicion, id=medicion_id)
+
+    if request.method == 'POST':
+        try:
+            datosDel = {
+                'id': medicion.id
+            }
+            fiscalizacion_id = medicion.fiscalizacion.id  # Obtiene el ID de la fiscalización
+
+            medicion.delete()
+            messages.success(request, f'La medición {datosDel["id"]} se eliminó correctamente.')
+            #return redirect(f'fiscalizacion/{fiscalizacion_id}/detalle/')
+            return redirect('')
+
+        except RestrictedError as e:
+            messages.error(request, f'No se puede eliminar la medición: {e.args[0]}')
+        except Exception as e:
+            messages.error(request, f'Error al eliminar la medición: {str(e)}')
+
+    return render(request, 'mediciones/medicionDel.html', {'medicion': medicion})

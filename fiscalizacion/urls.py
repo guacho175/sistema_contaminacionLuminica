@@ -11,6 +11,7 @@ urlpatterns = [
     path('fiscalizacionDel/<int:fiscalizacion_id>/', v.eliminar_fiscalizacion, name='eliminarFiscalizacion'),
     path('fiscalizacion/<int:proyecto_id>/detalle/', v.detalle_fiscalizacion, name='detalleFiscalizacion'),
     path('medicionAdd/<int:fiscalizacion_id>/', v.nueva_medicion, name='nuevaMedicion'),
+    path('medicionDel/<int:medicion_id>/', v.eliminar_medicion, name='eliminarMedicion')
 
 ]
 

@@ -74,7 +74,7 @@
         font-size: 15px
         }
 
-        .alertTime {
+        .alertPosition {
             position: fixed; /* Posiciona el elemento de forma fija */
             bottom: 20px; /* Ajusta la posición desde la parte inferior */
             left: 50%; /* Centra horizontalmente */
@@ -86,6 +86,10 @@
         .fade-out {
             opacity: 0;
             transition: opacity 0.5s ease;
+        }
+        .btn-close:focus {
+            outline: none;
+            box-shadow: none;
         }
  
 
@@ -154,7 +158,7 @@
                 <i class='bx bxs-tree'></i>
             </a>
 
-            <a href="{% url 'mediciones' %}" class="{% if request.path == '/mediciones/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Mediciones">
+            <a href="{% url '' %}" class="{% if request.path == '//' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Mediciones">
                 <i class="bi bi-lightbulb"></i>
             </a>
 
@@ -175,13 +179,6 @@
         
         <div class="content mt-5 col-md-9">
             
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alertTime alert alert-{{ message.tags }} mt-3 text-center id="mensaje-{{ forloop.counter }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
 
             {% block contenido %}
             <div class="row">
@@ -199,7 +196,30 @@
         {% endblock pie %}
     </div>
 
+    {% if messages %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible alertPosition fade show" id="message-{{ forloop.counter }}" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                {% for message in messages %}
+                    setTimeout(function() {
+                        var alert = document.getElementById('message-{{ forloop.counter }}');
+                        if (alert) {
+                            var bsAlert = new bootstrap.Alert(alert);
+                            bsAlert.close();
+                        }
+                    }, 10000);
+                {% endfor %}
+            });
+        </script>
+    {% endif %}
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script>
@@ -207,16 +227,6 @@
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
         })   
-    </script>
-
-    <script>
-        setTimeout(function() {
-            var mensajes = document.querySelectorAll('.alertTime');
-            mensajes.forEach(function(mensaje) {
-                mensaje.classList.add('fade-out'); // Opcional para una animación de desvanecimiento
-                setTimeout(() => mensaje.remove(), 500); // Tiempo de espera para eliminar tras la animación
-            });
-        }, 4000);
     </script>
 
 </body>

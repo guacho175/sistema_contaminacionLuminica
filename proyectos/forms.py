@@ -1,6 +1,8 @@
 from django import forms
 from .choices import tipo_alumbrado, nivel_cumplimiento
 from .models import Titular, RepresentanteLegal, DetalleLuminarias,  Proyecto
+from services.utils.validators import validar_tamano_archivo
+
 
 class ProyectoForm(forms.ModelForm):
     nombre = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Ingrese nombre'}))
@@ -30,9 +32,14 @@ class ProyectoForm(forms.ModelForm):
         initial=1
     )
 
+
     class Meta:
         model = Proyecto
         fields = '__all__'
+
+    def clean_foto(self):
+        foto = self.cleaned_data.get('foto')
+        return validar_tamano_archivo(foto, 100)
 
 
 

@@ -63,6 +63,12 @@ def editar_proyecto(request, proyecto_id):
             messages.success(request, 'El proyecto se modifico correctamente.')
 
             return redirect('/proyectos/')
+        
+        else:
+            if 'foto' in form.errors:
+                messages.warning(request, form.errors['foto'][0])  # Muestra el primer error relacionado con 'foto'
+                return redirect(f'/proyectoEdit/{proyecto_id}')
+
     else:
         form = ProyectoForm(instance=proyecto)
     
