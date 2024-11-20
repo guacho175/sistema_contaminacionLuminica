@@ -7,6 +7,7 @@
 <div class="card mb-4">
     <div class="card-body">
         <h3>Proyecto: {{ proyecto.nombre }}</h3>
+        <p><img src="{{proyecto.foto.url}}" alt="" width="500" height="auto"></p>
         <p><strong>Tipo de Alumbrado:</strong> {{ proyecto.get_tipo_alumbrado_display }}</p>
         <p><strong>Ubicación:</strong> Latitud {{ proyecto.latitud }}, Longitud {{ proyecto.longitud }}</p>
         <p><strong>Inspector: </strong>{{ proyecto.fiscalizacion_set.first.usuario.nombre }} {{ proyecto.fiscalizacion_set.first.usuario.a_paterno }}</p>
@@ -23,6 +24,7 @@
             <th>Cumplimiento</th>
             <th>Observaciones</th>
             <th>Fecha</th>
+            <th>img</th>
             <th class="text-center" colspan="1" rowspan="2">Acciones</th>
 
         </tr>
@@ -37,6 +39,12 @@
             <td>{{ medicion.observacion }}</td>
             <td>{{ medicion.creado }}</td>
             <td>
+               
+                <img src="{{ medicion.foto.url }}" alt="Foto de medición" width="50" height="auto">
+                
+            </td>
+
+            <td>
             <div class="d-flex justify-content-center">
                 <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
                     <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>
@@ -49,7 +57,7 @@
         </tr>
         {% empty %}
         <tr>
-            <td colspan="6">No hay mediciones asociadas a este proyecto.</td>
+            <td colspan="8">No hay mediciones asociadas a este proyecto.</td>
         </tr>
         {% endfor %}
     </tbody>

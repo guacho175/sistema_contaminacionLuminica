@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .forms import MedicionForm
 from .models import Medicion
 from proyectos.models import Proyecto
@@ -80,12 +81,13 @@ def cargar_medicion(request):
 
 def crear_medicion(request):
     if request.method == 'POST':
-        form = MedicionForm(request.POST)
+        form = MedicionForm(request.POST, request.FILES)
         if form.is_valid():
             nuevo_registro = form.save()
             # Actualizar el estado del proyecto asociado
             proyecto = nuevo_registro.proyecto
             proyecto.save()
+            messages.success(request, 'La medición se ingreso correctamente.')
             return redirect('/mediciones/')
     return redirect('/mediciones/')
 

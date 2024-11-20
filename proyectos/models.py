@@ -72,7 +72,7 @@ class Proyecto(models.Model):
     representante_legal = models.ForeignKey(RepresentanteLegal, null=False, on_delete=models.RESTRICT)
     titular = models.ForeignKey(Titular, null=False, on_delete=models.RESTRICT)
     #
-    foto = models.ImageField(upload_to=GenerarNombre.generar_nombre, null=True, default='proyectos/proyecto.png')
+    foto = models.ImageField(upload_to=GenerarNombre.generar_nombre_proyecto, null=True, default='proyectos/proyecto.png')
 
 
     def __str__(self):
