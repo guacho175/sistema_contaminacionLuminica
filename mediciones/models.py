@@ -4,8 +4,6 @@ from .choices import cumplimiento, tipo_instrumento, tipo_medicion
 from fiscalizacion.models import Fiscalizacion
 from services.utils.GenerarNombre import GenerarNombre
 
-import os
-
 
 class InstrumentoMedicion(models.Model):
     tipo = models.CharField(max_length=1, choices=tipo_instrumento, verbose_name='Iipo')

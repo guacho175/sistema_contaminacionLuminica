@@ -1,0 +1,171 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="44FBD170-1577-3488-0850-765B3FE4C50F" name="MEDICION">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 16:41:58 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="6D9A3459-B5D6-8785-F80E-F84C237F795C">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 17:58:18 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="INSTRUMENTO MEDICION id" id="9536E31E-4DB2-F75D-7419-BB3C49003708">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 18:02:14 UTC</createdTime>
+<generatorID>3C4E40F1-6DA0-6CAD-1D9E-7848C9577EC9</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<referedAttribute>83E5B272-2B70-E359-979B-675506F4A034</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="latitud" id="BF3B8BFD-09A0-90B3-7E02-3F09AED002F3">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 19:17:35 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="longitud" id="F266FC99-5C1B-DC50-8898-092C3C0B5F5A">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 19:17:23 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="valor medido" id="CB0E7B2C-DB29-371C-7CE2-2AD93689905E">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 19:17:10 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cumplimiento" id="7923C430-A826-CE77-A271-CFB789AF7E57">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-03 20:02:56 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="img punto medicion" id="39B06116-AB3F-6133-6171-8B4FA368BE5A">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 19:19:21 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="observacion" id="1729DE87-20AB-09BC-BB6D-773C9C03A25E">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:15:59 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500</dataTypeSize>
+<ownDataTypeParameters>500,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="creado" id="FDD0EDD4-5D5F-D54E-9780-7C25B9FB0EC3">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 19:03:49 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="C0579610-C67E-29AD-AC47-47E6319089BA">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:39:01 UTC</createdTime>
+<generatorID>2B808C56-47A9-9BA5-7104-83E8773BE4FD</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<referedAttribute>8755AF92-3515-326D-33EF-A9DCF576DDD2</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2B224803-AB9E-2B72-8E85-1DAD3556715F" name="MEDICION PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 17:58:25 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6D9A3459-B5D6-8785-F80E-F84C237F795C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
