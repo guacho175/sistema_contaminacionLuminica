@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="93ACE321-EA15-AEB0-63EC-B6D43D901040" name="INSTRUMENTO MEDICION">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>A556FCD7-F757-E254-95D8-DD61273B9AB3</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="83E5B272-2B70-E359-979B-675506F4A034">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>6497C40F-D1BF-358A-E7DA-47FADED0A7BE</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tipo" id="D0EC3C41-F54C-2C25-69C0-EADABD856DB4">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>AFA4DE42-F218-7854-AD8B-9322F35F220D</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="marca" id="2AF33ACA-56D8-A0D0-CADB-2CC2FA23095A">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>862B311E-564F-6CC5-577C-A8F1D092F5A5</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="modelo" id="6DD9073E-680F-0ACD-5A4F-E5FC94B393E3">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>78AB2DE4-A14B-8421-E242-3D2B140DEA5F</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="num serie" id="2D1D8936-FA44-7B11-3CDF-C7A2C07351BE">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>1D899C0D-85FF-5BBC-5CDB-DB51691EAFFE</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="35073019-DD0A-0F65-B7E4-F0FCB91E037D" name="INSTRUMENTO MEDICION PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>CCBE0B7D-9273-AE40-8A42-FC4FD97DDC19</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>83E5B272-2B70-E359-979B-675506F4A034</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

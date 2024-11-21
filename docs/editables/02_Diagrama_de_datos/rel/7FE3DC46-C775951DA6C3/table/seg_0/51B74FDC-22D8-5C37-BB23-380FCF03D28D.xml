@@ -1,0 +1,200 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="51B74FDC-22D8-5C37-BB23-380FCF03D28D" name="MEDICION">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>44FBD170-1577-3488-0850-765B3FE4C50F</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="ECDB04F7-7A6D-07DD-D726-ED0B82291A79">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>6D9A3459-B5D6-8785-F80E-F84C237F795C</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="latitud" id="5C254320-E60A-C58C-931E-449ACA4A0E5C">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>BF3B8BFD-09A0-90B3-7E02-3F09AED002F3</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="longitud" id="3C77A79B-5262-4586-7492-4FC06B8D40E9">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>F266FC99-5C1B-DC50-8898-092C3C0B5F5A</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="temperatura" id="B2C97717-7E03-BF36-C68B-754287B5251B">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>837BF38C-AD49-BD4C-0BDB-7B9C65ED7C8B</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="humedad" id="AC1232E7-5EE5-EFF0-7EF5-BB12BF26EF81">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>C884788D-EFD9-9923-C0ED-D79E2CA950E3</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="img_entorno" id="669355DC-3474-E54A-2298-C9103A0683C7">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>1E2D4110-8E3A-1257-1BC6-F9448A6EF36C</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="img_punto_medicion" id="EFBFBA42-3B2F-4741-2482-292AC8363CD7">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>39B06116-AB3F-6133-6171-8B4FA368BE5A</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="img_luminaria" id="26C2FA74-C6C7-CA8C-4C97-B7CE45A4F052">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>912A2607-D7C4-2724-5A5E-70423E3E6216</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="valor_medido" id="2F5B4BCD-612E-C4D3-C997-153776DE159B">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>CB0E7B2C-DB29-371C-7CE2-2AD93689905E</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cumplimiento" id="B558299D-5D7F-D99B-CAD6-CA21B6A57F10">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>7923C430-A826-CE77-A271-CFB789AF7E57</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="creado" id="DADE700B-6114-98F1-051C-292416E091E9">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>FDD0EDD4-5D5F-D54E-9780-7C25B9FB0EC3</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USUARIO_id" id="E274D6C2-24D7-391F-BB2F-93213BD60BDE">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>049BA721-2568-E595-CDB3-2199A32B26A6</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="92C552FD-59F5-FF2D-B691-5F1A555862BB" referredColumn="CE7CF4F2-B22F-44D9-ABFD-800948A8A5A2"/>
+</associations>
+</Column>
+<Column name="INSTRUMENTO_MEDICION_id" id="3D80512C-2EA2-41AB-19BD-1BC1DCF72E92">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>9536E31E-4DB2-F75D-7419-BB3C49003708</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AE499518-2834-8F7B-E03E-CC7CFD864D2B" referredColumn="EE7C7ABC-2275-4515-DE11-25F893F93B0D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B9180F61-B791-492B-6058-78E95B88A832" name="MEDICION_PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>2B224803-AB9E-2B72-8E85-1DAD3556715F</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ECDB04F7-7A6D-07DD-D726-ED0B82291A79"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0E6D67BC-E7DD-9156-16CD-D4B9834701B0" name="MEDICION_USUARIO_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>30652BE2-B09A-D69F-00C7-FE23D308BA03</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E274D6C2-24D7-391F-BB2F-93213BD60BDE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C61C73A8-391E-5DD5-E98C-0D2C66B0A4C8" name="MEDICION_INSTRUMENTO_MEDICION_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>3C4E40F1-6DA0-6CAD-1D9E-7848C9577EC9</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3D80512C-2EA2-41AB-19BD-1BC1DCF72E92"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

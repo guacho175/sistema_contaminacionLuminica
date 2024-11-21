@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FF53732F-1F7D-4073-C3BF-D50EFF13E985" name="INSTRUMENTO_MEDICION">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>93ACE321-EA15-AEB0-63EC-B6D43D901040</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="EE7C7ABC-2275-4515-DE11-25F893F93B0D">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>83E5B272-2B70-E359-979B-675506F4A034</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo" id="92A11CE6-C932-8016-D374-33F4B886109A">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>D0EC3C41-F54C-2C25-69C0-EADABD856DB4</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="marca" id="F7CD0B8D-862C-9FFD-6D20-BAF9D48F06C9">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>2AF33ACA-56D8-A0D0-CADB-2CC2FA23095A</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="modelo" id="0F5F183D-1418-0BA9-1F99-9CCB26911451">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>6DD9073E-680F-0ACD-5A4F-E5FC94B393E3</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="num_serie" id="DA0F4E6E-E044-28BB-14B6-9629F878A55F">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>2D1D8936-FA44-7B11-3CDF-C7A2C07351BE</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2A8122A9-F042-9E39-5BBE-46E058953F61" name="INSTRUMENTO_MEDICION_PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:50:26 UTC</createdTime>
+<generatorID>35073019-DD0A-0F65-B7E4-F0FCB91E037D</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EE7C7ABC-2275-4515-DE11-25F893F93B0D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AF5AE2CD-84CD-D29B-C63E-3AA0AE9B8196" name="CARGO">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>0BDEFA7A-08EF-9E76-1AE7-8908A67D1587</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="3C9AC7DC-884F-2D80-71EC-075DE27DD0EC">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>EEA8E35F-0E94-1A80-A8E1-DBDC3E55308C</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="C61F571F-F702-23DD-2280-1DE241453121">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>EC0A783A-8A7D-D9AF-925A-71CB76F2945A</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="133A5C6B-1971-704F-D82D-008B31C55749">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>B06CE5A4-E77E-CCCC-73C7-9D2A43E3708F</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500</dataTypeSize>
+<ownDataTypeParameters>500,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0E9184D5-6B2B-D2B0-1355-99BA627D0FC9" name="CARGO PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>BE28F50C-9DEF-CDE0-85D9-F761DAA4B8BD</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3C9AC7DC-884F-2D80-71EC-075DE27DD0EC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

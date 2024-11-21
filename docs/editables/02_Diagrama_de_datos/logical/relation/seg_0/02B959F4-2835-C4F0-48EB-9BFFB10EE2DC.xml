@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="INSPECTOR_INSTITUCION_FK" directorySegmentName="seg_0" id="02B959F4-2835-C4F0-48EB-9BFFB10EE2DC">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 16:37:29 UTC</createdTime>
+<generatorID>826DEF9D-533E-B042-1900-2CEA29618C5B</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<engineerTo>
+<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
+<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+</engineerTo>
+<sourcePk>721F0836-53AA-6B79-B0D6-8FE1377D0EA6</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>70753FCB-912F-48E1-43EF-5BEFFCD68B59</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>74CF0FBB-294B-BC95-B951-0155A093F082</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

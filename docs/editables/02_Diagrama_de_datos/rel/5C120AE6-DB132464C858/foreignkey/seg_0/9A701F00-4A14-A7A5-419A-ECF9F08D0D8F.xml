@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9A701F00-4A14-A7A5-419A-ECF9F08D0D8F" containerWithKeyObject="791031FB-7826-20EC-8B56-83E6E0A1D7FF" localFKIndex="7798F554-F0DB-D230-0751-10DB531874F1" name="PROYECTO_DETALLE_LUMINARIAS_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>EDA4BED8-6D2D-A965-6946-A387AFE688C8</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<referredTableLongName>DETALLE_LUMINARIAS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>91A2CBA5-84FA-8756-17E5-4A33C919EF73</referredTableID>
+<keyObject>F330BC4C-F46A-B2F9-510D-8034B0FA51F1</keyObject>
+<referredKeyID>F330BC4C-F46A-B2F9-510D-8034B0FA51F1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

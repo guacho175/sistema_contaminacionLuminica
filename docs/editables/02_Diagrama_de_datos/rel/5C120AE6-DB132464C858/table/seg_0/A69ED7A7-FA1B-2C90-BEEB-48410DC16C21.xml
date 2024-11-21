@@ -1,0 +1,161 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A69ED7A7-FA1B-2C90-BEEB-48410DC16C21" name="USUARIO">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>74CF0FBB-294B-BC95-B951-0155A093F082</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="12838165-9074-AB5F-C151-F58FD0AD5EE9">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>55832961-1764-4808-738A-FD114864AB48</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="run" id="256AE746-B63B-4322-2ABF-12D303DB0C04">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>44B1643E-3B04-CFEA-0187-A86F46006053</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="F4DAAC1A-219B-6A6F-A0EF-F620744EA845">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>D2E341DC-5C25-EFA5-E062-4681AA3F3707</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="a_paterno" id="37F7E9F1-2081-CDC4-7BBB-F55D295E1973">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>AEE2981C-7AC0-DFE0-683F-BAD9A3CFB11F</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="a_materno" id="C1902DFB-F6E3-5289-2F71-9A28D5AADBD4">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>0269293E-26BD-AFAE-7BCA-53FCD3BC5B2A</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="F9B0AB5D-EC3A-A947-BD6C-1A95A078D4B5">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>4E1C9C8E-C225-AC75-ABA1-03D4B82B5592</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="correo" id="ABF136D1-99AA-1009-4204-EBAC9F311DD4">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>BE40878A-40D6-A57B-70C5-71832A75CED1</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="INSTITUCION_id" id="8089005E-E0E6-F263-A811-302A64A0FF1E">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>883E5970-FF66-0404-C6C6-6DF72FBDE53D</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="238E799E-CB8A-586A-2D5B-7C9E7F1CF76E" referredColumn="D022AD8A-3AA3-39A4-F39F-50416C6617B9"/>
+</associations>
+</Column>
+<Column name="CARGO_id" id="835EA80D-E415-8056-3177-7EDBCBA8687A">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>C67629C3-93C7-647D-E147-5D6C8882197C</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4AE11776-B2FA-A533-C185-74C54441C1A5" referredColumn="4791602C-8842-B70C-CD48-E86C8F4CFCBF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C06B52FC-30F8-7728-45A2-D3C2BD64FFF3" name="USUARIO_PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>A2D6DEE8-CC81-2B2B-6971-E25463878114</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="12838165-9074-AB5F-C151-F58FD0AD5EE9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FC56DA15-5F64-485E-1293-4A1442D7CC2C" name="USUARIO_CARGO_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>522AC309-18BB-ECA8-5DE5-356EB3A39B16</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="835EA80D-E415-8056-3177-7EDBCBA8687A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ED2346C1-A490-CB17-0C42-606CB648218D" name="USUARIO_INSTITUCION_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-09 17:42:40 UTC</createdTime>
+<generatorID>02B959F4-2835-C4F0-48EB-9BFFB10EE2DC</generatorID>
+<ownerDesignName>02_Diagrama_de_datos</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8089005E-E0E6-F263-A811-302A64A0FF1E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
