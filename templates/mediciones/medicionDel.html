@@ -14,9 +14,7 @@
                 <p class="card-text">Ingresado el {{medicion.creado}}</p>
                 <form method="post">
                     {% csrf_token %}
-                    <a href="{% url '' %}" class="btn btn-dark me-3">Cancelar</a>
-                    {% comment %} <a href="{% url 'detalleFiscalizacion' medicion.fiscalizacion.id %}" class="btn btn-dark me-3">Cancelar</a> {% endcomment %}
-
+                    <a href="{% url 'detalleFiscalizacion' medicion.fiscalizacion.proyecto.id %}" class="btn btn-dark me-3">Cancelar</a>
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
             </div>
