@@ -5,7 +5,6 @@ from .models import Proyecto
 from .forms import ProyectoForm
 
 
-
 def crear_proyecto(request):
     if request.method == 'POST':
         form = ProyectoForm(request.POST, request.FILES)
