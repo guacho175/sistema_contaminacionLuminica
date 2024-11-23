@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('mediciones.urls')),
     path('', include('proyectos.urls')),
     path('', include('usuarios.urls')),
+    path('', include('ApiMedicion.urls')),
 
 ]
 
