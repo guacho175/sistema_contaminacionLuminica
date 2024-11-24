@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -28,6 +28,44 @@ def cargar_medicion(request):
         )
     }
     return JsonResponse(data)
+
+
+
+
+
+
+@csrf_exempt
+def guardar_foto_proyecto(request):
+    if request.method == "POST":
+        try:
+            # Obtener datos de la solicitud
+            proyecto_id = request.POST.get("proyecto_id")
+            foto_contenido = request.FILES.get("foto")
+
+            if not proyecto_id or not foto_contenido:
+                return JsonResponse({"error": "Faltan campos requeridos: proyecto_id o foto"}, status=400)
+
+            # Verificar que el proyecto existe
+            try:
+                proyecto = Proyecto.objects.get(id=proyecto_id)
+            except Proyecto.DoesNotExist:
+                return JsonResponse({"error": "El proyecto no existe"}, status=404)
+
+            # Guardar la foto automáticamente usando el método definido en el modelo
+            proyecto.foto.save(foto_contenido.name, foto_contenido, save=True)
+
+            return JsonResponse({
+                "mensaje": "Foto guardada exitosamente",
+                "proyecto_id": proyecto.id,
+                "foto_url": proyecto.foto.url
+            }, status=200)
+
+        except Exception as e:
+            return JsonResponse({"error": f"Error al procesar la solicitud: {str(e)}"}, status=500)
+
+    return JsonResponse({"error": "Método no permitido"}, status=405)
+
+
 
 
 #MODELS USUARIO
@@ -88,6 +126,30 @@ def cargar_usuario(request):
     }
     return JsonResponse(data)
 
+
+def cargar_modelo_usuario(request):
+    if request.method == "GET":
+        # Obtener datos de Cargo
+        cargos = Cargo.objects.all().values('id', 'nombre', 'descripcion')
+        
+        # Obtener datos de Institucion
+        instituciones = Institucion.objects.all().values('id', 'nombre', 'descripcion')
+        
+        # Obtener datos de Usuario
+        usuarios = Usuario.objects.all().values(
+            'id', 'run', 'nombre', 'a_paterno', 'a_materno', 'correo', 'cargo_id', 'institucion_id'
+        )
+        
+        # Construir la respuesta JSON
+        data = {
+            'cargos': list(cargos),
+            'instituciones': list(instituciones),
+            'usuarios': list(usuarios),
+        }
+        return JsonResponse(data, status=200)
+    
+    return JsonResponse({'error': 'Método no permitido'}, status=405)
+
 # MODELS PROYECTO
 def cargar_proyecto(request):
     proyecto = Proyecto.objects.all()
@@ -127,41 +189,79 @@ def cargar_detalle_luminaria(request):
     }
     return JsonResponse(data)
 
+
+
+
+
 def cargar_modelo_proyecto(request):
-    proyectos = Proyecto.objects.all().values(
-        'id', 'nombre', 'latitud', 'longitud', 'tipo_alumbrado',
-        'descripcion', 'detalle_luminarias_id', 'representante_legal_id',
-        'titular_id', 'foto'
-    )
-    titulares = Titular.objects.all().values(
-        'id', 'run', 'nombre', 'a_paterno', 'a_materno', 'direccon', 'correo'
-    )
-    representantes = RepresentanteLegal.objects.all().values(
-        'id', 'run', 'nombre', 'a_paterno', 'a_materno', 'direccon', 'correo'
-    )
-    detalles_luminarias = DetalleLuminarias.objects.all().values(
-        'id', 'cantidad', 'tipo_lampara', 'marca', 'modelo',
-        'potencia', 'fecha_instalacion', 'cod_certificacion', 'fecha_certificacion'
-    )
+    proyectos = Proyecto.objects.all()
+    data = []
 
-    data = {
-        'proyectos': list(proyectos),
-        'titulares': list(titulares),
-        'representantes': list(representantes),
-        'detalles_luminarias': list(detalles_luminarias)
-    }
+    for proyecto in proyectos:
+        detalle_luminarias = get_object_or_404(DetalleLuminarias, id=proyecto.detalle_luminarias_id)
+        representante = get_object_or_404(RepresentanteLegal, id=proyecto.representante_legal_id)
+        titular = get_object_or_404(Titular, id=proyecto.titular_id)
 
-    return JsonResponse(data)
+        # Construir el JSON para cada proyecto
+        data.append({
+            'id': proyecto.id,
+            'nombre': proyecto.nombre,
+            'latitud': proyecto.latitud,
+            'longitud': proyecto.longitud,
+            'tipo_alumbrado': proyecto.tipo_alumbrado,
+            'descripcion': proyecto.descripcion,
+            'foto': proyecto.foto.url if proyecto.foto else None,  # Convertir ImageField a URL
+            'detalle_luminarias': {
+                'id': detalle_luminarias.id,
+                'cantidad': detalle_luminarias.cantidad,
+                'tipo_lampara': detalle_luminarias.tipo_lampara,
+                'marca': detalle_luminarias.marca,
+                'modelo': detalle_luminarias.modelo,
+                'potencia': detalle_luminarias.potencia,
+                'fecha_instalacion': detalle_luminarias.fecha_instalacion,
+                'cod_certificacion': detalle_luminarias.cod_certificacion,
+                'fecha_certificacion': detalle_luminarias.fecha_certificacion,
+            },
+            'representante_legal': {
+                'id': representante.id,
+                'nombre': representante.nombre,
+                'a_paterno': representante.a_paterno,
+                'a_materno': representante.a_materno,
+            },
+            'titular': {
+                'id': titular.id,
+                'nombre': titular.nombre,
+                'a_paterno': titular.a_paterno,
+                'a_materno': titular.a_materno,
+            }
+        })
+
+    return JsonResponse({'proyectos': data}, safe=False)
+
+
 
 
 # MODELS FISCALIZACION
 def cargar_fiscalizacion(request):
-    detalle = Fiscalizacion.objects.all()
-    data = {
-        'fiscalizaciones':list(
-            detalle.values('id','proyecto_id','usuario_id')
-        )
-    }
-    return JsonResponse(data)
+    if request.method == "GET":
+        # Obtener todas las fiscalizaciones
+        detalle = Fiscalizacion.objects.select_related('proyecto', 'usuario').all()
+
+        # Construir el JSON con los nombres en lugar de los IDs
+        data = {
+            'fiscalizaciones': [
+                {
+                    'id': fiscalizacion.id,
+                    'proyecto_id': fiscalizacion.proyecto.id,
+                    'proyecto_nombre': fiscalizacion.proyecto.nombre,  # Nombre del proyecto
+                    'usuario_nombre': f"{fiscalizacion.usuario.nombre} {fiscalizacion.usuario.a_paterno}",  # Nombre completo del usuario
+                }
+                for fiscalizacion in detalle
+            ]
+        }
+        return JsonResponse(data, safe=False)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+
 
 

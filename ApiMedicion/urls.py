@@ -5,6 +5,7 @@ urlpatterns = [
     #path('', v.inicio, name=''),
     path('api_instrumentos_medicion', v.cargar_instrumento_medicion, name='api_instrumentos_medicion'),
     path('api_mediciones', v.cargar_medicion, name='api_mediciones'),
+    path('guardar_foto_proyecto', v.guardar_foto_proyecto, name='guardar_foto_proyecto'),
 
 
 
@@ -14,6 +15,7 @@ urlpatterns = [
     path('api_instituciones', v.cargar_institucion, name='cargar_instituciones'),
     path('api_usuarios', v.cargar_usuario, name='api_usuarios'),
 
+    path('api_modelo_usuario', v.cargar_modelo_usuario, name='api_modelo_usuario'),
 
 
 
