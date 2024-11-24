@@ -2,16 +2,15 @@ from django.db import models
 from django.utils import timezone
 from usuarios.models import Usuario
 from proyectos.models import Proyecto
+from services.utils.GenerarNombre import GenerarNombre
 
-# Create your models here.
 
 class Fiscalizacion(models.Model):
-
+    foto = models.ImageField(upload_to=GenerarNombre.generar_nombre_medicion, null=True, default='medicion/medicion.png')
     #FK
     proyecto = models.ForeignKey(Proyecto, null=False, on_delete=models.RESTRICT)
     usuario = models.ForeignKey(Usuario, null=False, on_delete=models.RESTRICT)
     creado = models.DateTimeField(default=timezone.now, editable=False)  
-
 
     def __str__(self):
         return "cod: {} - {} - {} {}".format(self.id, self.proyecto.nombre, self.usuario.nombre, self.usuario.a_materno)
@@ -23,8 +22,8 @@ class Fiscalizacion(models.Model):
 
 
 class Reporte(models.Model):
-    creado = models.DateTimeField(default=timezone.now, editable=False)
     fiscalizacion = models.ForeignKey(Fiscalizacion, null=False, on_delete=models.RESTRICT)
+    creado = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
         return "{} ,{}".format(self.fiscalizacion.proyecto.nombre, self.creado)

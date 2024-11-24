@@ -43,6 +43,12 @@ class MedicionForm(forms.ModelForm):
         label='Instrumento de Medición'
     )
 
+    fiscalizacion = forms.ModelChoiceField(
+        queryset=Fiscalizacion.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='Fiscalizacion'
+    )
+
 
     class Meta:
         model = Medicion
