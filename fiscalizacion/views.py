@@ -2,18 +2,34 @@ from django.shortcuts import get_object_or_404, render, redirect
 from services.fiscalizacion.FiscalizacionService import FiscalizacionService
 from .forms import FiscalizacionForm
 from .models import Fiscalizacion
-from mediciones.models import Medicion
 from django.contrib import messages
 from django.db.models import RestrictedError
 
-def crear_fiscalizacion(request):
-    pass
 
 
-def cargar_fiscalizacion(request):
+def crear_fiscalizacion(request) -> None:
+    """Vista para crear una nueva fiscalización."""
+
+    if request.method == 'POST':
+        form = FiscalizacionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Fiscalización ingresada exitosamente al sistema.')
+            return redirect('')  
+        else:
+            messages.error(request, 'Hubo un error al crear la fiscalización. Revisa los datos ingresados.')
+
+
+def cargar_fiscalizaciones(request):
     fiscalizaciones = Fiscalizacion.objects.all()
-    
-    return render(request, 'fiscalizacion/mantenedor_fiscalizacion.html', {'fiscalizaciones': fiscalizaciones})
+
+    data = {
+        'fiscalizaciones': fiscalizaciones,
+        'form': FiscalizacionForm,
+
+    }
+
+    return render(request, 'fiscalizacion/mantenedor_fiscalizacion.html', data)
 
 
 def eliminar_fiscalizacion(request, fiscalizacion_id):
