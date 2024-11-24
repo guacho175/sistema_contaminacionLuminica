@@ -6,13 +6,32 @@
 
 <div class="card mb-4">
     <div class="card-body">
-        <h3>Proyecto: {{ proyecto.nombre }}</h3>
-        <p><img src="{{proyecto.foto.url}}" alt="" width="500" height="auto"></p>
-        <p><strong>Tipo de Alumbrado:</strong> {{ proyecto.get_tipo_alumbrado_display }}</p>
+        <h3>Proyecto: {{ fiscalizacion.proyecto.nombre }}</h3>
+        <p>Ingresado al sistema el {{ fiscalizacion.creado }}</p>
+        <p><img src="{{fiscalizacion.foto.url}}" alt="Foto área de Fiscalizacion" width="50" height="auto"></p>
+        <p><strong>Tipo de Alumbrado:</strong> {{ fiscalizacion.proyecto.get_tipo_alumbrado_display }}</p>
         <p><strong>Ubicación:</strong> Latitud {{ proyecto.latitud }}, Longitud {{ proyecto.longitud }}</p>
         <p><strong>Inspector: </strong>{{ proyecto.fiscalizacion_set.first.usuario.nombre }} {{ proyecto.fiscalizacion_set.first.usuario.a_paterno }}</p>
     </div>
 </div>
+
+<tbody>
+    <tr>
+        <td>{{ fiscalizacion.id }}</td>
+        <td>{{ fiscalizacion.proyecto.nombre }}</td>
+        <td>{{ fiscalizacion.usuario.nombre }} {{ fiscalizacion.usuario.a_materno }}</td>
+        <td>{{ fiscalizacion.creado }}</td>
+        <td>
+            <ul>
+                {% for medicion in fiscalizacion.medicion_set.all %}
+                <li>{{ medicion.valor_medido }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
+
+</tbody>
+
 
 <h2>Historial de Mediciones</h2>
 <div class="table-responsive">

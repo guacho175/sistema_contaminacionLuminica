@@ -1,6 +1,6 @@
 from django import forms
-from .choices import tipo_alumbrado, nivel_cumplimiento
-from .models import Titular, RepresentanteLegal, DetalleLuminarias,  Proyecto
+from .choices import tipo_alumbrado
+from .models import Titular, RepresentanteLegal, DetalleLuminaria,  Proyecto
 from services.utils.validators import validar_tamano_archivo
 
 
@@ -22,7 +22,7 @@ class ProyectoForm(forms.ModelForm):
         widget=forms.Select(attrs={'class':'form-control'})
     )
     detalle_luminarias = forms.ModelChoiceField(
-        queryset=DetalleLuminarias.objects.all(),
+        queryset=DetalleLuminaria.objects.all(),
         empty_label="Selecciona un detalle de luminaria",
         widget=forms.Select(attrs={'class':'form-control'})
     )

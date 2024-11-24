@@ -1,14 +1,14 @@
 from django.contrib import admin
-from .models import Titular, RepresentanteLegal, DetalleLuminarias, Proyecto
+from .models import Titular, RepresentanteLegal, DetalleLuminaria, Proyecto
 
 # Register your models here.
 class TitularAdmin(admin.ModelAdmin):
     list_display = ['id', 'run', 'nombre', 'a_paterno', 'a_materno',
-                    'direccon', 'correo']
+                    'direccion', 'correo']
 
 class RepresentanteLegalAdmin(admin.ModelAdmin):
     list_display = ['id', 'run', 'nombre', 'a_paterno', 'a_materno',
-                    'direccon', 'correo']
+                    'direccion', 'correo']
 
 class DetalleLuminariasAdmin(admin.ModelAdmin):
     list_display = ['id', 'cantidad', 'tipo_lampara', 'marca',
@@ -22,6 +22,6 @@ class ProyectoAdmin(admin.ModelAdmin):
 
 admin.site.register(Titular, TitularAdmin)
 admin.site.register(RepresentanteLegal, RepresentanteLegalAdmin)
-admin.site.register(DetalleLuminarias, DetalleLuminariasAdmin)
+admin.site.register(DetalleLuminaria, DetalleLuminariasAdmin)
 admin.site.register(Proyecto, ProyectoAdmin)
 

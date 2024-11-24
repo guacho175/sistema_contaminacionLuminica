@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import MedicionForm
 from services.mediciones.medicionCRUD import MedicionCRUD
@@ -5,6 +6,21 @@ from services.mediciones.medicionCRUD import MedicionCRUD
 
 def nueva_medicion(request, fiscalizacion_id):
     """Vista para ingresar una nueva medición."""
+    if request.method == 'POST':
+        form = MedicionForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'El proyecto se ingreso correctamente.')
+            return redirect('/proyectos/')
+    else:
+        form = MedicionForm()
+
+    # retornamos el formulario
+    return render(request, 'mediciones/medicionAdd.html', {'form': form})
+
+
+
+
     service = MedicionCRUD(request)
 
     if request.method == "POST":
