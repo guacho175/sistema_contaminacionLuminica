@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'usuarios',
     'fiscalizacion',
     'ApiMedicion',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [

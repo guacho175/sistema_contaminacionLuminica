@@ -44,3 +44,4 @@ class Medicion(models.Model):
         verbose_name = 'Medición'
         verbose_name_plural = 'Mediciones'
 
+
