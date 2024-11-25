@@ -4,8 +4,7 @@
 <createdTime>2024-10-29 16:42:29 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -21,8 +20,7 @@
 <createdTime>2024-10-29 17:59:29 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -35,8 +33,7 @@
 <generatorID>522AC309-18BB-ECA8-5DE5-356EB3A39B16</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <referedAttribute>3C9AC7DC-884F-2D80-71EC-075DE27DD0EC</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -50,8 +47,7 @@
 <generatorID>02B959F4-2835-C4F0-48EB-9BFFB10EE2DC</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <referedAttribute>2496F01F-48CD-A0E1-E159-98658AA24D9C</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -59,99 +55,28 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="run" id="44B1643E-3B04-CFEA-0187-A86F46006053">
+<Attribute name="id1" id="71E2CE44-E92A-854F-5CE9-6F86C5D3D9D6">
 <createdBy>Arnold</createdBy>
-<createdTime>2024-10-29 19:00:05 UTC</createdTime>
+<createdTime>2024-11-25 16:31:46 UTC</createdTime>
+<generatorID>6BFBB021-0844-8145-0A44-DF2E74628D3A</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
+<referedAttribute>4602163C-7DA0-C2CC-8E73-BA9E95F3DE46</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>15</dataTypeSize>
-<ownDataTypeParameters>15,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="nombre" id="D2E341DC-5C25-EFA5-E062-4681AA3F3707">
-<createdBy>Arnold</createdBy>
-<createdTime>2024-10-29 18:57:41 UTC</createdTime>
-<ownerDesignName>DS1</ownerDesignName>
-<engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="a paterno" id="AEE2981C-7AC0-DFE0-683F-BAD9A3CFB11F">
-<createdBy>Arnold</createdBy>
-<createdTime>2024-10-29 18:57:55 UTC</createdTime>
-<ownerDesignName>DS1</ownerDesignName>
-<engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="a materno" id="0269293E-26BD-AFAE-7BCA-53FCD3BC5B2A">
-<createdBy>Arnold</createdBy>
-<createdTime>2024-10-29 18:59:43 UTC</createdTime>
-<ownerDesignName>DS1</ownerDesignName>
-<engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="email" id="4E1C9C8E-C225-AC75-ABA1-03D4B82B5592">
-<createdBy>Arnold</createdBy>
-<createdTime>2024-10-29 19:00:31 UTC</createdTime>
-<ownerDesignName>DS1</ownerDesignName>
-<engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="clave" id="BE40878A-40D6-A57B-70C5-71832A75CED1">
-<createdBy>Arnold</createdBy>
-<createdTime>2024-11-07 16:29:04 UTC</createdTime>
-<ownerDesignName>DS1</ownerDesignName>
-<engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="A2D6DEE8-CC81-2B2B-6971-E25463878114" name="INSPECTOR PK">
+<identifier id="A2D6DEE8-CC81-2B2B-6971-E25463878114" name="USUARIO_PK">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-10-29 17:59:36 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

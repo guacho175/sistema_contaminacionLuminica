@@ -5,8 +5,7 @@
 <generatorID>A556FCD7-F757-E254-95D8-DD61273B9AB3</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -23,8 +22,7 @@
 <generatorID>6497C40F-D1BF-358A-E7DA-47FADED0A7BE</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -37,8 +35,7 @@
 <generatorID>AFA4DE42-F218-7854-AD8B-9322F35F220D</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -52,8 +49,7 @@
 <generatorID>862B311E-564F-6CC5-577C-A8F1D092F5A5</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -67,8 +63,7 @@
 <generatorID>78AB2DE4-A14B-8421-E242-3D2B140DEA5F</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -76,14 +71,13 @@
 <dataTypeSize>100</dataTypeSize>
 <ownDataTypeParameters>100,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="num serie" id="2D1D8936-FA44-7B11-3CDF-C7A2C07351BE">
+<Attribute name="num_serie" id="2D1D8936-FA44-7B11-3CDF-C7A2C07351BE">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-11-09 16:37:29 UTC</createdTime>
 <generatorID>1D899C0D-85FF-5BBC-5CDB-DB51691EAFFE</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -99,8 +93,7 @@
 <generatorID>CCBE0B7D-9273-AE40-8A42-FC4FD97DDC19</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

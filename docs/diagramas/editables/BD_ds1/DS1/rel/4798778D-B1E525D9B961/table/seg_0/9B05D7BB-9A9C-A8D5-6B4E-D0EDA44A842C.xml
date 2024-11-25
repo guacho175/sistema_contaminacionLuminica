@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9B05D7BB-9A9C-A8D5-6B4E-D0EDA44A842C" name="REPORTE">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>F69D5751-DD0B-7D8D-A5AE-806C4A0820F6</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="772E44F6-866A-60BC-1773-EAD13E67643D">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>A9132DF4-5879-40DD-0221-38DBE67E5C83</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="creado" id="9589F50D-CDBF-F5E2-D4F4-1CF6AC8EEDA3">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>57DECA07-5D85-1498-9A18-85BB26A52F08</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FISCALIZACION_id" id="C09DBB79-97AD-B4FD-85AD-0A142A6A942D">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>C0C1DD2A-DD8D-1ADB-60CA-36A9744D0BE9</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="67691F4D-3224-3563-DD2C-0406AEE92F79" referredColumn="6D45E39B-2FC2-DB05-01FF-944F4C3F1EFB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A7F57EE1-F0B0-87A9-9190-ABF601E69C48" name="REPORTE_PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>B55DA1A3-AB85-EA2A-738F-920076A48B73</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="772E44F6-866A-60BC-1773-EAD13E67643D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="37BC0076-4E56-2FEA-0509-1C20BDF8E084" name="REPORTE_FISCALIZACION_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>CCEF6A2E-DB30-2B11-861D-DF27E98B979F</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C09DBB79-97AD-B4FD-85AD-0A142A6A942D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

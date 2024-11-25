@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E2D250BD-FAE2-D6C8-318C-D08A5296476B" name="INSTITUCION">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>70753FCB-912F-48E1-43EF-5BEFFCD68B59</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="B802C688-52C8-904F-D099-0205A166C6B4">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>2496F01F-48CD-A0E1-E159-98658AA24D9C</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="606A83D4-5221-A592-0287-24A5A8F8C761">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>07168118-6497-A65F-4099-AAE09BEFE132</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="CAA0067A-9731-1967-B21D-0E5DE31F85F2">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>16A8C12E-EA49-8FBD-1935-805BE28DB27E</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500</dataTypeSize>
+<ownDataTypeParameters>500,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E34CFC82-CB9F-3D61-7E1B-A11712BD051F" name="INSTITUCION_PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>721F0836-53AA-6B79-B0D6-8FE1377D0EA6</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B802C688-52C8-904F-D099-0205A166C6B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

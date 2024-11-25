@@ -4,8 +4,7 @@
 <createdTime>2024-10-29 16:41:58 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -21,27 +20,24 @@
 <createdTime>2024-10-29 17:58:18 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="INSTRUMENTO MEDICION id" id="9536E31E-4DB2-F75D-7419-BB3C49003708">
+<Attribute name="tipo" id="C690328F-879B-5EE8-6473-AA9D31BA5E24">
 <createdBy>Arnold</createdBy>
-<createdTime>2024-10-29 18:02:14 UTC</createdTime>
-<generatorID>3C4E40F1-6DA0-6CAD-1D9E-7848C9577EC9</generatorID>
+<createdTime>2024-11-25 16:19:38 UTC</createdTime>
+<generatorID>4B1537D0-A7AF-2D0E-643D-4352A44D282C</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
-<referedAttribute>83E5B272-2B70-E359-979B-675506F4A034</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="latitud" id="BF3B8BFD-09A0-90B3-7E02-3F09AED002F3">
@@ -49,8 +45,7 @@
 <createdTime>2024-10-29 19:17:35 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -62,21 +57,45 @@
 <createdTime>2024-10-29 19:17:23 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT021</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="valor medido" id="CB0E7B2C-DB29-371C-7CE2-2AD93689905E">
+<Attribute name="temperatura" id="D0E65084-1BF1-C8B0-9C0F-EB0DFD53885E">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:19:38 UTC</createdTime>
+<generatorID>93C8CDDC-8C07-5617-88E0-353E61755E21</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="humedad" id="FF47A236-ECB2-C587-EC54-5A829BA170A8">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:19:38 UTC</createdTime>
+<generatorID>2D867B06-129F-79B1-6B37-DE738D6D1E14</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="valor_medido" id="CB0E7B2C-DB29-371C-7CE2-2AD93689905E">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-10-29 19:17:10 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -88,35 +107,21 @@
 <createdTime>2024-11-03 20:02:56 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT006</logicalDatatype>
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="img punto medicion" id="39B06116-AB3F-6133-6171-8B4FA368BE5A">
-<createdBy>Arnold</createdBy>
-<createdTime>2024-10-29 19:19:21 UTC</createdTime>
-<ownerDesignName>DS1</ownerDesignName>
-<engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT010</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="observacion" id="1729DE87-20AB-09BC-BB6D-773C9C03A25E">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-11-09 17:15:59 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -124,29 +129,54 @@
 <dataTypeSize>500</dataTypeSize>
 <ownDataTypeParameters>500,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="foto" id="39B06116-AB3F-6133-6171-8B4FA368BE5A">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 19:19:21 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="creado" id="FDD0EDD4-5D5F-D54E-9780-7C25B9FB0EC3">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-10-29 19:03:49 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id1" id="C0579610-C67E-29AD-AC47-47E6319089BA">
+<Attribute name="FISCALIZACION id" id="C0579610-C67E-29AD-AC47-47E6319089BA">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-11-09 17:39:01 UTC</createdTime>
 <generatorID>2B808C56-47A9-9BA5-7104-83E8773BE4FD</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <referedAttribute>8755AF92-3515-326D-33EF-A9DCF576DDD2</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="INSTRUMENTO MEDICION id" id="9536E31E-4DB2-F75D-7419-BB3C49003708">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-10-29 18:02:14 UTC</createdTime>
+<generatorID>3C4E40F1-6DA0-6CAD-1D9E-7848C9577EC9</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<referedAttribute>83E5B272-2B70-E359-979B-675506F4A034</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -159,8 +189,7 @@
 <createdTime>2024-10-29 17:58:25 UTC</createdTime>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

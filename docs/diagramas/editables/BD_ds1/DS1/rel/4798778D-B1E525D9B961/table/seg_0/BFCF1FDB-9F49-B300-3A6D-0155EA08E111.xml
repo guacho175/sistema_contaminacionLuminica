@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BFCF1FDB-9F49-B300-3A6D-0155EA08E111" name="FISCALIZACION">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>5383508A-0034-F580-97FB-08046412F573</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="6D45E39B-2FC2-DB05-01FF-944F4C3F1EFB">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>8755AF92-3515-326D-33EF-A9DCF576DDD2</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="foto" id="F76A83DA-5D7E-708E-B920-949B6AC6DCCD">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>621C8E7D-DC76-6268-5F5F-0EACE2A1E3D5</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PROYECTO_id" id="B46788A1-ADAA-FEB1-7BA6-77715D70A041">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>9A09F71B-FAD8-8730-39A4-D71BE4D713D4</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B8128AB3-9967-C2C4-29E1-48C580B9B115" referredColumn="4770DAFF-F0A6-C592-CCC8-08AE47F2389E"/>
+</associations>
+</Column>
+<Column name="USUARIO_id" id="63376411-32B6-0261-40C6-C54D1B5F8E35">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>C9630615-4991-2BE6-EC0E-4C5154F4DFEA</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="36A2E228-4187-E393-5637-2158D0843E41" referredColumn="10F9E397-89DC-E21E-99F9-E8A7985B90CA"/>
+</associations>
+</Column>
+<Column name="creado" id="AC1A849B-8283-E2A1-C9D0-F2FA9969591D">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>0408C4CD-4384-9DB6-CFF2-7631A41C9AB8</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E38C029D-ADF8-1699-A45E-E6C7D5E62136" name="FISCALIZACION_PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>6E502956-709B-5FE9-48BC-A6FFC8F984C5</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6D45E39B-2FC2-DB05-01FF-944F4C3F1EFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C971A3E0-E9ED-829A-4125-C100413FAD61" name="FISCALIZACION_PROYECTO_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>453F03CF-A1A7-C08A-CD0D-AB099A8ABC92</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B46788A1-ADAA-FEB1-7BA6-77715D70A041"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2D06D6CC-DA92-0FD7-067A-3926F85C3073" name="FISCALIZACION_USUARIO_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>420114E9-2754-EEA8-FF06-159AFBC73708</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="63376411-32B6-0261-40C6-C54D1B5F8E35"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

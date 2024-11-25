@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="97066F43-98B9-4119-2CAA-13B4FC9011B3" name="PERSONA">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:19:38 UTC</createdTime>
+<generatorID>544633AF-CF76-069C-9100-9D1D64D944FA</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="4602163C-7DA0-C2CC-8E73-BA9E95F3DE46">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:20:03 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="run" id="131CB0BC-2930-88B8-2B30-B804ABCC7889">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:20:30 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="55A2AA5D-BDF3-7646-8D05-B362762C76B6">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:20:57 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="a_paterno" id="550E9DCF-9DE0-2A4F-7E3C-994499CCB7EF">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:21:14 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="a_materno" id="303E067F-BF73-5BDF-5EB1-063BFF46B64C">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:21:30 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="correo" id="14C55641-B94A-EB7E-90A4-5C66D17C706E">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:24:03 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="creado" id="03EB84BC-56C3-6282-4469-FF3577D31C36">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:26:29 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A861B3D0-393C-9F24-DC13-0C0285B84F12" name="Persona PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:20:15 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<engineerTo>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4602163C-7DA0-C2CC-8E73-BA9E95F3DE46</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

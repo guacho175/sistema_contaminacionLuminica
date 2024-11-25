@@ -4,6 +4,8 @@ from .forms import FiscalizacionForm
 from .models import Fiscalizacion
 from django.contrib import messages
 from django.db.models import RestrictedError
+from services.fiscalizacion.mapa_service import MapaService
+
 
 
 
@@ -20,13 +22,17 @@ def crear_fiscalizacion(request) -> None:
             messages.error(request, 'Hubo un error al crear la fiscalización. Revisa los datos ingresados.')
 
 
-def cargar_fiscalizaciones(request):
+def cargar_fiscalizaciones(request) -> dict:
     fiscalizaciones = Fiscalizacion.objects.all()
+
+    mapa = MapaService.crear_mapa()
+
+    map_html = mapa._repr_html_()
 
     data = {
         'fiscalizaciones': fiscalizaciones,
         'form': FiscalizacionForm,
-
+        'map' : map_html
     }
 
     return render(request, 'fiscalizacion/mantenedor_fiscalizacion.html', data)
