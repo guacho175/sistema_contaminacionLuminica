@@ -2,7 +2,6 @@ from django import forms
 from .models import Fiscalizacion, Reporte
 from proyectos.models import Proyecto
 from usuarios.models import Usuario
-from services.utils.validators import validar_tamano_archivo
 
 
 class FiscalizacionForm(forms.ModelForm):
@@ -23,10 +22,6 @@ class FiscalizacionForm(forms.ModelForm):
     class Meta:
         model = Fiscalizacion
         fields = '__all__'
-
-    def clean_foto(self):
-        foto = self.cleaned_data.get('foto')
-        return validar_tamano_archivo(foto, 100)
     
     
 class ReporteForm(forms.ModelForm):

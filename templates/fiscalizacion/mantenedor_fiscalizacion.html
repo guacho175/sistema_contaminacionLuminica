@@ -26,12 +26,7 @@
                 <!-- Formulario para crear nueva fiscalización -->
                 <form method="post" enctype=multipart/form-data action="{% url 'crear_fiscalizacion' %}">
                     {% csrf_token %}
-                        <div class="col-3">
-                            <img src="{% static 'images/default.png' %}" alt="Imagen del área fiscalizada" width="150" height="auto"
-                                class="mx-auto my-auto d-block mb-2">
-                            <label for="foto">Fotografia del Proyecto:</label>
-                            <input type="file" name="foto" id="foto" class="form-control form-control-sm">
-                        </div>
+
                         <div class="row ps-5 pe-5">
                             <div class="mb-3 col-8">
                                 {{ form.proyecto.label_tag }}

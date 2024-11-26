@@ -34,3 +34,11 @@ class GenerarNombre:
         Genera un nombre único para archivos en la carpeta 'medicion'.
         """
         return GenerarNombre.generar_nombre(instance, filename, ruta='medicion')
+    
+    
+    @staticmethod
+    def generar_nombre_proyecto(instance, filename):
+        """
+        Genera un nombre único para archivos en la carpeta 'proyecto'.
+        """
+        return GenerarNombre.generar_nombre(instance, filename, ruta='proyectos')

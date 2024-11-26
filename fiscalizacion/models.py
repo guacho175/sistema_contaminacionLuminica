@@ -2,11 +2,9 @@ from django.db import models
 from django.utils import timezone
 from usuarios.models import Usuario
 from proyectos.models import Proyecto
-from services.utils.GenerarNombre import GenerarNombre
 
 
 class Fiscalizacion(models.Model):
-    foto = models.ImageField(upload_to=GenerarNombre.generar_nombre_fiscalizacion, null=True, default='fiscalizacion/fiscalizacion.png')
     #FK
     proyecto = models.ForeignKey(Proyecto, null=False, on_delete=models.RESTRICT)
     usuario = models.ForeignKey(Usuario, null=False, on_delete=models.RESTRICT)

@@ -8,7 +8,7 @@
     <div class="card-body">
         <h3>Proyecto: {{ fiscalizacion.proyecto.nombre }}</h3>
         <p>Ingresado al sistema el {{ fiscalizacion.creado }}</p>
-        <p><img src="{{fiscalizacion.foto.url}}" alt="Foto área de Fiscalizacion" width="50" height="auto"></p>
+        <p><img src="{{fiscalizacion.proyecto.foto.url}}" alt="Foto área de Fiscalizacion" width="50" height="auto"></p>
         <p><strong>Tipo de Alumbrado:</strong> {{ fiscalizacion.proyecto.get_tipo_alumbrado_display }}</p>
         <p><strong>Ubicación:</strong> Latitud {{ proyecto.latitud }}, Longitud {{ proyecto.longitud }}</p>
         <p><strong>Inspector: </strong>{{ proyecto.fiscalizacion_set.first.usuario.nombre }} {{ proyecto.fiscalizacion_set.first.usuario.a_paterno }}</p>

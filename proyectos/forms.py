@@ -1,6 +1,7 @@
 from django import forms
 from .choices import tipo_alumbrado
 from .models import Titular, RepresentanteLegal, DetalleLuminaria,  Proyecto
+from services.utils.validators import validar_tamano_archivo
 
 
 class ProyectoForm(forms.ModelForm):
@@ -30,7 +31,10 @@ class ProyectoForm(forms.ModelForm):
         widget=forms.HiddenInput(),
         initial=1
     )
-
+    
+    def clean_foto(self):
+        foto = self.cleaned_data.get('foto')
+        return validar_tamano_archivo(foto, 100)
 
     class Meta:
         model = Proyecto

@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from .choices import tipo_alumbrado
 from usuarios.models import Persona
+from services.utils.GenerarNombre import GenerarNombre
+
 
 # Create your models here.
 class Titular(Persona):
@@ -53,6 +55,7 @@ class Proyecto(models.Model):
     longitud = models.FloatField(max_length=500, verbose_name='Longitud')
     tipo_alumbrado = models.CharField(max_length=1, choices=tipo_alumbrado, default='v', verbose_name='Tipo de alumbrado')
     descripcion = models.CharField(max_length=500, verbose_name='Descripción')
+    foto = models.ImageField(upload_to=GenerarNombre.generar_nombre_proyecto, null=True, default='proyectos/proyecto.png')   
     creado = models.DateTimeField(default=timezone.now, editable=False)   
     # FK
     detalle_luminarias = models.ForeignKey(DetalleLuminaria, null=False, on_delete=models.RESTRICT)

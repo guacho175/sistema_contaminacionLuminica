@@ -12,7 +12,7 @@ def crear_fiscalizacion(request) -> None:
     """Vista para crear una nueva fiscalización."""
 
     if request.method == 'POST':
-        form = FiscalizacionForm(request.POST,  request.FILES)
+        form = FiscalizacionForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Fiscalización ingresada exitosamente al sistema.')

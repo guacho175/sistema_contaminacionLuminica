@@ -11,7 +11,7 @@ def cargar_fiscalizaciones(request):
     data = {
         'fiscalizaciones': list(
             fiscalizaciones.values(
-                'id', 'foto', 'proyecto_id', 'usuario_id', 'creado'
+                'id', 'proyecto_id', 'usuario_id', 'creado'
             )
         )
     }

@@ -11,7 +11,7 @@ def cargar_proyecto(request):
     data = { 
         'proyectos':list(
             proyecto.values('id','nombre','latitud','longitud','tipo_alumbrado',
-                            'descripcion','detalle_luminarias_id','representante_legal_id','titular_id')
+                            'descripcion', 'foto','detalle_luminarias_id','representante_legal_id','titular_id')
         )
     }
     return JsonResponse(data)
