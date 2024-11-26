@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="904459F2-2B3B-30FC-1126-B5A42BF58599" name="USUARIO">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>74CF0FBB-294B-BC95-B951-0155A093F082</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="10F9E397-89DC-E21E-99F9-E8A7985B90CA">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>55832961-1764-4808-738A-FD114864AB48</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CARGO_id" id="882DF662-2241-FBCE-FB60-F399F53A64D3">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>C67629C3-93C7-647D-E147-5D6C8882197C</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2135C6A0-1040-F86C-DC3B-42EAD2E80501" referredColumn="D9AEACC7-38E0-17B8-E4FF-6F283736D339"/>
+</associations>
+</Column>
+<Column name="INSTITUCION_id" id="4A9D9FED-E747-8710-C0A4-6982914CF019">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>883E5970-FF66-0404-C6C6-6DF72FBDE53D</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="72480258-7458-D9D5-2D6A-820F0E34A9DC" referredColumn="B802C688-52C8-904F-D099-0205A166C6B4"/>
+</associations>
+</Column>
+<Column name="PERSONA_id" id="E0A0D522-87F6-3D69-D561-7D652CB39552">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>71E2CE44-E92A-854F-5CE9-6F86C5D3D9D6</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E72DA080-4E76-1D02-87E6-8677B6FF0C23" referredColumn="044CF335-5807-BC25-D2C1-C18BA0B62D51"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D2FF0123-8D60-5305-ED37-397F59517B38" name="USUARIO_PK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>A2D6DEE8-CC81-2B2B-6971-E25463878114</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="10F9E397-89DC-E21E-99F9-E8A7985B90CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E46E70C4-BFA0-B98C-51C2-1FB8F3C09632" name="USUARIO_PERSONA_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>6BFBB021-0844-8145-0A44-DF2E74628D3A</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0A0D522-87F6-3D69-D561-7D652CB39552"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ECA2799D-1D52-9551-9A80-69D3121D7081" name="USUARIO_CARGO_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>522AC309-18BB-ECA8-5DE5-356EB3A39B16</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="882DF662-2241-FBCE-FB60-F399F53A64D3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6D0BF4E5-A09A-AED9-CA47-3A231E2CC9A0" name="USUARIO_INSTITUCION_FK">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-25 16:42:10 UTC</createdTime>
+<generatorID>02B959F4-2835-C4F0-48EB-9BFFB10EE2DC</generatorID>
+<ownerDesignName>DS1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4A9D9FED-E747-8710-C0A4-6982914CF019"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

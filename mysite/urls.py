@@ -11,6 +11,10 @@ urlpatterns = [
     path('', include('mediciones.urls')),
     path('', include('proyectos.urls')),
     path('', include('usuarios.urls')),
+    path('', include('proyectosApi.urls')),
+    path('', include('fiscalizacionApi.urls')),
+    path('', include('medicionesApi.urls')),
+
 
 ]
 

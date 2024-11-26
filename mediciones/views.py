@@ -1,22 +1,26 @@
-from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import MedicionForm
 from services.mediciones.medicionCRUD import MedicionCRUD
+from fiscalizacion.models import Fiscalizacion
 
 
 def nueva_medicion(request, fiscalizacion_id):
     """Vista para ingresar una nueva medición."""
-    service = MedicionCRUD(request)
+    fiscalizacion = get_object_or_404(Fiscalizacion, id=fiscalizacion_id)
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = MedicionForm(request.POST, request.FILES)
-        response = service.crear_medicion(fiscalizacion_id, form)
-        if response:
-            return response
-
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Medición se ingreso correctamente.')
+            return redirect('')
     else:
-        form = MedicionForm()
+    # Inicializa el formulario con la fiscalización por defecto
+        form = MedicionForm(initial={'fiscalizacion': fiscalizacion})
 
-    return render(request, 'mediciones/medicionAdd.html', {'form': form})
+    # retornamos el formulario
+    return render(request, 'mediciones/medicionAdd.html', {'form': form, 'fiscalizacion': fiscalizacion})
 
 
 def eliminar_medicion(request, medicion_id):

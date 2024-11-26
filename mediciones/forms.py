@@ -2,6 +2,8 @@ from django import forms
 from .choices import cumplimiento, tipo_medicion
 from .models import Medicion, InstrumentoMedicion
 from fiscalizacion.models import Fiscalizacion
+from services.utils.validators import validar_tamano_archivo
+
 
 
 class MedicionForm(forms.ModelForm):
@@ -43,10 +45,20 @@ class MedicionForm(forms.ModelForm):
         label='Instrumento de Medición'
     )
 
+    fiscalizacion = forms.ModelChoiceField(
+        queryset=Fiscalizacion.objects.all(),
+        widget=forms.HiddenInput(),
+        label='Fiscalización'
+    )
+
+    def clean_foto(self):
+        foto = self.cleaned_data.get('foto')
+        return validar_tamano_archivo(foto, 100)
 
     class Meta:
         model = Medicion
         fields = '__all__'
+
 
 
 

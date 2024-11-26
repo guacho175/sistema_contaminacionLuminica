@@ -1,12 +1,11 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="INSPECTOR_CARGO_FK" directorySegmentName="seg_0" id="522AC309-18BB-ECA8-5DE5-356EB3A39B16">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="USUARIO CARGO FK" directorySegmentName="seg_0" id="522AC309-18BB-ECA8-5DE5-356EB3A39B16">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-11-09 16:37:29 UTC</createdTime>
 <generatorID>F995F960-495C-3049-F2CA-B5E89E9D9427</generatorID>
 <ownerDesignName>DS1</ownerDesignName>
 <engineerTo>
-<item key="7FE3DC46-260A-8FA3-4053-C775951DA6C3" value="true"/>
-<item key="5C120AE6-A41D-53C7-8E85-DB132464C858" value="true"/>
+<item key="4798778D-BB50-5FA6-B820-B1E525D9B961" value="true"/>
 </engineerTo>
 <sourcePk>0E9184D5-6B2B-D2B0-1355-99BA627D0FC9</sourcePk>
 <identifying>false</identifying>

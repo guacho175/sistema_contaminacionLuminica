@@ -22,8 +22,8 @@ class FiscalizacionForm(forms.ModelForm):
     class Meta:
         model = Fiscalizacion
         fields = '__all__'
-
-
+    
+    
 class ReporteForm(forms.ModelForm):
     fiscalizacion = forms.ModelChoiceField(
         queryset=Fiscalizacion.objects.all(),
@@ -34,12 +34,3 @@ class ReporteForm(forms.ModelForm):
     class Meta:
         model = Reporte
         fields = '__all__'
-
-
-
-
-
-
-
-
-

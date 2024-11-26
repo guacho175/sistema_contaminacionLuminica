@@ -4,6 +4,7 @@
 {% block contenido %}
 <h1 class="text-center mb-5">Fiscalizaciones</h1>
 
+
 <div class="row">
 
     <!-- INICIO - Mapa -->
@@ -23,9 +24,9 @@
         <div class="collapse" id="collapseExample">
             <div class="card card-body bg-dark mb-3">
                 <!-- Formulario para crear nueva fiscalización -->
-                <form method="post" action="{% url 'crear_fiscalizacion' %}">
+                <form method="post" enctype=multipart/form-data action="{% url 'crear_fiscalizacion' %}">
                     {% csrf_token %}
-                   
+
                         <div class="row ps-5 pe-5">
                             <div class="mb-3 col-8">
                                 {{ form.proyecto.label_tag }}
@@ -81,28 +82,28 @@
                 </tr>
             </thead>
             <tbody>
-                {% for item in fiscalizaciones_con_mediciones %}
+                 {% for fiscalizacion in fiscalizaciones_con_mediciones %}
                 <tr>
-                    <td>{{ item.fiscalizacion.proyecto.nombre }}</td>
-                    <td>{{ item.fiscalizacion.id }}</td>
-                    <td>{{ item.fiscalizacion.proyecto.get_tipo_alumbrado_display }}</td>
-                    <td>{{ item.estadisticas.valor_minimo|default:"N/A" }}</td>
-                    <td>{{ item.estadisticas.valor_maximo|default:"N/A" }}</td>
-                    <td>{{ item.estadisticas.valor_promedio|floatformat:2|default:"N/A" }}</td>
-                    <td>{{ item.mediciones.count }}</td>
-                    <td>{{ item.|default:"N/A"  }}</td>
+                    <td>{{ fiscalizacion.fiscalizacion.proyecto.nombre }}</td>
+                    <td>{{ fiscalizacion.fiscalizacion.id }}</td>
+                    <td>{{ fiscalizacion.fiscalizacion.proyecto.get_tipo_alumbrado_display }}</td>
+                    <td>{{ fiscalizacion.estadisticas.valor_minimo }}</td>
+                    <td>{{ fiscalizacion.estadisticas.valor_maximo }}</td>
+                    <td>{{ fiscalizacion.estadisticas.valor_promedio }}</td>
+                    <td>{{ fiscalizacion.mediciones.count }}</td>
+                    <td>a{{ item.|default:"N/A"  }}</td>
                     <td>
                         <div class="d-flex justify-content-center">
                             <div class="" data-bs-toggle="tooltip" title="Ver detalle" data-bs-placement="top">
                                 <a class="btn btn-primary me-1"
-                                    href="{% url 'detalleFiscalizacion' item.fiscalizacion.proyecto.id %}"><i
+                                    href="{% url 'detalleFiscalizacion' fiscalizacion.fiscalizacion.id %}"><i
                                         class="bi bi-eye"></i></a>
                             </div>
                             <div class="me-1" data-bs-toggle="tooltip" title="Nueva Medición" data-bs-placement="top">
-                                <a class="btn btn-success" href="{% url 'nuevaMedicion' item.fiscalizacion.id%}"><i class="bx bx-plus"></i></a>
+                                <a class="btn btn-success" href="{% url 'nuevaMedicion' fiscalizacion.fiscalizacion.id%}"><i class="bx bx-plus"></i></a>
                             </div>
                             <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
-                                <a class="btn btn-danger" href="{% url 'eliminarFiscalizacion' item.fiscalizacion.id %}"><i class="bx bx-trash"></i></a>
+                                <a class="btn btn-danger" href="{% url 'eliminarFiscalizacion' fiscalizacion.fiscalizacion.id %}"><i class="bx bx-trash"></i></a>
                             </div>
                         </div>
                     </td>
