@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<h1 class="text-center mb-5">Catálogo de Mediciones</h1>
+<div class="row justify-content-center mt-5">
+    <div class="col-7">
+        <div class="card bg-danger text-light text-center">
+            <h4 class="card-header ">Confirmar Eliminación de Medición</h4>
+            <div class="card-body alert alert-danger bg-light">
+                <h5 class="card-title">¿Estas seguro que deseas eliminar la medición?</h5>
+                <h5>{{medicion.proyecto}}</h5>
+
+                <p class="card-text">Ingresado el {{medicion.creado}}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <a href="{% url 'detalleFiscalizacion' medicion.fiscalizacion.proyecto.id %}" class="btn btn-dark me-3">Cancelar</a>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

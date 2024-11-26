@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<h1 class="text-center mb-5">Usuarios</h1>
+
+<div class="d-flex justify-content-end">
+
+<div class="d-flex justify-content-end">
+    <a href="#" class="btn btn-success rounded-circle btn-background"
+    data-bs-toggle="tooltip" data-bs-placement="left" title="Nuevo Usuario">
+        <i class="bi bi-plus-circle"></i>
+    </a>
+</div>
+
+</div>
+<!-- Tabla -->
+<table class="table table-dark table-hover table-striped table-bordered text-center align-middle mt-3">
+    <thead>
+        <tr class="text-center align-middle" >
+            <th>#</th>
+            <th>Run</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Correo</th>
+            <th>Cargo</th>
+            <th>Institución</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ usuario.run }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.a_paterno }}</td>
+            <td>{{ usuario.a_materno }}</td>
+            <td>{{ usuario.correo }}</td>
+            <td>{{ usuario.cargo }}</td>
+            <td>{{ usuario.institucion }}</td>
+            <td>
+                <div class="d-flex">
+                    <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
+                        <a class="btn btn-warning" href=""><i class="bx bx-edit"></i></a>
+                    </div>
+                    <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
+                        <a class="btn btn-danger" href=""><i class="bx bx-trash"></i></a>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+
+{% endblock contenido %}

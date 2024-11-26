@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<h1 class="text-center mb-5">Proyectos de iluminación</h1>
+
+<div class="d-flex justify-content-end">
+    <a href="{% url 'crearProyecto' %}" class="btn btn-success rounded-circle btn-background"
+    data-bs-toggle="tooltip" data-bs-placement="left" title="Nuevo Proyecto">
+        <i class="bi bi-plus-circle"></i>
+    </a>
+</div>
+<!-- Tabla -->
+<table class="table table-dark table-hover table-striped table-bordered text-center text-center align-middle mt-3">
+    <thead>
+        <tr class="text-center align-middle" >
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Tipo de alumbrado</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for proyecto in proyectos %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ proyecto.nombre }}</td>
+            <td>{{ proyecto.latitud }}</td>
+            <td>{{ proyecto.longitud }}</td>
+            <td>{{ proyecto.get_tipo_alumbrado_display }}</td>
+            <td>{{ proyecto.descripcion }}</td>
+            <td>
+                <div class="d-flex justify-content-center">
+                    <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
+                        <a class="btn btn-warning" href="{% url 'editarProyecto' proyecto.id %}"><i class="bx bx-edit"></i></a>
+                    </div>
+                    <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
+                        <a class="btn btn-danger" href="{% url 'eliminarProyecto' proyecto.id %}"><i class="bx bx-trash"></i></a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+
+{% endblock contenido %}

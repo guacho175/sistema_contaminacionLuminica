@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<h1 class="text-center mb-5">Catálogo de Mediciones</h1>
+<div class="row">
+
+
+    <div class="col">
+        <!-- Boton para crear medición -->
+        <div class="d-flex justify-content-end mb-3">
+            <div  data-bs-toggle="tooltip" data-bs-placement="left" title="Nueva medición">
+                <button class="btn btn-success rounded-circle btn-background" data-bs-toggle="modal" data-bs-target="#crearMedicionModal">
+                    <i class="bi bi-plus-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal para crear medición -->
+        <div class="modal fade" id="crearMedicionModal" tabindex="-1" aria-labelledby="crearMedicionModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="crearMedicionModalLabel">Nueva Medición</h5>
+                        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{% url 'crearMedicion' %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                {{ form.non_field_errors }}
+                                <div class="mb-4">
+                                    {{ form.proyecto.label_tag }}
+                                    {{ form.proyecto }}
+                                    {{ form.proyecto.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.inspector.label_tag }}
+                                    {{ form.proyecto.id }}
+                                    {{ form.inspector.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.cumplimiento.label_tag }}
+                                    {{ form.cumplimiento }}
+                                    {{ form.cumplimiento.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.latitud.label_tag }}
+                                    {{ form.latitud }}
+                                    {{ form.latitud.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.longitud.label_tag }}
+                                    {{ form.longitud }}
+                                    {{ form.longitud.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.temperatura.label_tag }}
+                                    {{ form.temperatura }}
+                                    {{ form.temperatura.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.humedad.label_tag }}
+                                    {{ form.humedad }}
+                                    {{ form.humedad.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.valor_medido.label_tag }}
+                                    {{ form.valor_medido }}
+                                    {{ form.valor_medido.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.observacion.label_tag }}
+                                    {{ form.observacion }}
+                                    {{ form.observacion.errors }}
+                                </div>
+                                <div class="mb-4">
+                                    {{ form.instrumento_medicion.label_tag }}
+                                    {{ form.instrumento_medicion }}
+                                    {{ form.instrumento_medicion.errors }}
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="col-12" style="max-height:450px ; overflow: hidden;">
+        {{ map|safe }}
+    </div>
+</div>
+
+
+<!-- Tabla -->
+<div class="row">
+    <div class="col-12 text-center ">
+        <table class="table table-dark table-hover table-striped table-bordered text-center align-middle mt-3">
+            <thead class="thead-dark">
+                <tr class="align-middle" >
+                    <th>Inspector</th>
+                    <th>Instrumento</th>
+                    <th>Valor Medido</th>
+                    <th class="text-center" colspan="1" rowspan="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí puedes agregar las filas de datos -->
+                {% for medicion in mediciones %}
+                <tr>
+                    <td>{{ medicion.inspector.nombre }} {{ medicion.inspector.a_paterno }}</td>
+                    <td>{{ medicion.instrumento_medicion.get_tipo_display }}</td>
+                    <td>{{ medicion.valor_medido }}</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <div class="" data-bs-toggle="tooltip" title="Ver detalle" data-bs-placement="top">
+                                <a class="btn btn-primary me-1" href=""><i class="bi bi-eye"></i></a>
+                            </div>
+                            <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
+                                <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>
+                            </div>
+                            <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
+                                <a class="btn btn-danger" href="{% url 'eliminarMedicion' medicion.id %}"><i class="bx bx-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock contenido %}

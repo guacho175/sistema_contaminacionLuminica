@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<h1 class="text-center mb-5">Fiscalizaciones</h1>
+
+<div class="row">
+
+    <!-- INICIO - Mapa -->
+    <div class="col-12 mb-3" style="max-height:450px ; overflow: hidden;">
+        {{ map|safe }}
+    </div>
+    <!-- FIN - Mapa -->
+
+    <!-- INICIO - Boton para crear fiscalización -->
+    <div class="col">
+        <p class="d-flex justify-content-end gap-1">
+            <button class="btn btn-success ms-auto btn-background" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                Nueva Fiscalización <i class="bi bi-plus-circle"></i>
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body bg-dark mb-3">
+                <!-- Formulario para crear nueva fiscalización -->
+                <form method="post" action="{% url 'crear_fiscalizacion' %}">
+                    {% csrf_token %}
+                   
+                        <div class="row ps-5 pe-5">
+                            <div class="mb-3 col-8">
+                                {{ form.proyecto.label_tag }}
+                                {{ form.proyecto }}
+                            </div>
+                            <div class="col-4 my-auto">
+                                <div class="d-flex justify-content-start">
+                                    <a href="{% url 'crearProyecto' %}" style="text-decoration: none; color: #eee;">
+                                        + Nuevo proyecto
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ps-5 pe-5">
+                            <div class="mb-3 col-8">
+                                {{ form.usuario.label_tag }}
+                                {{ form.usuario }}
+                            </div>
+                            <div class="col-4 my-auto">
+                               + Nuevo usuario
+                            </div>
+                            <button type="submit" class="btn btn-success mx-auto my-auto d-block col-2">Guardar</button>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- FIN - Boton para crear fiscalización -->
+
+</div>
+
+
+<!-- Tabla -->
+<div class="row">
+    <div class="col-12 text-center table-responsive">
+        <table class="table table-dark table-hover table-striped table-bordered text-center align-middle">
+            <thead class="thead-dark">
+                <tr class="align-middle">
+                    <th class="text-center" colspan="1" rowspan="2">Proyecto</th>
+                    <th class="text-center" colspan="1" rowspan="2">Código</th>
+                    <th class="text-center" colspan="1" rowspan="2">Tipo de alumbrado</th>
+                    <th colspan="4">Medición</th>
+                    <th class="text-center" colspan="1" rowspan="2">Nivel de cumplimiento (%)</th>
+                    <th class="text-center" colspan="1" rowspan="2">Acciones</th>
+                </tr>
+                <tr class="align-middle">
+                    <th>Mínima</th>
+                    <th>Máxima</th>
+                    <th>Media</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in fiscalizaciones_con_mediciones %}
+                <tr>
+                    <td>{{ item.fiscalizacion.proyecto.nombre }}</td>
+                    <td>{{ item.fiscalizacion.id }}</td>
+                    <td>{{ item.fiscalizacion.proyecto.get_tipo_alumbrado_display }}</td>
+                    <td>{{ item.estadisticas.valor_minimo|default:"N/A" }}</td>
+                    <td>{{ item.estadisticas.valor_maximo|default:"N/A" }}</td>
+                    <td>{{ item.estadisticas.valor_promedio|floatformat:2|default:"N/A" }}</td>
+                    <td>{{ item.mediciones.count }}</td>
+                    <td>{{ item.|default:"N/A"  }}</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <div class="" data-bs-toggle="tooltip" title="Ver detalle" data-bs-placement="top">
+                                <a class="btn btn-primary me-1"
+                                    href="{% url 'detalleFiscalizacion' item.fiscalizacion.proyecto.id %}"><i
+                                        class="bi bi-eye"></i></a>
+                            </div>
+                            <div class="me-1" data-bs-toggle="tooltip" title="Nueva Medición" data-bs-placement="top">
+                                <a class="btn btn-success" href="{% url 'nuevaMedicion' item.fiscalizacion.id%}"><i class="bx bx-plus"></i></a>
+                            </div>
+                            <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
+                                <a class="btn btn-danger" href="{% url 'eliminarFiscalizacion' item.fiscalizacion.id %}"><i class="bx bx-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock contenido %}
