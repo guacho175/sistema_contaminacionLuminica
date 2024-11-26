@@ -21,11 +21,12 @@ class GenerarNombre:
         return os.path.join(ruta, nombre)
 
     @staticmethod
-    def generar_nombre_proyecto(instance, filename):
+    def generar_nombre_fiscalizacion(instance, filename):
         """
-        Genera un nombre único para archivos en la carpeta 'proyectos'.
+        Genera un nombre único para archivos en la carpeta 'fiscalizacion'.
         """
-        return GenerarNombre.generar_nombre(instance, filename, ruta='proyectos')
+        return GenerarNombre.generar_nombre(instance, filename, ruta='fiscalizacion')
+
 
     @staticmethod
     def generar_nombre_medicion(instance, filename):

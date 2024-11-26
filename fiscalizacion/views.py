@@ -1,11 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from services.fiscalizacion.FiscalizacionService import FiscalizacionService
 from .forms import FiscalizacionForm
 from .models import Fiscalizacion
 from django.contrib import messages
 from django.db.models import RestrictedError
-from services.fiscalizacion.mapa_service import MapaService
-
+from services.fiscalizacion.mapService import MapService
+from proyectos.models import Proyecto
 
 
 
@@ -13,7 +12,7 @@ def crear_fiscalizacion(request) -> None:
     """Vista para crear una nueva fiscalización."""
 
     if request.method == 'POST':
-        form = FiscalizacionForm(request.POST)
+        form = FiscalizacionForm(request.POST,  request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'Fiscalización ingresada exitosamente al sistema.')
@@ -25,14 +24,20 @@ def crear_fiscalizacion(request) -> None:
 def cargar_fiscalizaciones(request) -> dict:
     fiscalizaciones = Fiscalizacion.objects.all()
 
-    mapa = MapaService.crear_mapa()
+    fiscalizaciones_con_mediciones, todas_las_mediciones = MapService.obtener_fiscalizaciones_con_mediciones()
+    
+    mapa = MapService.crear_mapa()
+    MapService.agregar_areas_rectangulares(mapa, Proyecto.objects.all())
+    MapService.agregar_marcadores_mediciones(mapa, todas_las_mediciones)
 
     map_html = mapa._repr_html_()
 
     data = {
         'fiscalizaciones': fiscalizaciones,
         'form': FiscalizacionForm,
-        'map' : map_html
+        'map' : map_html,
+        'fiscalizaciones_con_mediciones': fiscalizaciones_con_mediciones,
+
     }
 
     return render(request, 'fiscalizacion/mantenedor_fiscalizacion.html', data)
@@ -45,7 +50,7 @@ def eliminar_fiscalizacion(request, fiscalizacion_id):
 
     if request.method == 'POST':
         try:
-            FiscalizacionService.eliminar_fiscalizacion(fiscalizacion_id)
+            fiscalizacion.delete()
             messages.success(request, f'El registro {fiscalizacion.proyecto} se eliminó correctamente.')
             return redirect('') 
         except RestrictedError as e:

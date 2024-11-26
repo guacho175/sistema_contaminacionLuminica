@@ -23,6 +23,7 @@ class MedicionCRUD:
             messages.success(self.request, 'Medición ingresada correctamente.')
             return HttpResponseRedirect(current_url)
         
+        
         return None, form, fiscalizacion
 
     def eliminar_medicion(self, medicion_id):

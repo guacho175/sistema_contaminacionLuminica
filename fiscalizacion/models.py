@@ -6,7 +6,7 @@ from services.utils.GenerarNombre import GenerarNombre
 
 
 class Fiscalizacion(models.Model):
-    foto = models.ImageField(upload_to=GenerarNombre.generar_nombre_medicion, null=True, default='medicion/medicion.png')
+    foto = models.ImageField(upload_to=GenerarNombre.generar_nombre_fiscalizacion, null=True, default='fiscalizacion/fiscalizacion.png')
     #FK
     proyecto = models.ForeignKey(Proyecto, null=False, on_delete=models.RESTRICT)
     usuario = models.ForeignKey(Usuario, null=False, on_delete=models.RESTRICT)

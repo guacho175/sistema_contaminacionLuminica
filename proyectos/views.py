@@ -7,7 +7,7 @@ from .forms import ProyectoForm
 
 def crear_proyecto(request):
     if request.method == 'POST':
-        form = ProyectoForm(request.POST, request.FILES)
+        form = ProyectoForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'El proyecto se ingreso correctamente.')

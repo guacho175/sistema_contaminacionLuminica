@@ -12,7 +12,7 @@
             <div class="row">
 
                 <div class="col-3">
-                    <img src="{% static 'images/default.png' %}" alt="Imagen del proyecto" width="150" height="auto"
+                    <img src="{% static 'images/default.png' %}" alt="Imagen del punto de medición" width="150" height="auto"
                         class="mx-auto my-auto d-block mb-2">
                     <label for="foto">Fotografia punto de medición:</label>
                     <input type="file" name="foto" id="foto" class="form-control form-control-sm">
@@ -57,11 +57,6 @@
                             {{ form.instrumento_medicion }}
                             {{ form.instrumento_medicion.errors }}
                         </div>
-                                                <div class="col-6 mb-4">
-                            {{ form.fiscalizacion.label_tag }}
-                            {{ form.fiscalizacion }}
-                            {{ form.fiscalizacion.errors }}
-                        </div>
                         <div class="col-12 mb-4">
                             {{ form.observacion.label_tag }}
                             {{ form.observacion }}
@@ -73,6 +68,11 @@
                             <button type="submit" class="btn btn-success">Guardar</button>
                         </div>
     
+                        <div class="col-6 mb-4">
+                            {{ form.fiscalizacion }}
+                            {{ form.fiscalizacion.errors }}
+                        </div>
+                        
                     </div>
                 </div>
             </div>
