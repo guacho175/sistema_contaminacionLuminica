@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'proyectos',
     'usuarios',
     'fiscalizacion',
+    'proyectosApi',
 ]
 
 MIDDLEWARE = [
