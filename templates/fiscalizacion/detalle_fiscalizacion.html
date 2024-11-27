@@ -2,38 +2,70 @@
 {% load static %}
 
 {% block contenido %}
-<h1 class="text-center mb-4">Detalle del Proyecto</h1>
 
-<div class="card mb-4">
-    <div class="card-body">
-        <h3>Proyecto: {{ fiscalizacion.proyecto.nombre }}</h3>
-        <p>Ingresado al sistema el {{ fiscalizacion.creado }}</p>
-        <p><img src="{{fiscalizacion.proyecto.foto.url}}" alt="Foto área de Fiscalizacion" width="50" height="auto"></p>
-        <p><strong>Tipo de Alumbrado:</strong> {{ fiscalizacion.proyecto.get_tipo_alumbrado_display }}</p>
-        <p><strong>Ubicación:</strong> Latitud {{ proyecto.latitud }}, Longitud {{ proyecto.longitud }}</p>
-        <p><strong>Inspector: </strong>id n°{{ fiscalizacion.usuario.id }} | {{ fiscalizacion.usuario.username }}</p>
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center mb-4">Detalle de Fiscalización</h1>
     </div>
 </div>
 
-<tbody>
-    <tr>
-        <td>{{ fiscalizacion.id }}</td>
-        <td>{{ fiscalizacion.proyecto.nombre }}</td>
-        <td>{{ fiscalizacion.usuario.nombre }} {{ fiscalizacion.usuario.a_materno }}</td>
-        <td>{{ fiscalizacion.creado }}</td>
-        <td>
-            <ul>
-                {% for medicion in fiscalizacion.medicion_set.all %}
-                <li>{{ medicion.valor_medido }}</li>
-                {% endfor %}
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card mb-3 h-100">
+            <div class="row g-0 h-100">
+                <div class="col-md-4">
+                    <img src="{{fiscalizacion.proyecto.foto.url}}" class="img-fluid rounded-start"
+                        alt="Foto área de Fiscalizacion" style="width: 100%; height: 100%;">
+                </div>
+                <div class="col-md-8 d-flex flex-column">
+                    <div class="card-body flex-grow-1">
+                        <h4 class="card-title">Proyecto: {{ fiscalizacion.proyecto.nombre }}</h4>
+                        <p class="card-text"><strong>Tipo de Alumbrado:</strong> {{fiscalizacion.proyecto.get_tipo_alumbrado_display }}</p>
+                        <p><strong>Ubicación:</strong> Latitud {{ fiscalizacion.proyecto.latitud }}, Longitud {{fiscalizacion.proyecto.longitud }}</p>
+                        <p><strong>Inspector: </strong>id n°{{ fiscalizacion.usuario.id }} | {{fiscalizacion.usuario.username }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">Ingresado al sistema el {{ fiscalizacion.creado }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 d-flex justify-content-center">
+        {% for medicion in fiscalizacion.medicion_set.all %}
+        <div class="card m-1" style="width: 18rem;">
+            <div class="d-flex justify-content-center"> 
+                <img src="{{ medicion.foto.url }}" class="card-img-top" alt="Foto de punto de medición" style="max-width: 100px; height: auto;">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
             </ul>
-        </td>
-    </tr>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+</div>
 
-</tbody>
 
 
-<h2>Historial de Mediciones</h2>
+
+
+
+
+<h3>Mediciones</h3>
 <div class="table-responsive">
     <table class="table table-dark table-hover table-striped table-bordered text-center align-middle">
         
@@ -52,13 +84,13 @@
         </thead>
 
         <tbody>
-            {% for medicion in mediciones %}
+            {% for medicion in fiscalizacion.medicion_set.all %}
             <tr>
-                <td>{{ proyecto.fiscalizacion_set.first.usuario.nombre }} {{ proyecto.fiscalizacion_set.first.usuario.a_paterno }}</td>
+                <td>{{ medicion.fiscalizacion.usuario.username }} {{ medicion.fiscalizacion.usuario.lastname }}</td>
                 <td>{{ medicion.instrumento_medicion.get_tipo_display }}</td>
                 <td>{{ medicion.valor_medido }}</td>
-                <td>{{ medicion.get_cumplimiento_display }}</td>
-                <td>{{ medicion.fiscalizacion.proyecto.id }}</td>
+                <td>{{ medicion.cumplimiento }}</td>
+                <td>{{ medicion.observacion }}</td>
                 <td>{{ medicion.creado }}</td>
                 <td>
                    
