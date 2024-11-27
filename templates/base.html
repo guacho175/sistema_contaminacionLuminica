@@ -12,7 +12,17 @@
     <!--iconos-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"> <!-- Agregar esta línea -->
-
+    
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        // Inicializar Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: "dark"
+        });
+    </script>
+    
     <!--CSS-->
     <style>
         body {
