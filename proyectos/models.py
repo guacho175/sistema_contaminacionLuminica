@@ -1,13 +1,31 @@
 from django.db import models
 from django.utils import timezone
 from .choices import tipo_alumbrado
-from usuarios.models import Persona
 from services.utils.GenerarNombre import GenerarNombre
 
 
 # Create your models here.
-class Titular(Persona):
+
+class Persona(models.Model):
+    run = models.CharField(max_length=15, verbose_name='Run')
+    nombre = models.CharField(max_length=50, verbose_name='Nombre')
+    a_paterno = models.CharField(max_length=50, verbose_name='Apellido Paterno')
+    a_materno = models.CharField(max_length=50, verbose_name='Apellido Materno')
+    correo = models.CharField(max_length=100, verbose_name='Correo')
     direccion = models.CharField(max_length=500, verbose_name='Dirección')
+
+    creado = models.DateTimeField(default=timezone.now, editable=False)
+
+    def __str__(self):
+        return "{} {} {} {}".format(self.run ,self.nombre, self.a_paterno, self.a_materno)
+        
+    class Meta:
+        db_table = 'persona'
+        verbose_name = 'Persona'
+        verbose_name_plural = 'Personas'
+
+
+class Titular(Persona):
 
     def __str__(self):
         return "{} {} {}".format(self.nombre, self.a_paterno, self.a_materno)
@@ -19,7 +37,6 @@ class Titular(Persona):
 
 
 class RepresentanteLegal(Persona):
-    direccion = models.CharField(max_length=500, verbose_name='Dirección')
 
     def __str__(self):
         return "{} {} {}".format(self.nombre, self.a_paterno, self.a_materno)

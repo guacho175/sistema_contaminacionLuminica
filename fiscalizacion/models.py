@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
-from usuarios.models import Usuario
 from proyectos.models import Proyecto
+from django.contrib.auth.models import User as Usuario
 
 
 class Fiscalizacion(models.Model):
@@ -11,7 +11,7 @@ class Fiscalizacion(models.Model):
     creado = models.DateTimeField(default=timezone.now, editable=False)  
 
     def __str__(self):
-        return "cod: {} - {} - {} {}".format(self.id, self.proyecto.nombre, self.usuario.nombre, self.usuario.a_materno)
+        return "cod: {} - {} ".format(self.id, self.proyecto.nombre) 
         
     class Meta:
         db_table = 'fiscalizacion'

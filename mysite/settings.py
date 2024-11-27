@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mediciones',
     'proyectos',
-    'usuarios',
     'fiscalizacion',
     'proyectosApi',
 ]

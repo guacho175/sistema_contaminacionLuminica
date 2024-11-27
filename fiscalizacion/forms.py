@@ -1,7 +1,8 @@
 from django import forms
 from .models import Fiscalizacion, Reporte
 from proyectos.models import Proyecto
-from usuarios.models import Usuario
+from django.contrib.auth.models import User as Usuario
+
 
 
 class FiscalizacionForm(forms.ModelForm):
@@ -14,7 +15,7 @@ class FiscalizacionForm(forms.ModelForm):
     )
 
     usuario = forms.ModelChoiceField(
-        queryset=Usuario.objects.all(),
+        queryset=Usuario.objects.filter(is_staff=False),
         widget=forms.Select(attrs={'class': 'form-control'}),
         label='Usuario'
     )
