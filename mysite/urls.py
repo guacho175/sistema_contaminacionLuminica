@@ -13,8 +13,6 @@ urlpatterns = [
     path('', include('proyectosApi.urls')),
     path('', include('fiscalizacionApi.urls')),
     path('', include('medicionesApi.urls')),
-
-
 ]
 
 if settings.DEBUG:
