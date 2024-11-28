@@ -41,8 +41,5 @@ def cargar_fiscalizaciones_completas(request):
             reporte for reporte in reportes_data.values() if reporte["fiscalizacion_id"] == fiscalizacion["id"]
         ]
 
-        # Eliminar los IDs relacionados para evitar redundancia en la API
-        del fiscalizacion["proyecto_id"]
-        del fiscalizacion["usuario_id"]
 
     return JsonResponse({"fiscalizaciones_completas": fiscalizaciones_data})
