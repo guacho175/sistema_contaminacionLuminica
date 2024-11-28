@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-11-2024 a las 01:12:55
+-- Tiempo de generación: 28-11-2024 a las 19:12:56
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -392,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `fiscalizacion` (
   PRIMARY KEY (`id`),
   KEY `fiscalizacion_proyecto_id_71907d10` (`proyecto_id`),
   KEY `fiscalizacion_usuario_id_4c184ee6` (`usuario_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `fiscalizacion`
@@ -401,8 +401,11 @@ CREATE TABLE IF NOT EXISTS `fiscalizacion` (
 INSERT INTO `fiscalizacion` (`id`, `creado`, `proyecto_id`, `usuario_id`) VALUES
 (1, '2024-11-27 00:19:00.682750', 1, 2),
 (2, '2024-11-27 00:20:48.767209', 1, 2),
+(7, '2024-11-27 16:23:59.352643', 1, 2),
 (4, '2024-11-27 00:29:13.899185', 2, 2),
-(6, '2024-11-27 01:00:29.096727', 1, 2);
+(12, '2024-11-27 18:11:21.440390', 6, 2),
+(9, '2024-11-27 17:54:46.958201', 3, 2),
+(11, '2024-11-27 18:07:33.959505', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -451,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `medicion` (
   PRIMARY KEY (`id`),
   KEY `medicion_fiscalizacion_id_fcf6403b` (`fiscalizacion_id`),
   KEY `medicion_instrumento_medicion_id_95125e82` (`instrumento_medicion_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `medicion`
@@ -459,7 +462,14 @@ CREATE TABLE IF NOT EXISTS `medicion` (
 
 INSERT INTO `medicion` (`id`, `tipo`, `latitud`, `longitud`, `temperatura`, `humedad`, `valor_medido`, `cumplimiento`, `observacion`, `foto`, `creado`, `fiscalizacion_id`, `instrumento_medicion_id`) VALUES
 (1, '0', -29.905656, -71.274206, 44, 12, 3, NULL, 'we', 'medicion/medicion.png', '2024-11-27 00:26:37.786693', 1, 1),
-(2, '0', 132, 132, 132, 132, 12, NULL, '123', 'medicion/medicion.png', '2024-11-27 01:01:03.980942', 2, 1);
+(2, '0', 132, 132, 132, 132, 12, NULL, '123', 'medicion/medicion.png', '2024-11-27 01:01:03.980942', 2, 1),
+(3, '0', 1, 1, 1, 1, 1, NULL, '1', 'medicion/medicion.png', '2024-11-27 16:24:12.770806', 1, 1),
+(4, '0', 11, 11, 11, 11, 11, NULL, '1111', 'medicion/medicion.png', '2024-11-27 19:16:02.192143', 1, 1),
+(5, '0', 2, 2, 2, 1, 1, NULL, '2', 'medicion/medicion.png', '2024-11-28 06:43:28.249547', 1, 1),
+(6, '0', 1, 1, 1, -1, -1, NULL, '11', 'medicion/medicion.png', '2024-11-28 06:45:59.864593', 1, 1),
+(7, '0', 1, 1, 1, 1, 0, NULL, '1', 'medicion/28112024_065541.jpg', '2024-11-28 06:55:41.493105', 2, 1),
+(8, '0', 3, 3, 3, 3, 3, NULL, '3', 'medicion/28112024_065723.jpg', '2024-11-28 06:57:23.418087', 2, 1),
+(9, '0', 2, 2, 2, 2, 2, NULL, '222', 'medicion/28112024_161429.jpg', '2024-11-28 16:14:29.272830', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -511,15 +521,20 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   KEY `proyecto_detalle_luminarias_id_dedf9604` (`detalle_luminarias_id`),
   KEY `proyecto_representante_legal_id_a960c619` (`representante_legal_id`),
   KEY `proyecto_titular_id_0f63ba6e` (`titular_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `proyecto`
 --
 
 INSERT INTO `proyecto` (`id`, `nombre`, `latitud`, `longitud`, `tipo_alumbrado`, `descripcion`, `foto`, `creado`, `detalle_luminarias_id`, `representante_legal_id`, `titular_id`) VALUES
-(1, 'Faro', -29.9055459, -71.2743113, 'o', 'Faro de La Serena', 'proyectos/27112024_003001.png', '2024-11-27 00:18:13.438254', 1, 1, 2),
-(2, '123', 123, 123, 'v', '123', 'proyectos/proyecto.png', '2024-11-27 00:28:55.696569', 1, 1, 2);
+(1, 'Faro', -29.9055459, -71.2743113, 'o', 'Faro de La Serena', 'proyectos/28112024_071053.jpg', '2024-11-27 00:18:13.438254', 1, 1, 2),
+(2, '123', 123, 123, 'v', '123', 'proyectos/proyecto.png', '2024-11-27 00:28:55.696569', 1, 1, 2),
+(3, 'qq', 1, 1, 'i', '11', 'proyectos/27112024_175437.jpg', '2024-11-27 17:54:36.813012', 1, 1, 2),
+(4, 'default', 1, 1, 'v', '11', 'proyectos/proyecto.png', '2024-11-27 18:03:32.176357', 1, 1, 2),
+(5, 'def', 2, 2, 'v', '222', 'proyectos/proyecto.png', '2024-11-27 18:07:22.433307', 1, 1, 2),
+(6, 'mmm', 11, 11, 'v', '1q11', 'proyectos/proyecto.png', '2024-11-27 18:10:23.922694', 1, 1, 2),
+(7, 'nnn', 11, 11, 'v', 'nnnnn', 'proyectos/proyecto.png', '2024-11-27 18:14:48.180736', 1, 1, 2);
 
 -- --------------------------------------------------------
 
