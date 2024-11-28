@@ -1,0 +1,19 @@
+# Ignorar compilados de Python
+__pycache__/
+*.py[cod]
+
+# Ignorar archivos de migraciones compiladas
+*/migrations/__pycache__/
+*/migrations/*.pyc
+
+# Ignorar archivos de Django Static
+staticfiles/
+
+# Ignorar archivos temporales
+*.log
+*.sqlite3
+*.swp
+
+# Ignorar archivos del entorno virtual
+venv/
+env/
