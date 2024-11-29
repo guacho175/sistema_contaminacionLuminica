@@ -116,7 +116,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-center">
                     <div class="me-2" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
-                        <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>
+                        <a class="btn btn-warning" href="{% url 'editarMedicion' medicion.id %}"><i class="bx bx-edit"></i></a>
                     </div>
                     <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
                         <a class="btn btn-danger" href="{% url 'eliminarMedicion' medicion.id %}"><i

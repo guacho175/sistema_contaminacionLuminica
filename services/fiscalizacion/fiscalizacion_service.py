@@ -2,9 +2,11 @@ from fiscalizacion.models import Fiscalizacion
 from mediciones.models import Medicion
 from services.fiscalizacion.estadisticas_service import EstadisticasService
 
+
 class FiscalizacionService:
     """Servicio para gestionar fiscalizaciones."""
     
+
     @staticmethod
     def obtener_fiscalizaciones_con_mediciones():
         fiscalizaciones = Fiscalizacion.objects.all().select_related('proyecto', 'usuario')

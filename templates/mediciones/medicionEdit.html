@@ -1,37 +1,42 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block contenido %}
+{% load static %}
 <div class="row">
     <div class="col">
-        <h1 class="text-center">Nueva Medición</h1>
-        <h5 class="text-center mb-5">Proyecto: {{ fiscalizacion.proyecto.nombre }}</h5>
-        <form method="post" enctype=multipart/form-data>
+        <h1 class="text-center mb-5">Modificar Medición</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <form method="post" action="{% url 'medicionEditada' medicion.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.non_field_errors }}
+
             <div class="row">
 
                 <div class="col-3">
-                    <img src="{% static 'images/default.png' %}" alt="Imagen del punto de medición" width="150" height="auto"
-                        class="mx-auto my-auto d-block mb-2">
-                    <label for="foto">Fotografia punto de medición:</label>
-                    <input type="file" name="foto" id="foto" class="form-control form-control-sm">
                     
-                    <div class="col-4 mt-3">
+                    <img src="{{ medicion.foto.url }}" alt="Imagen de la medición"
+                    width="150" height="auto" class="mx-auto my-auto d-block mb-2 ">
+                    <label for="foto">Fotografia de la medición:</label>
+                    <input type="file" name="foto" id="foto" class="form-control form-control-sm">
+                    <div class="mt-3">
                         {{ form.tipo.label_tag }}
                         {{ form.tipo }}
                         {{ form.tipo.errors }}
                     </div>
-                    <div class="mt-3" style="display: none;">
+                    <div class="mt-3">
                         {{ form.cumplimiento.label_tag }}
                         {{ form.cumplimiento }}
                         {{ form.cumplimiento.errors }}
                     </div>
                 </div>
 
-                <div class="col-9">
-                    <div class="row ms-3">
 
+                <div class="col-9">
+                    <div class="row ps-3">
+                        
                         <div class="col-4 mb-4">
                             {{ form.latitud.label_tag }}
                             {{ form.latitud }}
@@ -47,17 +52,17 @@
                             {{ form.temperatura }}
                             {{ form.temperatura.errors }}
                         </div>
-                        <div class="col-3 mb-4">
+                        <div class="col-4 mb-4">
                             {{ form.humedad.label_tag }}
                             {{ form.humedad }}
                             {{ form.humedad.errors }}
                         </div>
-                        <div class="col-3 mb-4">
+                        <div class="col-4 mb-4">
                             {{ form.valor_medido.label_tag }}
                             {{ form.valor_medido }}
                             {{ form.valor_medido.errors }}
                         </div>
-                        <div class="col-6 mb-4">
+                        <div class="col-4 mb-4">
                             {{ form.instrumento_medicion.label_tag }}
                             {{ form.instrumento_medicion }}
                             {{ form.instrumento_medicion.errors }}
@@ -67,23 +72,26 @@
                             {{ form.observacion }}
                             {{ form.observacion.errors }}
                         </div>
-
+        
+                        <div class="col-12">
+                            {{ form.fiscalizacion }}
+                        </div>
+                        
                         <div class="row mx-auto my-auto d-block mb-2">
                             <a class="btn btn-dark mb-2" href="{% url '' %}">Volver</a>
                             <button type="submit" class="btn btn-success">Guardar</button>
                         </div>
-    
-                        <div class="col-6 mb-4">
-                            {{ form.fiscalizacion }}
-                            {{ form.fiscalizacion.errors }}
-                        </div>
-                        
+
                     </div>
                 </div>
+                
             </div>
-            
+
+
 
         </form>
     </div>
 </div>
+
+
 {% endblock contenido %}

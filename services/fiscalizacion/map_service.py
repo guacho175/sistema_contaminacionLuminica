@@ -8,6 +8,7 @@ class MapService:
     def crear_mapa():
         return folium.Map(location=[-30.031066, -71.280182], zoom_start=11)
     
+    
     @staticmethod
     def agregar_areas_rectangulares(mapa, proyectos):
         for proyecto in proyectos:
@@ -18,6 +19,7 @@ class MapService:
                 fill_color="red", weight=5, tooltip=f'Área del Proyecto {proyecto.nombre}'
             ).add_to(mapa)
     
+
     @staticmethod
     def agregar_marcadores_mediciones(mapa, mediciones):
         marker_cluster = MarkerCluster().add_to(mapa)

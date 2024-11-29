@@ -8,6 +8,7 @@ from services.utils.validators import validar_tamano_archivo
 
 class MedicionForm(forms.ModelForm):
     tipo = forms.CharField(widget=forms.Select(choices=tipo_medicion))
+    cumplimiento = forms.CharField(widget=forms.Select(choices=cumplimiento))
 
     latitud = forms.FloatField(
         widget=forms.NumberInput(attrs={'step': 'any', 'class': 'form-control', 'placeholder': 'Ingrese latitud'}),

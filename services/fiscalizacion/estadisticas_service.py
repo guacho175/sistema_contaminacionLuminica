@@ -1,8 +1,9 @@
-from platform import node
 from django.db.models import Min, Max, Avg
+
 
 class EstadisticasService:
     """Servicio para calcular estadísticas de mediciones."""
+    
     
     @staticmethod
     def calcular_estadisticas(mediciones):
