@@ -93,7 +93,13 @@
                     <td>{{ fiscalizacion.estadisticas.valor_promedio }}</td>
                     <td>{{ fiscalizacion.estadisticas.valor_maximo }}</td>
                     <td>{{ fiscalizacion.mediciones.count }}</td>
-                    <td>{{ fiscalizacion.porcentaje_cumplimiento  }} %</td>
+                    <td>{% if fiscalizacion.porcentaje_cumplimiento is None %}
+                            N/A
+                        {% else %}
+                            {{ fiscalizacion.porcentaje_cumplimiento }} %
+                        {% endif %}
+                    </td>
+                
                     <td>
                         <div class="d-flex justify-content-center">
                             <div class="" data-bs-toggle="tooltip" title="Ver detalle" data-bs-placement="top">

@@ -7,6 +7,8 @@ from proyectos.models import Proyecto
 
 from services.fiscalizacion.fiscalizacion_service import FiscalizacionService
 from services.fiscalizacion.map_service import MapService
+from services.fiscalizacion.estadisticas_service import EstadisticasService
+
 
 
 
@@ -65,7 +67,13 @@ def eliminar_fiscalizacion(request, fiscalizacion_id):
 
 
 def detalle_fiscalizacion(request, fiscalizacion_id):
+    # Obtener la fiscalización y sus mediciones
     fiscalizacion = get_object_or_404(Fiscalizacion, id=fiscalizacion_id)
+    mediciones = fiscalizacion.medicion_set.all()
+
+    # Calcular el porcentaje de cumplimiento utilizando el servicio
+    porcentaje_cumplimiento = EstadisticasService.calcular_porcentaje_cumplimiento(mediciones)
     
-    return render(request, 'fiscalizacion/detalle_fiscalizacion.html', {'fiscalizacion': fiscalizacion})
+    
+    return render(request, 'fiscalizacion/detalle_fiscalizacion.html', {'fiscalizacion': fiscalizacion, 'porcentaje_cumplimiento': porcentaje_cumplimiento})
 
