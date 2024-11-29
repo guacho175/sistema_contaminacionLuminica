@@ -67,31 +67,33 @@
         <table class="table table-dark table-hover table-striped table-bordered text-center align-middle">
             <thead class="thead-dark">
                 <tr class="align-middle">
+                    <th class="text-center" colspan="1" rowspan="2">#</th>
                     <th class="text-center" colspan="1" rowspan="2">Proyecto</th>
                     <th class="text-center" colspan="1" rowspan="2">Código</th>
                     <th class="text-center" colspan="1" rowspan="2">Tipo de alumbrado</th>
-                    <th colspan="4">Medición</th>
-                    <th class="text-center" colspan="1" rowspan="2">Nivel de cumplimiento (%)</th>
+                    <th colspan="4">Estadisticas de Mediciones</th>
+                    <th class="text-center" colspan="1" rowspan="2">Nivel de cumplimiento</th>
                     <th class="text-center" colspan="1" rowspan="2">Acciones</th>
                 </tr>
                 <tr class="align-middle">
                     <th>Mínima</th>
-                    <th>Máxima</th>
                     <th>Media</th>
+                    <th>Máxima</th>
                     <th>Total</th>
                 </tr>
             </thead>
             <tbody>
                  {% for fiscalizacion in fiscalizaciones_con_mediciones %}
                 <tr>
+                    <td>{{ forloop.counter }}</td>
                     <td>{{ fiscalizacion.fiscalizacion.proyecto.nombre }}</td>
                     <td>{{ fiscalizacion.fiscalizacion.id }}</td>
                     <td>{{ fiscalizacion.fiscalizacion.proyecto.get_tipo_alumbrado_display }}</td>
                     <td>{{ fiscalizacion.estadisticas.valor_minimo }}</td>
-                    <td>{{ fiscalizacion.estadisticas.valor_maximo }}</td>
                     <td>{{ fiscalizacion.estadisticas.valor_promedio }}</td>
+                    <td>{{ fiscalizacion.estadisticas.valor_maximo }}</td>
                     <td>{{ fiscalizacion.mediciones.count }}</td>
-                    <td>a{{ item.|default:"N/A"  }}</td>
+                    <td>{{ fiscalizacion.porcentaje_cumplimiento  }} %</td>
                     <td>
                         <div class="d-flex justify-content-center">
                             <div class="" data-bs-toggle="tooltip" title="Ver detalle" data-bs-placement="top">

@@ -3,8 +3,10 @@ from .forms import FiscalizacionForm
 from .models import Fiscalizacion
 from django.contrib import messages
 from django.db.models import RestrictedError
-from services.fiscalizacion.mapService import MapService
 from proyectos.models import Proyecto
+
+from services.fiscalizacion.fiscalizacion_service import FiscalizacionService
+from services.fiscalizacion.map_service import MapService
 
 
 
@@ -22,22 +24,25 @@ def crear_fiscalizacion(request) -> None:
 
 
 def cargar_fiscalizaciones(request) -> dict:
-    fiscalizaciones = Fiscalizacion.objects.all()
+    """Carga las fiscalizaciones con sus mediciones y genera el mapa."""
 
-    fiscalizaciones_con_mediciones, todas_las_mediciones = MapService.obtener_fiscalizaciones_con_mediciones()
+    # Obtener datos de la capa services
+    fiscalizaciones_con_mediciones, todas_las_mediciones = FiscalizacionService.obtener_fiscalizaciones_con_mediciones()
+   
     
+    # Crear el mapa
     mapa = MapService.crear_mapa()
     MapService.agregar_areas_rectangulares(mapa, Proyecto.objects.all())
     MapService.agregar_marcadores_mediciones(mapa, todas_las_mediciones)
 
+    # Renderizar el mapa
     map_html = mapa._repr_html_()
 
+    # Preparar el contexto
     data = {
-        'fiscalizaciones': fiscalizaciones,
         'form': FiscalizacionForm,
         'map' : map_html,
         'fiscalizaciones_con_mediciones': fiscalizaciones_con_mediciones,
-
     }
 
     return render(request, 'fiscalizacion/mantenedor_fiscalizacion.html', data)
