@@ -2,9 +2,41 @@ import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from proyectos.models import Proyecto,RepresentanteLegal,Titular,DetalleLuminaria
+from django.views.decorators.csrf import csrf_exempt
 
 
-# Create your views here.
+
+@csrf_exempt
+def guardar_foto_proyecto(request):
+    if request.method == "POST":
+        try:
+            # Obtener datos de la solicitud
+            proyecto_id = request.POST.get("proyecto_id")
+            foto_contenido = request.FILES.get("foto")
+
+            if not proyecto_id or not foto_contenido:
+                return JsonResponse({"error": "Faltan campos requeridos: proyecto_id o foto"}, status=400)
+
+            # Verificar que el proyecto existe
+            try:
+                proyecto = Proyecto.objects.get(id=proyecto_id)
+            except Proyecto.DoesNotExist:
+                return JsonResponse({"error": "El proyecto no existe"}, status=404)
+
+            # Guardar la foto automáticamente usando el método definido en el modelo
+            proyecto.foto.save(foto_contenido.name, foto_contenido, save=True)
+
+            return JsonResponse({
+                "mensaje": "Foto guardada exitosamente",
+                "proyecto_id": proyecto.id,
+                "foto_url": proyecto.foto.url
+            }, status=200)
+
+        except Exception as e:
+            return JsonResponse({"error": f"Error al procesar la solicitud: {str(e)}"}, status=500)
+
+    return JsonResponse({"error": "Método no permitido"}, status=405)
+
 
 def cargar_proyecto(request):
     proyecto = Proyecto.objects.all()

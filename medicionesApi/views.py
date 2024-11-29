@@ -1,7 +1,10 @@
 import json
 from django.shortcuts import render
 from django.http import JsonResponse
+from fiscalizacion.models import Fiscalizacion
 from mediciones.models import InstrumentoMedicion, Medicion
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 # Create your views here.
@@ -41,7 +44,72 @@ def cargar_mediciones_completas(request):
     for medicion in mediciones_data:
         medicion["instrumento_medicion"] = instrumentos_data.get(medicion["instrumento_medicion_id"], {})
         # Eliminar los IDs relacionados para evitar redundancia en la API
-        del medicion["instrumento_medicion_id"]
-        del medicion["fiscalizacion_id"]
+
 
     return JsonResponse({"mediciones_completas": mediciones_data})
+
+
+@csrf_exempt
+def guardar_medicion(request):
+    if request.method == "POST":
+        try:
+            # Obtener datos de la solicitud
+            instrumento_medicion_id = request.POST.get("instrumento_medicion_id")
+            fiscalizacion_id = request.POST.get("fiscalizacion_id")
+            tipo = request.POST.get("tipo")
+            latitud = request.POST.get("latitud")
+            longitud = request.POST.get("longitud")
+            temperatura = request.POST.get("temperatura")
+            humedad = request.POST.get("humedad")
+            valor_medido = request.POST.get("valor_medido")
+            cumplimiento = request.POST.get("cumplimiento")
+            observacion = request.POST.get("observacion")
+            foto = request.FILES.get("foto")
+
+            # Validar campos requeridos
+            if not (instrumento_medicion_id and fiscalizacion_id and latitud and longitud and valor_medido):
+                return JsonResponse({"error": "Faltan campos requeridos"}, status=400)
+
+            # Verificar relaciones de claves foráneas
+            try:
+                instrumento_medicion = InstrumentoMedicion.objects.get(id=instrumento_medicion_id)
+            except InstrumentoMedicion.DoesNotExist:
+                return JsonResponse({"error": "Instrumento de medición no encontrado"}, status=404)
+
+            try:
+                fiscalizacion = Fiscalizacion.objects.get(id=fiscalizacion_id)
+            except Fiscalizacion.DoesNotExist:
+                return JsonResponse({"error": "Fiscalización no encontrada"}, status=404)
+
+            # Crear instancia de Medición
+            medicion = Medicion(
+                tipo=tipo,
+                latitud=latitud,
+                longitud=longitud,
+                temperatura=temperatura,
+                humedad=humedad,
+                valor_medido=valor_medido,
+                cumplimiento=cumplimiento,
+                observacion=observacion,
+                instrumento_medicion=instrumento_medicion,
+                fiscalizacion=fiscalizacion,
+            )
+
+            # Guardar foto si se proporciona
+            if foto:
+                medicion.foto.save(foto.name, foto, save=False)
+
+            # Guardar medición en la base de datos
+            medicion.save()
+
+            return JsonResponse({
+                "mensaje": "Medición guardada exitosamente",
+                "medicion_id": medicion.id,
+                "foto_url": medicion.foto.url if foto else None
+            }, status=201)
+
+        except Exception as e:
+            return JsonResponse({"error": f"Error al guardar la medición: {str(e)}"}, status=500)
+
+    return JsonResponse({"error": "Método no permitido"}, status=405)
+
