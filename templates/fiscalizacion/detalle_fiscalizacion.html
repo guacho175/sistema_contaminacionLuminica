@@ -11,21 +11,44 @@
 
 <div class="row mb-3">
     <div class="col-12">
-        <div class="card mb-3 h-100">
-            <div class="row g-0 h-100">
-                <div class="col-md-4">
+        <div class="card mb-3 bg-dark text-white" style="box-shadow: 0 0px 8px rgba(255, 255, 255, 0.5)">
+            <div class="row g-0">
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
                     <img src="{{fiscalizacion.proyecto.foto.url}}" class="img-fluid rounded-start"
-                        alt="Foto área de Fiscalizacion" style="width: 100%; height: 100%;">
+                        alt="Foto área de Fiscalización" style="object-fit: cover; width: 100%; height: 100%;">
                 </div>
                 <div class="col-md-8 d-flex flex-column">
                     <div class="card-body flex-grow-1">
-                        <h4 class="card-title">Proyecto: {{ fiscalizacion.proyecto.nombre }}</h4>
-                        <p class="card-text"><strong>Tipo de Alumbrado:</strong> {{fiscalizacion.proyecto.get_tipo_alumbrado_display }}</p>
-                        <p><strong>Ubicación:</strong> Latitud {{ fiscalizacion.proyecto.latitud }}, Longitud {{fiscalizacion.proyecto.longitud }}</p>
-                        <p><strong>Inspector: </strong>id n°{{ fiscalizacion.usuario.id }} | {{fiscalizacion.usuario.username }}</p>
+                        
+                        <h4 class="card-title" style="border-bottom: solid 1px #b1b1b1;">Proyecto</h4>
+                        
+                        <ul>
+                            <li><strong>Nombre o actividad:</strong> {{ fiscalizacion.proyecto.nombre }}</li>
+                            <li><strong>Tipo de Alumbrado:</strong> {{fiscalizacion.proyecto.get_tipo_alumbrado_display }}</li>
+                            <li><strong>Ubicación:</strong> Latitud {{ fiscalizacion.proyecto.latitud }}, Longitud {{fiscalizacion.proyecto.longitud }}</li>
+                            <li><strong>Descripción:</strong> {{ fiscalizacion.proyecto.descripcion }}</li>
+                        </ul>
+                        
+                        <h4 class="mt-4" style="border-bottom: solid 1px #b1b1b1;">Titular</h4>
+
+                        <ul>
+                            <li><strong>RUT:</strong> {{fiscalizacion.proyecto.titular.run }}</li>
+                            <li><strong>Nombre:</strong> {{fiscalizacion.proyecto.titular.nombre }}</li>
+                            <li><strong>Dirección:</strong> {{ fiscalizacion.proyecto.titular.direccion }}</li>
+                            <li><strong>Correo electrónico:</strong> {{ fiscalizacion.proyecto.titular.correo  }}</li>
+                        </ul>
+
+                        <h4 class="mt-4" style="border-bottom: solid 1px #b1b1b1;">Representante legal</h4>
+
+                        <ul>
+                            <li><strong>RUT:</strong> {{fiscalizacion.proyecto.representante_legal.run }}</li>
+                            <li><strong>Nombre:</strong> {{fiscalizacion.proyecto.representante_legal.nombre }}</li>
+                            <li><strong>Dirección:</strong> {{ fiscalizacion.proyecto.representante_legal.direccion }}</li>
+                            <li><strong>Correo electrónico:</strong> {{ fiscalizacion.proyecto.representante_legal.correo  }}</li>
+                        </ul>
                     </div>
                     <div class="card-footer">
-                        <small class="text-body-secondary">Ingresado al sistema el {{ fiscalizacion.creado }}</small>
+                        <small class="" style="color: #c7c7c7;">Ingresado al sistema el {{ fiscalizacion.creado }}</small>
                     </div>
                 </div>
             </div>
@@ -34,90 +57,78 @@
 </div>
 
 
-<div class="row">
-    <div class="col-12 d-flex justify-content-center">
-        {% for medicion in fiscalizacion.medicion_set.all %}
-        <div class="card m-1" style="width: 18rem;">
-            <div class="d-flex justify-content-center"> 
-                <img src="{{ medicion.foto.url }}" class="card-img-top" alt="Foto de punto de medición" style="max-width: 100px; height: auto;">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        {% endfor %}
-    </div>
-</div>
+<!-- Tabla detalle de alumbrado -->
+<h3>Detalle de alumbrado</h3>
 
-
-
-
-
-
-
-<h3>Mediciones</h3>
 <div class="table-responsive">
     <table class="table table-dark table-hover table-striped table-bordered text-center align-middle">
         
         <thead>
             <tr class="align-middle">
-                <th>Inspector</th>
-                <th>Instrumento</th>
-                <th>Valor Medido</th>
-                <th>Cumplimiento</th>
-                <th>Observaciones</th>
-                <th>Fecha</th>
-                <th>img</th>
-                <th class="text-center" colspan="1" rowspan="2">Acciones</th>
-    
+                <th>Cantidad</th>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Potencia</th>
+                <th>N° certificación</th>
+                <th>Fecha certificación</th>
+                <th>Fecha instalación</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for medicion in fiscalizacion.medicion_set.all %}
             <tr>
-                <td>{{ medicion.fiscalizacion.usuario.username }} {{ medicion.fiscalizacion.usuario.lastname }}</td>
-                <td>{{ medicion.instrumento_medicion.get_tipo_display }}</td>
-                <td>{{ medicion.valor_medido }}</td>
-                <td>{{ medicion.cumplimiento }}</td>
-                <td>{{ medicion.observacion }}</td>
-                <td>{{ medicion.creado }}</td>
-                <td>
-                   
-                    <img src="{{ medicion.foto.url }}" alt="Foto de medición" width="50" height="auto">
-                    
-                </td>
-    
-                <td>
-                <div class="d-flex justify-content-center">
-                    <div class="me-1" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
-                        <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>
-                    </div>
-                    <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
-                        <a class="btn btn-danger" href="{% url 'eliminarMedicion' medicion.id %}"><i class="bx bx-trash"></i></a>
-                    </div>
-                </div>
-            </td>
+                <td>{{ fiscalizacion.proyecto.detalle_luminarias.cantidad }}</td>
+                <td>{{ fiscalizacion.proyecto.detalle_luminarias.tipo_lampara }}</td>
+                <td>{{ fiscalizacion.proyecto.detalle_luminarias.marca }}</td>
+                <td>{{ fiscalizacion.proyecto.detalle_luminarias.modelo }}</td>
+                <td>{{ fiscalizacion.proyecto.detalle_luminarias.potencia }}</td>
+                <td>{{ fiscalizacion.proyecto.detalle_luminarias.cod_certificacion }}</td>
+                <td>{{ fiscalizacion.proyecto.detalle_luminarias.fecha_certificacion }}</td>
+                <td>{{ fiscalizacion.proyecto.detalle_luminarias.fecha_instalacion }}</td>
             </tr>
-            {% empty %}
-            <tr>
-                <td colspan="8">No hay mediciones asociadas a este proyecto.</td>
-            </tr>
-            {% endfor %}
+
         </tbody>
     </table>
     
 </div>
+
+
+<!-- Cards MEDICIONES -->
+<div class="row mt-3">
+    <h3>Mediciones</h3>
+    {% for medicion in fiscalizacion.medicion_set.all %}
+    <div class="col-4 d-flex justify-content-center">
+        <div class="card mb-3 bg-dark text-light" style="width: 18rem; box-shadow: 0 0px 8px rgba(255, 255, 255, 0.5)">
+            <img src="{{ medicion.foto.url }}" class="card-img-top" alt="Foto de punto de medición"
+                style="width: 100%; height: 250px; object-fit: cover">
+    
+            <div class="card-body">
+                <h5 class="card-title bg-dark text-light">ID medicion: {{ medicion.id }}</h5>
+                <p class="card-text">Cumplimiento: {{ medicion.cumplimiento }}</p>
+            </div>
+            <ul class="list-group list-group-flush " style="border-color: #eee;">
+                <li class="list-group-item bg-dark text-light">Valor medición: {{medicion.valor_medido }}</li>
+                <li class="list-group-item bg-dark text-light">Inspector: {{ medicion.fiscalizacion.usuario.username }}</li>
+                <li class="list-group-item bg-dark text-light">Tipo: {{ medicion.get_tipo_display }} </li>
+                <li class="list-group-item bg-dark text-light">Instrumento: {{medicion.instrumento_medicion.get_tipo_display }}</li>
+            </ul>
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <div class="me-2" data-bs-toggle="tooltip" title="Editar" data-bs-placement="top">
+                        <a class="btn btn-warning" href="{% url ''%}"><i class="bx bx-edit"></i></a>
+                    </div>
+                    <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
+                        <a class="btn btn-danger" href="{% url 'eliminarMedicion' medicion.id %}"><i
+                                class="bx bx-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+</div>
+
 
 <a href="{% url '' %}" class="btn btn-secondary mt-4">Volver</a>
 {% endblock %}

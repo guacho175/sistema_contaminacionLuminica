@@ -107,6 +107,7 @@
 
 <body>
     <div class="container-fluid d-flex justify-content-center">
+    
         {% block menu %}
         <nav class="navbar fixed-top navbar-dark" style="height: 65px; background-color: #18173e">
             <div class="container-fluid">
@@ -116,7 +117,7 @@
                     <span class="navbar-toggler-icon" style="transform: scale(4.5);"></span>
                 </button>
 
-                <a class="navbar-brand ms-4 ps-2" href="{% url '' %}">Monitoreo de cumplimiento normativo</a>
+                <a class="navbar-brand ms-4 ps-2" href="{% url '' %}" style="color: #cc77cc;">MCN-DS1</a>
                                 
                 <div  class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -163,13 +164,6 @@
                 <i class='bx bx-home-alt'></i>
             </a>
             
-            <a href="{% url '' %}" class="{% if request.path == '//' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="">
-                <i class='bx bxs-tree'></i>
-            </a>
-
-            <a href="{% url '' %}" class="{% if request.path == '//' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Mediciones">
-                <i class="bi bi-lightbulb"></i>
-            </a>
 
             <a href="{% url 'proyectos' %}" class="{% if request.path == '/proyectos/' %}active{% endif %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Mantenedor de Proyectos">
                 <i class='bx bx-food-menu'></i>
