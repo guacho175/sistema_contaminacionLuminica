@@ -19,19 +19,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="foto" id="F76A83DA-5D7E-708E-B920-949B6AC6DCCD">
-<createdBy>Arnold</createdBy>
-<createdTime>2024-11-25 16:42:10 UTC</createdTime>
-<generatorID>621C8E7D-DC76-6268-5F5F-0EACE2A1E3D5</generatorID>
-<ownerDesignName>DS1</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="PROYECTO_id" id="B46788A1-ADAA-FEB1-7BA6-77715D70A041">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-11-25 16:42:10 UTC</createdTime>
