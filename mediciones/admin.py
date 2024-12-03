@@ -1,7 +1,10 @@
 from django.contrib import admin
-from .models import InstrumentoMedicion, Medicion
+from .models import InstrumentoMedicion, Medicion, Sensor
 
 # Register your models here.
+class SensorAdmin(admin.ModelAdmin):
+    list_display = ['id', 'latitud', 'longitud', 'temperatura', 'humedad', 'luminancia', 'iluminancia']
+
 class InstrumentoMedicionAdmin(admin.ModelAdmin):
     list_display = ['id', 'tipo', 'marca', 'modelo', 'num_serie']
 
@@ -11,4 +14,5 @@ class MedicionAdmin(admin.ModelAdmin):
 
 admin.site.register(InstrumentoMedicion, InstrumentoMedicionAdmin)
 admin.site.register(Medicion, MedicionAdmin)
+admin.site.register(Sensor, SensorAdmin)
 

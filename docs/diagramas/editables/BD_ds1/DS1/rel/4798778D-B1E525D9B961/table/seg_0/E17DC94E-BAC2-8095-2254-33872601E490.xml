@@ -77,6 +77,17 @@
 <ownDataTypeParameters>500,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="foto" id="799D8177-5832-07D4-B534-F1F2CE08C42C">
+<createdBy>Arnold</createdBy>
+<createdTime>2024-11-26 17:33:51 UTC</createdTime>
+<ownerDesignName>DS1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="creado" id="69D7B2F3-FF2A-17CD-68A8-9962D8887A2B">
 <createdBy>Arnold</createdBy>
 <createdTime>2024-11-25 16:42:10 UTC</createdTime>
