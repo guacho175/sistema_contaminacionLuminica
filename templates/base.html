@@ -117,7 +117,16 @@
                     <span class="navbar-toggler-icon" style="transform: scale(4.5);"></span>
                 </button>
 
-                <a class="navbar-brand ms-4 ps-2" href="{% url '' %}" style="color: #cc77cc;">MOCUN-DS1</a>
+                <a class="navbar-brand ms-4 ps-2" href="{% url '' %}" style="color: #cc77cc;">
+                    <div>
+                        {% if user.is_authenticated %}
+                            <div>
+                                ¡Bienvenido{{ user.username }}
+                            </div>
+                        {% else %}
+                        {% endif %}
+                    </div>
+                </a>
                                 
                 <div  class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -169,10 +178,15 @@
                 <i class='bx bx-food-menu'></i>
             </a>
 
-
-
+            
+            
             <a href="#" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Herramientas">
                 <i class='bx bx-wrench'></i>
+            </a>
+
+
+            <a href="{% url 'logout' %}" class="" data-bs-toggle="tooltip" data-bs-placement="right" title="Cerrar Sesión">
+                <i class='bx bx-log-out'></i>
             </a>
         </div>
         {% endblock aside %}
