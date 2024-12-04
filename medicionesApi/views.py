@@ -117,31 +117,4 @@ def guardar_medicion(request):
 
 
 
-@csrf_exempt
-def guardar_sensor(request):
-    if request.method == 'POST':
-        try:
-            # Decodificar datos JSON del cuerpo de la solicitud
-            data = json.loads(request.body)
 
-            # Extraer el valor enviado
-            valor = data.get('valor')
-
-            # Validar que el valor exista
-            if valor is None:
-                return JsonResponse({'error': 'El campo "valor" es requerido.'}, status=400)
-
-            # Obtener la fecha y hora actuales del sistema
-            fecha_actual = datetime.now().date()  # Fecha en formato YYYY-MM-DD
-            hora_actual = datetime.now().time()  # Hora en formato HH:MM:SS
-
-            # Crear una nueva entrada en la base de datos
-            Sensor.objects.create(valor=valor, fecha=fecha_actual, hora=hora_actual)
-
-            return JsonResponse({'mensaje': 'Dato del sensor guardado con éxito.'}, status=201)
-        except json.JSONDecodeError:
-            return JsonResponse({'error': 'Datos inválidos, no es JSON.'}, status=400)
-        except Exception as e:
-            return JsonResponse({'error': f'Error interno: {str(e)}'}, status=500)
-    else:
-        return JsonResponse({'error': 'Método no permitido.'}, status=405)
