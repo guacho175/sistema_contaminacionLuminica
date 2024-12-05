@@ -135,3 +135,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'inicio'  # Nombre de la ruta de inicio de sesión
+LOGIN_REDIRECT_URL = 'fiscalizaciones'  # Ruta a la que se redirige después de iniciar sesión
+LOGOUT_REDIRECT_URL = 'inicio'  # Ruta a la que se redirige después de cerrar sesión
+CSRF_FAILURE_VIEW = 'fiscalizacion.views.csrf_error' # Lleva al login despues de un error de token CSRF 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'  # Almacena mensajes temporales en cookies en lugar de sesiones.

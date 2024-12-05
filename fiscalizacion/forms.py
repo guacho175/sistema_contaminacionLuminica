@@ -3,6 +3,19 @@ from .models import Fiscalizacion, Reporte
 from proyectos.models import Proyecto
 from django.contrib.auth.models import User as Usuario
 
+class LoginForm(forms.Form):
+    username = forms.CharField(
+        max_length=150,
+        required=True,
+        label='Nombre de usuario',
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    password = forms.CharField(
+        required=True,
+        label='Contraseña',
+        widget=forms.PasswordInput(attrs={'class': 'form-control'})
+    )
+
 
 
 class FiscalizacionForm(forms.ModelForm):

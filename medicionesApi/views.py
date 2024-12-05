@@ -1,8 +1,9 @@
+import datetime
 import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from fiscalizacion.models import Fiscalizacion
-from mediciones.models import InstrumentoMedicion, Medicion
+from mediciones.models import InstrumentoMedicion, Medicion, Sensor
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -112,4 +113,8 @@ def guardar_medicion(request):
             return JsonResponse({"error": f"Error al guardar la medición: {str(e)}"}, status=500)
 
     return JsonResponse({"error": "Método no permitido"}, status=405)
+
+
+
+
 

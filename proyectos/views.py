@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import  RestrictedError
 from .models import Proyecto
 from .forms import ProyectoForm
 
-
+@login_required
 def crear_proyecto(request):
     if request.method == 'POST':
         form = ProyectoForm(request.POST, request.FILES)
@@ -18,7 +19,7 @@ def crear_proyecto(request):
     # retornamos el formulario
     return render(request, 'proyectos/proyectoAdd.html', {'form':form})
 
-
+@login_required
 def cargar_proyecto(request):
     proyectos = Proyecto.objects.all()
     
@@ -27,7 +28,7 @@ def cargar_proyecto(request):
     }
     return render(request, 'proyectos/mantenedor_proyectos.html', data)
 
-
+@login_required
 def eliminar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
 
@@ -41,14 +42,14 @@ def eliminar_proyecto(request, proyecto_id):
 
     return render(request, 'proyectos/proyectoDel.html', {'proyecto': proyecto})
 
-
+@login_required
 def cargar_editar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
     form = ProyectoForm(instance=proyecto)
     
     return render(request, 'proyectos/proyectoEdit.html', {'form':form, 'proyecto':proyecto})
 
-
+@login_required
 def editar_proyecto(request, proyecto_id):
     proyecto = get_object_or_404(Proyecto, id=proyecto_id)
 

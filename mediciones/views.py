@@ -1,11 +1,12 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import MedicionForm
 from services.mediciones.medicionCRUD import MedicionCRUD
 from fiscalizacion.models import Fiscalizacion
 from .models import Medicion
 
-
+@login_required
 def nueva_medicion(request, fiscalizacion_id):
     """Vista para ingresar una nueva medición."""
     fiscalizacion = get_object_or_404(Fiscalizacion, id=fiscalizacion_id)
@@ -23,7 +24,7 @@ def nueva_medicion(request, fiscalizacion_id):
     # retornamos el formulario
     return render(request, 'mediciones/medicionAdd.html', {'form': form, 'fiscalizacion': fiscalizacion})
 
-
+@login_required
 def eliminar_medicion(request, medicion_id):
     """Vista para eliminar una medición."""
     service = MedicionCRUD(request)
@@ -35,14 +36,14 @@ def eliminar_medicion(request, medicion_id):
 
     return render(request, 'mediciones/medicionDel.html', {'medicion': medicion})
 
-
+@login_required
 def cargar_editar_medicion(request, medicion_id):
     medicion = get_object_or_404(Medicion, id=medicion_id)
     form = MedicionForm(instance=medicion)
     
     return render(request, 'mediciones/medicionEdit.html', {'form':form, 'medicion':medicion})
 
-
+@login_required
 def editar_medicion(request, medicion_id):
     medicion = get_object_or_404(Medicion, id=medicion_id)
     Fiscalizacion_id = medicion.fiscalizacion.id
