@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from django.db.models import  RestrictedError
 from .models import Proyecto
 from .forms import ProyectoForm
 
 @login_required
+@permission_required('proyectos.add_proyecto')
 def crear_proyecto(request):
     if request.method == 'POST':
         form = ProyectoForm(request.POST, request.FILES)
