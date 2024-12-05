@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'proyectosApi',
     'medicionesApi',
     'fiscalizacionApi',
+
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

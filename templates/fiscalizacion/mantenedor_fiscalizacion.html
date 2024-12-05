@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_tags %}
 
 {% block contenido %}
 <h1 class="text-center mb-5">Fiscalizaciones</h1>
@@ -14,6 +15,7 @@
     <!-- FIN - Mapa -->
 
     <!-- INICIO - Boton para crear fiscalización -->
+    {% if request.user|has_perm:"fiscalizacion.add_fiscalizacion" %}
     <div class="col">
         <p class="d-flex justify-content-end gap-1">
             <button class="btn btn-success ms-auto btn-background" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
@@ -26,36 +28,35 @@
                 <!-- Formulario para crear nueva fiscalización -->
                 <form method="post" enctype=multipart/form-data action="{% url 'crear_fiscalizacion' %}">
                     {% csrf_token %}
-
-                        <div class="row ps-5 pe-5">
-                            <div class="mb-3 col-8">
-                                {{ form.proyecto.label_tag }}
-                                {{ form.proyecto }}
-                            </div>
-                            <div class="col-4 my-auto">
-                                <div class="d-flex justify-content-start">
-                                    <a href="{% url 'crearProyecto' %}" style="text-decoration: none; color: #eee;">
-                                        + Nuevo proyecto
-                                    </a>
-                                </div>
+                    <div class="row ps-5 pe-5">
+                        <div class="mb-3 col-8">
+                            {{ form.proyecto.label_tag }}
+                            {{ form.proyecto }}
+                        </div>
+                        <div class="col-4 my-auto">
+                            <div class="d-flex justify-content-start">
+                                <a href="{% url 'crearProyecto' %}" style="text-decoration: none; color: #eee;">
+                                    + Nuevo proyecto
+                                </a>
                             </div>
                         </div>
-
-                        <div class="row ps-5 pe-5">
-                            <div class="mb-3 col-8">
-                                {{ form.usuario.label_tag }}
-                                {{ form.usuario }}
-                            </div>
-                            <div class="col-4 my-auto">
-                               + Nuevo usuario
-                            </div>
-                            <button type="submit" class="btn btn-success mx-auto my-auto d-block col-2">Guardar</button>
+                    </div>
+                    <div class="row ps-5 pe-5">
+                        <div class="mb-3 col-8">
+                            {{ form.usuario.label_tag }}
+                            {{ form.usuario }}
                         </div>
-
+                        <div class="col-4 my-auto">
+                           + Nuevo usuario
+                        </div>
+                        <button type="submit" class="btn btn-success mx-auto my-auto d-block col-2">Guardar</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
+    {% endif %}
+    
     <!-- FIN - Boton para crear fiscalización -->
 
 </div>
@@ -107,12 +108,20 @@
                                     href="{% url 'detalleFiscalizacion' fiscalizacion.fiscalizacion.id %}"><i
                                         class="bi bi-eye"></i></a>
                             </div>
+
                             <div class="me-1" data-bs-toggle="tooltip" title="Nueva Medición" data-bs-placement="top">
                                 <a class="btn btn-success" href="{% url 'nuevaMedicion' fiscalizacion.fiscalizacion.id%}"><i class="bx bx-plus"></i></a>
                             </div>
+
+
+                            
+                            {% if request.user|has_perm:"fiscalizacion.delete_fiscalizacion" %}
+
                             <div data-bs-toggle="tooltip" title="Eliminar" data-bs-placement="top">
                                 <a class="btn btn-danger" href="{% url 'eliminarFiscalizacion' fiscalizacion.fiscalizacion.id %}"><i class="bx bx-trash"></i></a>
                             </div>
+                            {% endif %}
+
                         </div>
                     </td>
                 </tr>

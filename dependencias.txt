@@ -2,4 +2,3 @@ django
 mysqlclient
 folium
 pillow
-PyMySQL

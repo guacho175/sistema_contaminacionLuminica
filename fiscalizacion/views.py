@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
+
 
 from .forms import FiscalizacionForm, LoginForm
 from .models import Fiscalizacion
@@ -48,8 +50,6 @@ def cerrar_sesion(request):
     # Redirige a la página de inicio de sesión
     return redirect('inicio')
 
-from django.shortcuts import redirect
-
 def csrf_error(request, reason=""):
     # Redirigir al inicio de sesión
     return redirect('inicio')  # Lleva al login despues de un error de token CSRF 
@@ -57,6 +57,7 @@ def csrf_error(request, reason=""):
 
 
 @login_required
+@permission_required('fiscalizacion.add_fiscalizacion', raise_exception=True)
 def crear_fiscalizacion(request) -> None:
     """Vista para crear una nueva fiscalización."""
 
@@ -95,6 +96,8 @@ def cargar_fiscalizaciones(request) -> dict:
     return render(request, 'fiscalizacion/mantenedor_fiscalizacion.html', data)
 
 @login_required
+@permission_required('fiscalizacion.delete_fiscalizacion')
+
 def eliminar_fiscalizacion(request, fiscalizacion_id):
     """Vista para eliminar una fiscalización."""
 
