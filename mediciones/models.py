@@ -44,10 +44,33 @@ class Medicion(models.Model):
         verbose_name_plural = 'Mediciones'
 
 
+
 class Sensor(models.Model):
-    valor = models.FloatField()  # Campo para guardar el valor del sensor
-    fecha = models.DateField()   # Fecha en formato YYYY-MM-DD
-    hora = models.TimeField()    # Hora en formato HH:MM:SS
+    latitud = models.FloatField(verbose_name='Latitud')               # Latitud del sensor
+    longitud = models.FloatField(verbose_name='Longitud')              # Longitud del sensor
+    creado = models.DateTimeField(default=timezone.now, editable=False)  # Fecha y hora de creación
 
     def __str__(self):
-        return f"{self.valor} registrado el {self.fecha} a las {self.hora}"
+        return f"Sensor {self.id} registrado en ({self.latitud}, {self.longitud})"
+    
+
+
+
+class MedicionSensor(models.Model):
+    temperatura = models.FloatField(blank=True, null=True, verbose_name='Temperatura (°C)')
+    humedad = models.FloatField(blank=True, null=True, verbose_name='Humedad (%)')
+    luminancia = models.FloatField(verbose_name='Valor Luminancia')  # Luminancia, requerido
+    iluminancia = models.FloatField(verbose_name='Valor Iluminancia')  # Iluminancia, requerido
+    creado = models.DateTimeField(default=timezone.now, editable=False)  
+    sensor = models.ForeignKey(
+        'Sensor', on_delete=models.CASCADE, related_name='mediciones'
+    )  # Relación con el modelo Sensor
+
+    class Meta:
+        db_table = 'medicionsensor'  # Nombre de la tabla en la base de datos
+        verbose_name = 'Medición de Sensor'
+        verbose_name_plural = 'Mediciones de Sensores'
+
+    def __str__(self):
+        return f"Medición {self.id} del sensor {self.sensor.id} registrada el {self.creado}"
+
