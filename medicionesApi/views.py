@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from fiscalizacion.models import Fiscalizacion
-from mediciones.models import InstrumentoMedicion, Medicion, Sensor
+from mediciones.models import InstrumentoMedicion, Medicion, MedicionSensor, Sensor
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -117,29 +117,50 @@ def guardar_medicion(request):
 
 
 
+
+
 @csrf_exempt
-def guardar_sensor(request):
+def guardar_medicion_sensor(request):
     if request.method == 'POST':
         try:
-            # Decodificar datos JSON del cuerpo de la solicitud
+            # Decodificar datos JSON
             data = json.loads(request.body)
 
-            # Extraer los valores enviados
-            valor = data.get('valor')
-            fecha = data.get('fecha')  # Formato esperado: YYYY-MM-DD
-            hora = data.get('hora')    # Formato esperado: HH:MM:SS
+            # Extraer datos
+            sensor_id = data.get('sensor_id')
+            temperatura = data.get('temperatura')
+            humedad = data.get('humedad')
+            luminancia = data.get('luminancia')
+            iluminancia = data.get('iluminancia')
 
-            # Validar que los datos sean correctos
-            if not (valor and fecha and hora):
+            # Validar campos obligatorios
+            if not (sensor_id and luminancia and iluminancia):
                 return JsonResponse({'error': 'Faltan campos requeridos.'}, status=400)
 
-            # Crear una nueva entrada en la base de datos
-            Sensor.objects.create(valor=valor, fecha=fecha, hora=hora)
+            # Validar existencia del sensor
+            try:
+                sensor = Sensor.objects.get(id=sensor_id)
+            except Sensor.DoesNotExist:
+                return JsonResponse({'error': 'El sensor no existe.'}, status=404)
 
-            return JsonResponse({'mensaje': 'Dato del sensor guardado con éxito.'}, status=201)
+            # Crear medición
+            MedicionSensor.objects.create(
+                sensor=sensor,
+                temperatura=temperatura,
+                humedad=humedad,
+                luminancia=luminancia,
+                iluminancia=iluminancia,
+            )
+
+            return JsonResponse(
+                {'mensaje': 'Medición registrada con éxito.'},
+                status=201
+            )
+
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Datos inválidos, no es JSON.'}, status=400)
         except Exception as e:
             return JsonResponse({'error': f'Error interno: {str(e)}'}, status=500)
     else:
         return JsonResponse({'error': 'Método no permitido.'}, status=405)
+
