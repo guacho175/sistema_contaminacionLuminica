@@ -5,42 +5,6 @@ from fiscalizacion.models import Fiscalizacion
 from services.utils.GenerarNombre import GenerarNombre
 
 
-class Sensor(models.Model):
-
-    latitud = models.FloatField(verbose_name='Latitud')
-    longitud = models.FloatField(verbose_name='Longitud')
-    creado = models.DateTimeField(default=timezone.now, editable=False)
-
-
-
-    class Meta:
-        db_table = 'sensor'
-        verbose_name = 'Sensor'
-        verbose_name_plural = 'Sensores'
-
-
-
-class  MedicionSensor(models.Model):
-
-    temperatura = models.FloatField(blank=True, null=True, verbose_name='Temperatura (°C)')
-    humedad = models.FloatField(blank=True, null=True, verbose_name='Humedad (%)')
-    luminancia = models.FloatField(verbose_name='Valor luminancia')
-    iluminancia = models.FloatField(verbose_name='Valor iluminancia')
-    creado = models.DateTimeField(default=timezone.now, editable=False)
-    sensor = models.ForeignKey(Sensor, null=False, on_delete=models.RESTRICT)
-
-
-    def __str__(self):
-        return "{} {}".format(self.iluminancia, self.luminancia)
-
-    class Meta:
-        db_table = 'medicionSensor'
-        verbose_name = 'Medicion Sensor'
-        verbose_name_plural = 'Mediciones Sensores'
-
-
-
-
 class InstrumentoMedicion(models.Model):
     tipo = models.CharField(max_length=1, choices=tipo_instrumento, verbose_name='Iipo')
     marca = models.CharField(max_length=50, verbose_name='Marca')
@@ -78,3 +42,12 @@ class Medicion(models.Model):
         db_table = 'medicion'
         verbose_name = 'Medición'
         verbose_name_plural = 'Mediciones'
+
+
+class Sensor(models.Model):
+    valor = models.FloatField()  # Campo para guardar el valor del sensor
+    fecha = models.DateField()   # Fecha en formato YYYY-MM-DD
+    hora = models.TimeField()    # Hora en formato HH:MM:SS
+
+    def __str__(self):
+        return f"{self.valor} registrado el {self.fecha} a las {self.hora}"

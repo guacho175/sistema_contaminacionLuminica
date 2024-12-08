@@ -1,4 +1,3 @@
-import datetime
 import json
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -118,3 +117,29 @@ def guardar_medicion(request):
 
 
 
+@csrf_exempt
+def guardar_sensor(request):
+    if request.method == 'POST':
+        try:
+            # Decodificar datos JSON del cuerpo de la solicitud
+            data = json.loads(request.body)
+
+            # Extraer los valores enviados
+            valor = data.get('valor')
+            fecha = data.get('fecha')  # Formato esperado: YYYY-MM-DD
+            hora = data.get('hora')    # Formato esperado: HH:MM:SS
+
+            # Validar que los datos sean correctos
+            if not (valor and fecha and hora):
+                return JsonResponse({'error': 'Faltan campos requeridos.'}, status=400)
+
+            # Crear una nueva entrada en la base de datos
+            Sensor.objects.create(valor=valor, fecha=fecha, hora=hora)
+
+            return JsonResponse({'mensaje': 'Dato del sensor guardado con éxito.'}, status=201)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Datos inválidos, no es JSON.'}, status=400)
+        except Exception as e:
+            return JsonResponse({'error': f'Error interno: {str(e)}'}, status=500)
+    else:
+        return JsonResponse({'error': 'Método no permitido.'}, status=405)
