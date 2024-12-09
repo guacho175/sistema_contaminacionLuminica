@@ -164,3 +164,45 @@ def guardar_medicion_sensor(request):
     else:
         return JsonResponse({'error': 'Método no permitido.'}, status=405)
 
+def cargar_mediciones_sensor(request):
+    mediciones = MedicionSensor.objects.all()
+    data = {
+        'mediciones_sensor': list(
+            mediciones.values(
+                'id', 'temperatura', 'humedad', 'luminancia', 'iluminancia', 'creado', 'sensor_id'
+            )
+        )
+    }
+    return JsonResponse(data)
+
+
+
+def cargar_mediciones(request, proyecto_id):
+    # Obtener todas las fiscalizaciones relacionadas con el proyecto
+    fiscalizaciones = Fiscalizacion.objects.filter(proyecto_id=proyecto_id).values_list('id', flat=True)
+    
+    # Obtener todas las mediciones relacionadas con esas fiscalizaciones
+    mediciones = Medicion.objects.filter(fiscalizacion_id__in=fiscalizaciones)
+
+    # Preparar la respuesta
+    data = {
+        'mediciones': list(
+            mediciones.values(
+                'id', 
+                'tipo', 
+                'latitud', 
+                'longitud', 
+                'temperatura', 
+                'humedad', 
+                'valor_medido', 
+                'cumplimiento', 
+                'observacion', 
+                'foto', 
+                'instrumento_medicion_id', 
+                'fiscalizacion_id', 
+                'creado'
+            )
+        )
+    }
+    return JsonResponse(data)
+
