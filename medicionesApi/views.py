@@ -206,3 +206,33 @@ def cargar_mediciones(request, proyecto_id):
     }
     return JsonResponse(data)
 
+
+
+def cargar_medicion_por_id(request, medicion_id):
+    try:
+        # Buscar la medición específica por ID
+        medicion = Medicion.objects.get(id=medicion_id)
+
+        # Preparar la respuesta con los datos de la medición
+        data = {
+            'medicion': {
+                'id': medicion.id,
+                'tipo': medicion.tipo,
+                'latitud': medicion.latitud,
+                'longitud': medicion.longitud,
+                'temperatura': medicion.temperatura,
+                'humedad': medicion.humedad,
+                'valor_medido': medicion.valor_medido,
+                'cumplimiento': medicion.cumplimiento,
+                'observacion': medicion.observacion,
+                'foto': medicion.foto.url if medicion.foto else None,
+                'instrumento_medicion_id': medicion.instrumento_medicion_id,
+                'fiscalizacion_id': medicion.fiscalizacion_id,
+                'creado': medicion.creado.strftime('%Y-%m-%d %H:%M:%S'),
+            }
+        }
+        return JsonResponse(data)
+    except Medicion.DoesNotExist:
+        # Responder con un error si no se encuentra la medición
+        return JsonResponse({'error': 'Medición no encontrada'}, status=404)
+
